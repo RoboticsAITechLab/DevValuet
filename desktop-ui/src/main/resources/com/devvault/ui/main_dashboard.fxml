@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<BorderPane xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.devvault.ui.controllers.MainDashboardController">
+    <left>
+        <VBox spacing="8" style="-fx-padding:12; -fx-background-color: #0E1013;" >
+            <Label text="DevVault Pro X" style="-fx-text-fill: white; -fx-font-size: 16px; -fx-padding: 8 0 12 0;"/>
+            <Button text="Dashboard" />
+            <Button text="Projects" />
+            <Button text="Backup Center" />
+            <Button text="Security Center" />
+            <Button text="Datasets" />
+            <Button text="Plugins" />
+        </VBox>
+    </left>
+    <center>
+        <VBox spacing="10" style="-fx-padding:12; -fx-background-color: linear-gradient(#151A23, #0E1013);">
+            <HBox spacing="12">
+                <Pane prefWidth="300" prefHeight="120" style="-fx-background-color: #0b2a3a; -fx-border-radius:8; -fx-background-radius:8; -fx-padding: 10;" />
+                <Pane prefWidth="300" prefHeight="120" style="-fx-background-color: #1b1e2a; -fx-border-radius:8; -fx-background-radius:8;" />
+            </HBox>
+            <HBox spacing="12">
+                <Pane prefWidth="420" prefHeight="220" style="-fx-background-color: #0b2a3a; -fx-border-radius:8; -fx-background-radius:8;" />
+                <VBox spacing="8" style="-fx-padding:10;">
+                    <Button fx:id="backupButton" text="Create Encrypted Backup" onAction="#onBackupClicked" />
+                    <Label fx:id="backupStatus" text="" />
+                </VBox>
+            </HBox>
+        </VBox>
+    </center>
+</BorderPane>

@@ -1,0 +1,48 @@
+name: CI - Build & Test (Java 21)
+
+on:
+  push:
+    branches: [ main, master, develop ]
+  pull_request:
+    branches: [ main, master, develop ]
+
+jobs:
+  build:
+    name: Build and Test on ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+        java: [21]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up JDK ${{ matrix.java }}
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: ${{ matrix.java }}
+          cache: 'maven'
+
+      - name: Verify Java & Maven
+        run: |
+          java -version
+          mvn -v
+
+      - name: Build (run tests)
+        run: mvn -B package
+
+      - name: Upload build artifacts (desktop-ui jar)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: desktop-ui-jar
+          path: desktop-ui/target/*.jar
+
+      - name: Upload backend artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: backend-core-jar
+          path: backend-core/target/*.jar

@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<BorderPane xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.devvault.ui.controllers.MainController" style="-fx-background-color: #0b1220;">
+
+    <!-- Top title bar -->
+    <top>
+        <HBox fx:id="topBar" spacing="12" alignment="CENTER_LEFT" styleClass="top-bar" >
+            <Label text="⚡ DevVault Pro X" styleClass="title" />
+            <Region HBox.hgrow="ALWAYS" />
+            <TextField promptText="Search..." prefWidth="240" styleClass="search" />
+            <Button text="⚙" styleClass="icon-btn">
+                <tooltip>
+                    <Tooltip text="Settings" />
+                </tooltip>
+            </Button>
+        </HBox>
+    </top>
+
+    <!-- Left navigation bar -->
+    <left>
+        <VBox fx:id="leftNav" spacing="10" styleClass="left-nav" prefWidth="240">
+            <Label text="DevVault" styleClass="nav-title" />
+            <Button text="🏠  Dashboard" maxWidth="Infinity" styleClass="nav-button" />
+            <Button text="📂  Projects" maxWidth="Infinity" styleClass="nav-button" />
+            <Button text="💾  Backup Center" maxWidth="Infinity" styleClass="nav-button" />
+            <Button text="🔐  Security Center" maxWidth="Infinity" styleClass="nav-button" />
+            <Button text="📊  Datasets" maxWidth="Infinity" styleClass="nav-button" />
+            <Button text="🧩  Plugins" maxWidth="Infinity" styleClass="nav-button" />
+            <Button text="⚙  System Monitor" maxWidth="Infinity" styleClass="nav-button" />
+            <Button text="🧠  Smart Insights" maxWidth="Infinity" styleClass="nav-button" />
+            <Region VBox.vgrow="ALWAYS" />
+            <HBox spacing="8" styleClass="nav-actions">
+                <Button text="➕ New Project" styleClass="action-btn" />
+                <Button text="🧠 AI Sort" styleClass="action-btn" />
+            </HBox>
+        </VBox>
+    </left>
+
+    <!-- Center: Project Hub and cards -->
+    <center>
+        <VBox spacing="14" styleClass="content-area">
+            <HBox alignment="CENTER_LEFT" spacing="10" styleClass="content-header">
+                <Label text="📁 Project Hub" styleClass="content-title" />
+                <Region HBox.hgrow="ALWAYS" />
+                <Button text="☁ Sync" styleClass="chip" />
+                <Button text="🔒 Security ON" styleClass="chip primary" />
+                <Button text="🌗 Theme" styleClass="icon-btn" />
+            </HBox>
+
+            <GridPane hgap="12" vgap="12">
+                <!-- Left column: navigation cards (small summary cards) -->
+                <VBox spacing="10" GridPane.columnIndex="0" GridPane.rowIndex="0" styleClass="cards-col">
+                    <TitledPane text="🔵 AI Security Engine" expanded="true">
+                        <VBox spacing="6" styleClass="card" >
+                            <Label text="Status: 🟢 Online  Updated: 01 Nov" styleClass="muted" />
+                        </VBox>
+                    </TitledPane>
+                    <TitledPane text="🟣 IoT Control Node" expanded="true">
+                        <VBox spacing="6" styleClass="card">
+                            <Label text="Status: 🔴 Offline" styleClass="muted" />
+                        </VBox>
+                    </TitledPane>
+                </VBox>
+
+                <!-- Right column: project detail placeholder -->
+                <VBox spacing="10" GridPane.columnIndex="1" GridPane.rowIndex="0" styleClass="project-panel">
+                    <Label text='Project: "HydroSense AI"' styleClass="project-title" />
+                    <HBox spacing="6">
+                        <Button text="↩ Back" styleClass="icon-btn small" />
+                        <Button text="⚙ Settings" styleClass="icon-btn small" />
+                        <Button text="📈 Stats" styleClass="chip" />
+                        <Region HBox.hgrow="ALWAYS" />
+                    </HBox>
+
+                    <TabPane>
+                        <tabs>
+                            <Tab text="Overview" />
+                            <Tab text="Tasks" />
+                            <Tab text="Git" />
+                            <Tab text="Dataset" />
+                            <Tab text="Security" />
+                            <Tab text="Logs" />
+                            <Tab text="Extensions" />
+                            <Tab text="Cloud" />
+                        </tabs>
+                    </TabPane>
+
+                    <!-- Status snapshot -->
+                    <VBox spacing="8" styleClass="status-snapshot">
+                        <Label text="📊 STATUS SNAPSHOT" styleClass="snapshot-title" />
+                        <Separator />
+                        <Label fx:id="statusLabel" text="Backend: unknown" styleClass="muted" />
+                        <Label text="🔄 Backup: Last at 22:10 | Auto every 2 hrs" styleClass="muted" />
+                        <Label text="🔐 Security: Active | Zero interference" styleClass="muted" />
+                        <HBox spacing="8">
+                            <Button fx:id="refreshBtn" text="Refresh Status" styleClass="primary" />
+                            <Button text="Open Folder" styleClass="chip" />
+                            <Button text="Create Backup" styleClass="primary" />
+                            <Button text="View Report" styleClass="chip" />
+                        </HBox>
+                    </VBox>
+                </VBox>
+            </GridPane>
+        </VBox>
+    </center>
+
+    <!-- Bottom action bar -->
+    <bottom>
+        <HBox spacing="10" alignment="CENTER_LEFT" styleClass="bottom-bar">
+            <Label text="© DevVault" styleClass="muted" />
+            <Region HBox.hgrow="ALWAYS" />
+            <Label fx:id="telemetryLabel" text="CPU: 32%  GPU: 20%  RAM: 42%" styleClass="muted" />
+        </HBox>
+    </bottom>
+
+</BorderPane>
