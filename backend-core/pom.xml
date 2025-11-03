@@ -72,6 +72,12 @@
             <artifactId>common</artifactId>
             <version>${project.version}</version>
         </dependency>
+        <!-- Backup engine module -->
+        <dependency>
+            <groupId>com.devvault</groupId>
+            <artifactId>backup-engine</artifactId>
+            <version>${project.version}</version>
+        </dependency>
     </dependencies>
 
     <build>

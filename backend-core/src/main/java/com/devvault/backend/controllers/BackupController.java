@@ -17,7 +17,7 @@ import java.nio.file.Paths;
 public class BackupController {
     private final BackupManagerService backupManagerService;
 
-    @Value("${devvault.backup.token}")
+    @Value("${devvault.backup.token:}")
     private String configuredToken;
 
     @Autowired
