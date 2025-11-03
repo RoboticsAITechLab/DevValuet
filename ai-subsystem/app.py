@@ -1,40 +1,39 @@
-import importlib
-
-_fastapi_mod = None
-try:
-    _fastapi_mod = importlib.import_module('fastapi')
-    FastAPI = getattr(_fastapi_mod, 'FastAPI', None)
-except Exception:
-    # FastAPI not available in this environment (linter/runtime). Provide a lightweight stub
-    FastAPI = None
+from fastapi import FastAPI, Body
+from pydantic import BaseModel
 from datetime import datetime
+from typing import Optional
 
-if FastAPI is not None:
-    app = FastAPI(title="DevVault AI Subsystem (stub)")
-else:
-    # minimal stub object to avoid import/runtime errors when FastAPI is absent
-    class _StubApp:
-        def get(self, *a, **k):
-            def decorator(f):
-                return f
-            return decorator
+app = FastAPI(title="DevVault AI Subsystem")
 
-        def post(self, *a, **k):
-            def decorator(f):
-                return f
-            return decorator
 
-    app = _StubApp()
+class IntegrityReport(BaseModel):
+    path: str
+    sha256: str
+    timestamp: Optional[str] = None
+
 
 @app.get("/health")
 async def health():
-    return {"status":"online","timestamp":datetime.utcnow().isoformat()}
+    return {"status": "online", "timestamp": datetime.utcnow().isoformat()}
+
 
 @app.get("/ai/status")
 async def ai_status():
-    return {"model":"stub","state":"idle","timestamp":datetime.utcnow().isoformat()}
+    return {"model": "stub", "state": "idle", "timestamp": datetime.utcnow().isoformat()}
 
-# Kill-switch endpoint (local-only). In real deployment, require auth and explicit consent.
-@app.post("/ai/kill-switch")
-async def kill_switch():
-    return {"result":"AI disabled (stub)"}
+
+@app.post("/integrity/report")
+async def integrity_report(report: IntegrityReport = Body(...)):
+    # In the real system we'd persist and analyze. Here we just echo and timestamp.
+    report.timestamp = datetime.utcnow().isoformat()
+    return {"received": True, "report": report.dict()}
+
+
+@app.post("/ai/disable")
+async def ai_disable(timeout_seconds: Optional[int] = Body(0)):
+    # kill-switch placeholder: in production require auth and write to a local state store
+    disabled_until = None
+    if timeout_seconds and timeout_seconds > 0:
+        disabled_until = (datetime.utcnow().timestamp() + timeout_seconds)
+    return {"disabled": True, "disabled_until": disabled_until}
+

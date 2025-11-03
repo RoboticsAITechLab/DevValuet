@@ -43,6 +43,39 @@ pip install -r requirements.txt
 uvicorn app:app --port 8001 --reload
 ```
 
+CI & running tests locally
+--------------------------
+
+We include a GitHub Actions workflow at `.github/workflows/ci.yml` that runs `mvn verify` on pushes and pull requests.
+
+To run the full test suite (including integration tests) locally use:
+
+```powershell
+mvn -B -V -U -DskipTests=false verify
+```
+
+If you only want to run unit tests (fast):
+
+```powershell
+mvn -DskipTests=false -Dtest="**/*Test" test
+```
+
+The AI subsystem is a small FastAPI app located under `ai-subsystem/`. To run it locally:
+
+```powershell
+python -m venv .venv; .\.venv\Scripts\Activate.ps1
+pip install -r ai-subsystem/requirements.txt
+uvicorn ai-subsystem.app:app --reload --port 8000
+```
+
+To run the process watcher scaffold (it will call the AI kill-switch on suspicious activity):
+
+```powershell
+python ai-subsystem/process_watcher.py
+```
+
+Note: The process watcher and the AI subsystem are intentionally conservative scaffolds — secure the endpoints with authentication before using them in production.
+
 Notes and assumptions:
 - Using Maven and Java 17 by default. Change `pom.xml` properties to use Java 21.
 - The prototype uses a simple network call to `http://localhost:8080/health` from the UI.

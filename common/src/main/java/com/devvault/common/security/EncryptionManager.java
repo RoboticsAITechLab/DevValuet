@@ -21,7 +21,7 @@ import java.util.Base64;
  * - Supports key rotation and simple export helpers
  */
 public class EncryptionManager {
-    private static final String KEY_DIR = System.getProperty("user.home") + File.separator + ".devvault" + File.separator + "keys";
+    private static final String KEY_DIR = System.getProperty("devvault.keystore.dir", System.getProperty("user.home") + File.separator + ".devvault" + File.separator + "keys");
     private static final String RSA_PRIVATE_ENC = "rsa_private.key.enc";
     private static final String RSA_PUBLIC = "rsa_public.key";
     private static final String AES_ENC = "aes.enc";
