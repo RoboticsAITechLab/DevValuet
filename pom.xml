@@ -13,6 +13,10 @@
         <module>backend-core</module>
         <module>plugins</module>
         <module>backup-engine</module>
+    <module>cockpit-core</module>
+        <module>cockpit-ui</module>
+        <module>cockpit-ai</module>
+    <module>offline-engine</module>
     </modules>
 
     <properties>

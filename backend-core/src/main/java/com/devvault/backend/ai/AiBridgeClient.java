@@ -17,29 +17,32 @@ public class AiBridgeClient {
     private final RestTemplate restTemplate;
     private final String aiBaseUrl;
 
-    public AiBridgeClient(RestTemplateBuilder builder) {
+    public AiBridgeClient(RestTemplateBuilder builder, @org.springframework.beans.factory.annotation.Value("${ai.subsystem.url:http://localhost:8000}") String aiBaseUrl) {
         this.restTemplate = builder
                 .setConnectTimeout(Duration.ofSeconds(2))
                 .setReadTimeout(Duration.ofSeconds(5))
                 .build();
-        // Default local URL; allow override via spring property 'ai.subsystem.url'
-        this.aiBaseUrl = System.getProperty("ai.subsystem.url", "http://localhost:8000");
+        // Injected base URL (configurable via application.properties or system property)
+        this.aiBaseUrl = aiBaseUrl;
     }
 
     /**
      * Call the AI subsystem kill-switch endpoint to disable AI for the given timeout.
      * Returns the parsed response map on success or null on failure.
      */
-    public Map disableAI(int timeoutSeconds) {
+    @SuppressWarnings("unchecked")
+    public Map<String, Object> disableAI(int timeoutSeconds) {
         String url = String.format("%s/ai/disable", aiBaseUrl);
         try {
             logger.info("Calling AI disable at {} with timeout {}", url, timeoutSeconds);
-            Map resp = restTemplate.postForObject(url, Map.of("timeout_seconds", timeoutSeconds), Map.class);
+            Map<String, Object> payload = java.util.Map.of("timeout_seconds", timeoutSeconds);
+            Map<String, Object> resp = restTemplate.postForObject(url, payload, Map.class);
+            if (resp == null) return java.util.Map.of("ok", false, "reason", "empty-response");
             logger.info("AI disable response: {}", resp);
             return resp;
         } catch (RestClientException ex) {
             logger.warn("Failed to call AI disable: {}", ex.getMessage());
-            return null;
+            return java.util.Map.of("ok", false, "reason", ex.getMessage());
         }
     }
 }

@@ -3,6 +3,7 @@ package com.devvault.backend.services;
 import com.devvault.backend.model.Project;
 import com.devvault.backend.repositories.ProjectRepository;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
@@ -17,8 +18,10 @@ public class ProjectService {
 
     public Optional<Project> findById(Long id) { return repo.findById(id); }
 
+    @Transactional
     public Project create(Project p) { return repo.save(p); }
 
+    @Transactional
     public Project update(Long id, Project update) {
         return repo.findById(id).map(existing -> {
             existing.setName(update.getName());
@@ -31,5 +34,6 @@ public class ProjectService {
         }).orElseGet(() -> { update.setId(id); return repo.save(update); });
     }
 
+    @Transactional
     public void delete(Long id) { repo.deleteById(id); }
 }

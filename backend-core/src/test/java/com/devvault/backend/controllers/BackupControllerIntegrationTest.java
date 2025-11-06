@@ -60,7 +60,7 @@ public class BackupControllerIntegrationTest {
             .build()
             .encode();
         java.net.URI uriObj = uri.toUri();
-        ResponseEntity<java.util.Map> resp = restTemplate.postForEntity(uriObj, null, java.util.Map.class);
+    ResponseEntity<java.util.Map<String,Object>> resp = restTemplate.postForEntity(uriObj, null, (Class) java.util.Map.class);
     System.out.println("POST /api/backup/create status=" + resp.getStatusCodeValue());
     System.out.println("POST /api/backup/create body(raw)=" + resp.getBody());
     assertThat(resp.getStatusCode().is2xxSuccessful()).isTrue();

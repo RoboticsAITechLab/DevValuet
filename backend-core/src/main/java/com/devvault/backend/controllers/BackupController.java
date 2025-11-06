@@ -37,7 +37,7 @@ public class BackupController {
     }
 
     @PostMapping("/api/backup/create")
-    public ResponseEntity<?> createBackup(@RequestHeader(value = "Authorization", required = false) String auth,
+    public ResponseEntity<java.util.Map<String,Object>> createBackup(@RequestHeader(value = "Authorization", required = false) String auth,
                                                @RequestParam(name = "source", required = false) String source,
                                                @RequestParam(name = "dest", required = false) String dest) {
         try {

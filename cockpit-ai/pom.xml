@@ -1,0 +1,15 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.devvault</groupId>
+        <artifactId>devvault-pro-x</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+    </parent>
+    <artifactId>cockpit-ai</artifactId>
+    <packaging>pom</packaging>
+
+    <name>cockpit-ai</name>
+    <description>Python AI scaffold included in multi-module repo (no Java build required).</description>
+</project>

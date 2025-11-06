@@ -1,45 +1,19 @@
-name: Java CI
+name: CI - Build & Test (multi-platform)
 
 on:
   push:
-    branches: [ main, feature/** ]
-  pull_request:
-    branches: [ main ]
-
-jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Set up JDK 21
-        uses: actions/setup-java@v4
-        with:
-          distribution: temurin
-          java-version: '21'
-          cache: maven
-
-      - name: Verify Maven settings
-        run: mvn -v
-
-      - name: Run mvn verify (with tests)
-        run: mvn -B -V -U -DskipTests=false verify
-name: CI - Build & Test (Java 21)
-
-on:
-  push:
-    branches: [ main, master, develop ]
+    branches: [ main, master, develop, 'feature/**' ]
   pull_request:
     branches: [ main, master, develop ]
 
 jobs:
   build:
-    name: Build and Test on ${{ matrix.os }}
+    name: Build & Test on ${{ matrix.os }}
     runs-on: ${{ matrix.os }}
     strategy:
+      fail-fast: false
       matrix:
-        os: [ubuntu-latest, windows-latest]
+        os: [ubuntu-latest, macos-latest, windows-latest]
         java: [21]
     steps:
       - name: Checkout
@@ -57,19 +31,47 @@ jobs:
           java -version
           mvn -v
 
-      - name: Build (run tests)
-        run: mvn -B package
+      - name: Build and run tests (multi-module)
+        run: mvn -B -V -T1C clean verify
 
-      - name: Upload build artifacts (desktop-ui jar)
+      - name: Run SpotBugs
+        run: mvn -pl :cockpit-core com.github.spotbugs:spotbugs-maven-plugin:4.7.0:spotbugs -Dspotbugs.failOnError=false
+
+      - name: Upload SpotBugs report
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: desktop-ui-jar
-          path: desktop-ui/target/*.jar
+          name: spotbugs-${{ matrix.os }}
+          path: cockpit-core/target/spotbugsXml.xml
 
-      - name: Upload backend artifact
+      - name: Run Checkstyle
+        run: mvn -pl :cockpit-core org.apache.maven.plugins:maven-checkstyle-plugin:3.2.2:check -Dcheckstyle.failOnViolation=false
+
+      - name: Upload Checkstyle report
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: backend-core-jar
-          path: backend-core/target/*.jar
+          name: checkstyle-${{ matrix.os }}
+          path: cockpit-core/target/site/checkstyle
+
+      - name: Run JaCoCo report
+        if: success()
+        run: mvn -pl :cockpit-core org.jacoco:jacoco-maven-plugin:0.8.10:report
+
+      - name: Upload coverage artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: coverage-${{ matrix.os }}
+          path: cockpit-core/target/site/jacoco
+
+      - name: Upload module artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: modules-artifacts-${{ matrix.os }}
+          path: |
+            backend-core/target/*.jar
+            cockpit-core/target/*.jar
+            desktop-ui/target/*.jar
+
