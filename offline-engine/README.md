@@ -25,3 +25,21 @@ Notes
 - Tests register the Jackson `JavaTimeModule` so `Instant` fields are serialized correctly.
 
 If you'd like, I can add a tiny `main()` entrypoint to make the CLI runnable from the command line.
+
+Running the offline engine with an on-disk SQLite DB
+---------------------------------------------------
+
+A developer preview profile `offline` is available to run the engine with an on-disk
+SQLite database. It writes data to `offline.db` in the working directory when started with
+the `offline` profile.
+
+Run with Maven (Spring Boot) using the profile:
+
+```powershell
+mvn -pl offline-engine spring-boot:run -Dspring-boot.run.profiles=offline
+```
+
+Notes:
+- The project includes `sqlite-jdbc` as a runtime dependency. Hibernate may need a community
+	dialect for SQLite — if you encounter dialect errors, add a dialect implementation and set
+	`spring.jpa.properties.hibernate.dialect` appropriately.
