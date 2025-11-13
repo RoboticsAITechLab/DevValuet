@@ -24,7 +24,7 @@
     <!-- Centralized version properties -->
     <!-- Upgraded to Spring Boot 3.5.x for compatibility with newer Spring Framework and Java 21 -->
     <spring.boot.version>3.5.0</spring.boot.version>
-    <javafx.version>17.0.2</javafx.version>
+    <javafx.version>21.0.2</javafx.version>
         <sqlite.version>3.45.3.0</sqlite.version>
         <!-- enforce UTF-8 encoding for source and resources -->
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

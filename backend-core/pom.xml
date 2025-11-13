@@ -99,6 +99,8 @@
                 <version>3.0.0</version>
                 <configuration>
                     <useModulePath>false</useModulePath>
+                    <!-- Add JVM flag to allow dynamic agent loading for Mockito -->
+                    <argLine>-XX:+EnableDynamicAgentLoading</argLine>
                     <!-- Exclude long-running/integration tests from the unit test phase.
                          Integration tests follow the *IntegrationTest.java naming and will be
                          run by the Failsafe plugin during the integration-test/verify phases. -->
