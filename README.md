@@ -27,7 +27,7 @@
 
 ### **💎 3-Tier Software Model:**
 - 🆓 **Standard Version (Free)** - Basic + moderate features
-- 💎 **Premium Version (₹500-1,000 annually)** - Professional features  
+- 💎 **Premium Version (₹500-1,000 monthly)** - Professional features  
 - 👑 **Founder Edition (Custom pricing)** - Enterprise features based on requirements
 
 ---

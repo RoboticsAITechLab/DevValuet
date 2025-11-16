@@ -143,15 +143,15 @@
 
 ## 💰 **Revenue & Business Milestones**
 
-### **Realistic Financial Targets:**
-- **2026 Q2**: ₹50,000 revenue (First Standard version users)
-- **2026 Q4**: ₹2,00,000 revenue (Premium subscribers start)
-- **2027**: ₹10,00,000 revenue (Enterprise clients)
-- **2028**: ₹25,00,000 revenue (Established platform)
+### **Realistic Financial Targets (Monthly Pricing Model):**
+- **2026 Q2**: ₹25,000 monthly revenue (50 Premium users × ₹500)
+- **2026 Q4**: ₹1,00,000 monthly revenue (100-150 Premium users)
+- **2027**: ₹2,50,000 monthly revenue (250-300 Premium users + Enterprise)
+- **2028**: ₹5,00,000 monthly revenue (Established platform with enterprise clients)
 
 ### **User Adoption Goals:**
 - **2026**: 1,000 Standard users, 50 Premium users
-- **2027**: 5,000 Standard users, 200 Premium users, 5 Enterprise clients
+- **2027**: 5,000 Standard users, 250 Premium users, 5 Enterprise clients
 - **2028**: 15,000+ Standard users, 500+ Premium users, 20+ Enterprise clients
 
 ---

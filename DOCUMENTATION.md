@@ -31,7 +31,7 @@ DevVault Pro X is a comprehensive **Enterprise Data Management & Analytics Platf
 
 #### **💎 Premium Version (Paid Professional):**
 **Target Audience**: Professional developers, development teams, startups
-**Price Range**: ₹500 - ₹1,000 annually
+**Price Range**: ₹500 - ₹1,000 monthly
 
 **Premium Features Include:**
 - 🚀 **Everything from Standard Version**
