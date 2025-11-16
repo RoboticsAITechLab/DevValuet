@@ -72,7 +72,72 @@
             <artifactId>common</artifactId>
             <version>${project.version}</version>
         </dependency>
-    </dependencies>
+        <!-- Hibernate Validator (Jakarta Bean Validation implementation) -->
+        <dependency>
+            <groupId>org.hibernate.validator</groupId>
+            <artifactId>hibernate-validator</artifactId>
+            <version>8.0.1.Final</version>
+        </dependency>
+        <!-- Backup engine module -->
+        <dependency>
+            <groupId>com.devvault</groupId>
+            <artifactId>backup-engine</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+
+        <!-- Web3j for REAL blockchain integration -->
+        <dependency>
+            <groupId>org.web3j</groupId>
+            <artifactId>core</artifactId>
+            <version>4.10.3</version>
+        </dependency>
+        
+        <!-- Web3j crypto support -->
+        <dependency>
+            <groupId>org.web3j</groupId>
+            <artifactId>crypto</artifactId>
+            <version>4.10.3</version>
+        </dependency>
+        
+        <!-- Web3j contract support -->
+        <dependency>
+            <groupId>org.web3j</groupId>
+            <artifactId>contracts</artifactId>
+            <version>4.10.3</version>
+        </dependency>
+
+        <!-- Bouncy Castle for advanced cryptography -->
+        <dependency>
+            <groupId>org.bouncycastle</groupId>
+            <artifactId>bcprov-jdk18on</artifactId>
+            <version>1.78.1</version>
+        </dependency>
+        </dependencies>
+
+    <repositories>
+        <repository>
+            <id>central</id>
+            <name>Maven Central</name>
+            <url>https://repo.maven.apache.org/maven2</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+        <repository>
+            <id>bouncycastle</id>
+            <name>Bouncy Castle Repository</name>
+            <url>https://www.bouncycastle.org/repo/</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+    </repositories>
 
     <build>
         <plugins>
@@ -87,7 +152,34 @@
                 <version>3.0.0</version>
                 <configuration>
                     <useModulePath>false</useModulePath>
+                    <!-- Add JVM flag to allow dynamic agent loading for Mockito -->
+                    <argLine>-XX:+EnableDynamicAgentLoading</argLine>
+                    <!-- Exclude long-running/integration tests from the unit test phase.
+                         Integration tests follow the *IntegrationTest.java naming and will be
+                         run by the Failsafe plugin during the integration-test/verify phases. -->
+                    <excludes>
+                        <exclude>**/*IntegrationTest.java</exclude>
+                    </excludes>
                 </configuration>
+            </plugin>
+            <!-- Run integration tests (IntegrationTest suffix) during verify phase -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-failsafe-plugin</artifactId>
+                <version>3.0.0</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>integration-test</goal>
+                            <goal>verify</goal>
+                        </goals>
+                        <configuration>
+                            <includes>
+                                <include>**/*IntegrationTest.java</include>
+                            </includes>
+                        </configuration>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>

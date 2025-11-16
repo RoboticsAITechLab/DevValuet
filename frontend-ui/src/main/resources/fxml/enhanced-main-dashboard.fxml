@@ -1,0 +1,357 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
+
+<!--
+Enhanced DevVault Pro X Main Dashboard - Neo-Glass Command Cockpit
+Implementation of complete UI system with all sections
+-->
+
+<BorderPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" 
+            fx:controller="com.devvault.frontend.controllers.EnhancedMainDashboardController"
+            styleClass="enhanced-main-dashboard">
+
+    <!-- TOP: Neo-Glass Header Bar -->
+    <top>
+        <HBox styleClass="neo-header-bar" alignment="CENTER_LEFT" spacing="25" prefHeight="70">
+            <padding>
+                <Insets top="15" right="25" bottom="15" left="25"/>
+            </padding>
+            
+            <!-- DevVault Pro X Title with Glow Effect -->
+            <Text text="⚡ DevVault Pro X" styleClass="neo-app-title">
+                <font>
+                    <Font name="Inter Bold" size="22"/>
+                </font>
+            </Text>
+            
+            <!-- Spacer -->
+            <Region HBox.hgrow="ALWAYS"/>
+            
+            <!-- Advanced AI Search Container -->
+            <HBox styleClass="neo-search-container" alignment="CENTER" spacing="12">
+                <Label fx:id="searchIconLabel" text="🔍" styleClass="search-icon-prefix"/>
+                <TextField fx:id="aiSearchField" styleClass="neo-search-field" 
+                          promptText="🔍 Search projects, datasets, insights..." prefWidth="320"/>
+                <Button fx:id="aiSearchButton" text="✨ AI" styleClass="ai-search-button"/>
+            </HBox>
+            
+            <!-- Control Panel Actions -->
+            <HBox spacing="15" alignment="CENTER">
+                <Button fx:id="settingsButton" text="⚙" styleClass="neo-control-button">
+                    <tooltip><Tooltip text="System Settings"/></tooltip>
+                </Button>
+                <Button fx:id="securityStatusButton" text="🔒" styleClass="neo-control-button security-active">
+                    <tooltip><Tooltip text="Security Status: ACTIVE"/></tooltip>
+                </Button>
+                <Button fx:id="themeToggleButton" text="🌗" styleClass="neo-control-button">
+                    <tooltip><Tooltip text="Theme Toggle"/></tooltip>
+                </Button>
+            </HBox>
+        </HBox>
+    </top>
+
+    <!-- CENTER: Command Cockpit Main Area -->
+    <center>
+        <HBox styleClass="command-cockpit-container">
+            
+            <!-- LEFT: Enhanced Navigation Panel -->
+            <VBox styleClass="neo-navigation-panel" prefWidth="300" spacing="10">
+                <padding>
+                    <Insets top="25" right="20" bottom="25" left="20"/>
+                </padding>
+                
+                <!-- Navigation Header -->
+                <Text text="🧭 Navigation Bar" styleClass="nav-section-title">
+                    <font>
+                        <Font name="Inter SemiBold" size="16"/>
+                    </font>
+                </Text>
+                
+                <Separator styleClass="nav-separator"/>
+                
+                <!-- Main Navigation Buttons -->
+                <VBox spacing="6" styleClass="nav-buttons-container">
+                    <Button fx:id="dashboardNavButton" text="🏠 Dashboard" 
+                           styleClass="neo-nav-button, nav-active" maxWidth="Infinity"
+                           onAction="#onDashboardClick"/>
+                    <Button fx:id="projectsNavButton" text="📂 Projects" 
+                           styleClass="neo-nav-button" maxWidth="Infinity"
+                           onAction="#onProjectsClick"/>
+                    <Button fx:id="backupNavButton" text="💾 Backup Center" 
+                           styleClass="neo-nav-button" maxWidth="Infinity"
+                           onAction="#onBackupClick"/>
+                    <Button fx:id="securityNavButton" text="🔐 Security Center" 
+                           styleClass="neo-nav-button" maxWidth="Infinity"
+                           onAction="#onSecurityClick"/>
+                    <Button fx:id="datasetsNavButton" text="📊 Datasets" 
+                           styleClass="neo-nav-button" maxWidth="Infinity"
+                           onAction="#onDatasetsClick"/>
+                    <Button fx:id="pluginsNavButton" text="🧩 Plugins" 
+                           styleClass="neo-nav-button" maxWidth="Infinity"
+                           onAction="#onPluginsClick"/>
+                    <Button fx:id="monitorNavButton" text="⚙ System Monitor" 
+                           styleClass="neo-nav-button" maxWidth="Infinity"
+                           onAction="#onMonitorClick"/>
+                    <Button fx:id="insightsNavButton" text="🧠 Smart Insights" 
+                           styleClass="neo-nav-button" maxWidth="Infinity"
+                           onAction="#onInsightsClick"/>
+                </VBox>
+                
+                <!-- Spacer -->
+                <Region VBox.vgrow="ALWAYS"/>
+                
+                <!-- Advanced Status Panel -->
+                <VBox styleClass="neo-status-panel" spacing="15">
+                    <Text text="Live Status" styleClass="status-section-title">
+                        <font>
+                            <Font name="Inter SemiBold" size="14"/>
+                        </font>
+                    </Text>
+                    
+                    <!-- System Status Indicators -->
+                    <VBox spacing="8">
+                        <HBox alignment="CENTER_LEFT" spacing="12">
+                            <FontAwesomeIcon fx:id="systemStatusIcon" glyphName="CIRCLE" size="12" styleClass="status-online-pulse"/>
+                            <Text text="System Online" styleClass="status-text-primary"/>
+                        </HBox>
+                        <HBox alignment="CENTER_LEFT" spacing="12">
+                            <FontAwesomeIcon fx:id="securityStatusIcon" glyphName="SHIELD_ALT" size="12" styleClass="status-secure-glow"/>
+                            <Text text="Security Active" styleClass="status-text-primary"/>
+                        </HBox>
+                        <HBox alignment="CENTER_LEFT" spacing="12">
+                            <FontAwesomeIcon fx:id="aiBridgeStatusIcon" glyphName="CLOUD" size="12" styleClass="status-sync"/>
+                            <Text text="AI Bridge Connected" styleClass="status-text-primary"/>
+                        </HBox>
+                    </VBox>
+                    
+                    <!-- Quick System Metrics -->
+                    <VBox spacing="6">
+                        <Text text="Quick Metrics" styleClass="metrics-title">
+                            <font>
+                                <Font name="Inter Medium" size="12"/>
+                            </font>
+                        </Text>
+                        
+                        <!-- CPU Usage -->
+                        <HBox alignment="CENTER_LEFT" spacing="10">
+                            <Text text="CPU:" styleClass="metric-label" textAlignment="RIGHT" wrappingWidth="35"/>
+                            <ProgressBar fx:id="cpuProgress" progress="0.32" styleClass="metric-progress" prefWidth="120"/>
+                            <Text fx:id="cpuPercentage" text="32%" styleClass="metric-value"/>
+                        </HBox>
+                        
+                        <!-- RAM Usage -->
+                        <HBox alignment="CENTER_LEFT" spacing="10">
+                            <Text text="RAM:" styleClass="metric-label" textAlignment="RIGHT" wrappingWidth="35"/>
+                            <ProgressBar fx:id="ramProgress" progress="0.42" styleClass="metric-progress" prefWidth="120"/>
+                            <Text fx:id="ramPercentage" text="42%" styleClass="metric-value"/>
+                        </HBox>
+                        
+                        <!-- Network Activity -->
+                        <HBox alignment="CENTER_LEFT" spacing="10">
+                            <Text text="NET:" styleClass="metric-label" textAlignment="RIGHT" wrappingWidth="35"/>
+                            <ProgressBar fx:id="netProgress" progress="0.18" styleClass="metric-progress" prefWidth="120"/>
+                            <Text fx:id="netActivity" text="Low" styleClass="metric-value"/>
+                        </HBox>
+                    </VBox>
+                </VBox>
+            </VBox>
+            
+            <!-- RIGHT: Project Hub Main Content -->
+            <StackPane styleClass="project-hub-panel" HBox.hgrow="ALWAYS">
+                <padding>
+                    <Insets top="25" right="25" bottom="25" left="25"/>
+                </padding>
+                
+                <!-- Main Content Stack -->
+                <VBox fx:id="mainContentContainer" spacing="25">
+                    
+                    <!-- Project Hub Header -->
+                    <HBox alignment="CENTER_LEFT" spacing="20">
+                        <Text text="📁 Project Hub" styleClass="hub-section-title">
+                            <font>
+                                <Font name="Inter Bold" size="20"/>
+                            </font>
+                        </Text>
+                        
+                        <!-- Spacer -->
+                        <Region HBox.hgrow="ALWAYS"/>
+                        
+                        <!-- Hub Action Buttons -->
+                        <Button fx:id="aiSortHubButton" text="🧠 AI Sort" styleClass="hub-action-button ai-button"/>
+                        <Button fx:id="syncHubButton" text="☁ Sync" styleClass="hub-action-button sync-button"/>
+                        <Button fx:id="analyticsButton" text="📈 Analytics" styleClass="hub-action-button analytics-button"/>
+                    </HBox>
+                    
+                    <!-- Live Project Cards Container -->
+                    <ScrollPane styleClass="project-cards-scroll" prefHeight="450" fitToWidth="true">
+                        <VBox fx:id="projectCardsContainer" spacing="18">
+                            
+                            <!-- AI Security Engine Project Card -->
+                            <HBox styleClass="project-card active-project" spacing="20">
+                                <VBox alignment="CENTER" minWidth="70">
+                                    <FontAwesomeIcon glyphName="SHIELD_ALT" size="28" styleClass="project-icon security-icon"/>
+                                </VBox>
+                                <VBox spacing="10" HBox.hgrow="ALWAYS">
+                                    <Text text="🔵 AI Security Engine" styleClass="project-title">
+                                        <font>
+                                            <Font name="Inter SemiBold" size="16"/>
+                                        </font>
+                                    </Text>
+                                    <HBox spacing="25">
+                                        <HBox spacing="8">
+                                            <Text text="Status:" styleClass="project-meta-label"/>
+                                            <Text text="🟢 Online" styleClass="project-status-online"/>
+                                        </HBox>
+                                        <HBox spacing="8">
+                                            <Text text="Updated:" styleClass="project-meta-label"/>
+                                            <Text text="01 Nov" styleClass="project-meta-value"/>
+                                        </HBox>
+                                        <HBox spacing="8">
+                                            <Text text="Security Level:" styleClass="project-meta-label"/>
+                                            <Text text="Maximum" styleClass="project-security-max"/>
+                                        </HBox>
+                                    </HBox>
+                                    <ProgressBar progress="0.95" styleClass="project-progress security-progress" prefWidth="400"/>
+                                    <Text text="AI threat detection: 1,247 threats blocked today" styleClass="project-detail-text"/>
+                                </VBox>
+                                <VBox alignment="CENTER" spacing="10">
+                                    <Button text="Open" styleClass="project-action-button primary-action"/>
+                                    <Button text="⚙" styleClass="project-action-button secondary-action"/>
+                                    <Button text="📊" styleClass="project-action-button info-action"/>
+                                </VBox>
+                            </HBox>
+                            
+                            <!-- IoT Control Node Project Card -->
+                            <HBox styleClass="project-card offline-project" spacing="20">
+                                <VBox alignment="CENTER" minWidth="70">
+                                    <FontAwesomeIcon glyphName="MICROCHIP" size="28" styleClass="project-icon iot-icon"/>
+                                </VBox>
+                                <VBox spacing="10" HBox.hgrow="ALWAYS">
+                                    <Text text="🟣 IoT Control Node" styleClass="project-title">
+                                        <font>
+                                            <Font name="Inter SemiBold" size="16"/>
+                                        </font>
+                                    </Text>
+                                    <HBox spacing="25">
+                                        <HBox spacing="8">
+                                            <Text text="Status:" styleClass="project-meta-label"/>
+                                            <Text text="🔴 Offline" styleClass="project-status-offline"/>
+                                        </HBox>
+                                        <HBox spacing="8">
+                                            <Text text="Last Seen:" styleClass="project-meta-label"/>
+                                            <Text text="3 days ago" styleClass="project-meta-value"/>
+                                        </HBox>
+                                        <HBox spacing="8">
+                                            <Text text="Devices:" styleClass="project-meta-label"/>
+                                            <Text text="24/32 Connected" styleClass="project-devices"/>
+                                        </HBox>
+                                    </HBox>
+                                    <ProgressBar progress="0.67" styleClass="project-progress offline-progress" prefWidth="400"/>
+                                    <Text text="Last heartbeat: Connection timeout - investigating" styleClass="project-detail-text offline-text"/>
+                                </VBox>
+                                <VBox alignment="CENTER" spacing="10">
+                                    <Button text="Restart" styleClass="project-action-button warning-action"/>
+                                    <Button text="Debug" styleClass="project-action-button secondary-action"/>
+                                    <Button text="📡" styleClass="project-action-button info-action"/>
+                                </VBox>
+                            </HBox>
+                            
+                            <!-- HydroSense AI Project Card -->
+                            <HBox styleClass="project-card training-project" spacing="20">
+                                <VBox alignment="CENTER" minWidth="70">
+                                    <FontAwesomeIcon glyphName="TINT" size="28" styleClass="project-icon hydro-icon"/>
+                                </VBox>
+                                <VBox spacing="10" HBox.hgrow="ALWAYS">
+                                    <Text text="🔵 HydroSense AI" styleClass="project-title">
+                                        <font>
+                                            <Font name="Inter SemiBold" size="16"/>
+                                        </font>
+                                    </Text>
+                                    <HBox spacing="25">
+                                        <HBox spacing="8">
+                                            <Text text="Status:" styleClass="project-meta-label"/>
+                                            <Text text="🟡 Training" styleClass="project-status-training"/>
+                                        </HBox>
+                                        <HBox spacing="8">
+                                            <Text text="Progress:" styleClass="project-meta-label"/>
+                                            <Text text="85%" styleClass="project-meta-value"/>
+                                        </HBox>
+                                        <HBox spacing="8">
+                                            <Text text="ETA:" styleClass="project-meta-label"/>
+                                            <Text text="2.5 hrs" styleClass="project-eta"/>
+                                        </HBox>
+                                    </HBox>
+                                    <ProgressBar fx:id="hydroProgress" progress="0.85" styleClass="project-progress training-progress" prefWidth="400"/>
+                                    <Text text="Neural network training: Epoch 847/1000 - Accuracy: 94.2%" styleClass="project-detail-text"/>
+                                </VBox>
+                                <VBox alignment="CENTER" spacing="10">
+                                    <Button text="Monitor" styleClass="project-action-button primary-action"/>
+                                    <Button text="📊" styleClass="project-action-button info-action"/>
+                                    <Button text="⏸" styleClass="project-action-button warning-action"/>
+                                </VBox>
+                            </HBox>
+                            
+                        </VBox>
+                    </ScrollPane>
+                    
+                    <!-- Spacer -->
+                    <Region VBox.vgrow="ALWAYS"/>
+                    
+                </VBox>
+            </StackPane>
+        </HBox>
+    </center>
+
+    <!-- BOTTOM: Command Action Bar -->
+    <bottom>
+        <HBox styleClass="command-action-bar" alignment="CENTER" spacing="25" prefHeight="65">
+            <padding>
+                <Insets top="15" right="25" bottom="15" left="25"/>
+            </padding>
+            
+            <!-- Primary Action Buttons -->
+            <Button fx:id="newProjectButton" text="➕ New Project" styleClass="action-bar-button primary-action" 
+                   onAction="#onNewProjectClick"/>
+            <Button fx:id="aiSortButton" text="🧠 AI Sort" styleClass="action-bar-button ai-action" 
+                   onAction="#onAiSortClick"/>
+            <Button fx:id="syncButton" text="☁ Sync" styleClass="action-bar-button sync-action" 
+                   onAction="#onSyncClick"/>
+            
+            <!-- Spacer -->
+            <Region HBox.hgrow="ALWAYS"/>
+            
+            <!-- Status and Control Section -->
+            <HBox spacing="20" alignment="CENTER">
+                <!-- Security Status Indicator -->
+                <HBox spacing="10" alignment="CENTER" styleClass="security-status-container">
+                    <FontAwesomeIcon fx:id="securityIndicator" glyphName="SHIELD_ALT" size="16" styleClass="security-indicator-on"/>
+                    <Text fx:id="securityStatusText" text="🔒 Security ON" styleClass="security-status-on"/>
+                </HBox>
+                
+                <!-- Theme Toggle -->
+                <Button fx:id="themeToggleBottomButton" text="🌗 Theme Toggle" styleClass="action-bar-button theme-action" 
+                       onAction="#onThemeToggleClick"/>
+                
+                <!-- Live System Clock -->
+                <VBox alignment="CENTER" spacing="3" styleClass="system-clock">
+                    <Text fx:id="timeDisplay" text="21:45:30" styleClass="time-display">
+                        <font>
+                            <Font name="Inter Bold" size="18"/>
+                        </font>
+                    </Text>
+                    <Text fx:id="dateDisplay" text="13 Nov 2025" styleClass="date-display">
+                        <font>
+                            <Font name="Inter Medium" size="11"/>
+                        </font>
+                    </Text>
+                </VBox>
+            </HBox>
+        </HBox>
+    </bottom>
+
+</BorderPane>

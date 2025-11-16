@@ -1,0 +1,372 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
+
+<!--
+System Monitor + Smart Insights Dashboard
+Live telemetry, predictive insights, and AI-powered system analytics
+-->
+
+<BorderPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" 
+            fx:controller="com.devvault.frontend.controllers.SystemMonitorController"
+            styleClass="system-monitor-view">
+
+    <!-- TOP: System Monitor Header -->
+    <top>
+        <HBox styleClass="monitor-header-bar" alignment="CENTER_LEFT" spacing="25" prefHeight="85">
+            <padding>
+                <Insets top="20" right="30" bottom="20" left="30"/>
+            </padding>
+            
+            <!-- System Monitor Title -->
+            <HBox spacing="15" alignment="CENTER_LEFT">
+                <FontAwesomeIcon glyphName="TACHOMETER" size="32" styleClass="monitor-icon"/>
+                <VBox spacing="5">
+                    <Text text="⚙ SYSTEM MONITOR / SMART INSIGHTS" styleClass="monitor-title">
+                        <font>
+                            <Font name="Inter Bold" size="24"/>
+                        </font>
+                    </Text>
+                    <Text fx:id="systemStatusText" text="System Load: Low | Temperature: 45°C" styleClass="monitor-subtitle"/>
+                </VBox>
+            </HBox>
+            
+            <!-- Spacer -->
+            <Region HBox.hgrow="ALWAYS"/>
+            
+            <!-- Monitor Controls -->
+            <HBox spacing="15" alignment="CENTER">
+                <Button fx:id="refreshButton" text="🔄" styleClass="monitor-control-button">
+                    <tooltip><Tooltip text="Refresh Data"/></tooltip>
+                </Button>
+                <Button fx:id="settingsButton" text="⚙" styleClass="monitor-control-button">
+                    <tooltip><Tooltip text="Monitor Settings"/></tooltip>
+                </Button>
+                <Button fx:id="alertsButton" text="🔔" styleClass="monitor-control-button warning">
+                    <tooltip><Tooltip text="System Alerts"/></tooltip>
+                </Button>
+                <ToggleButton fx:id="realTimeToggle" text="📡 Live" styleClass="monitor-toggle-button" selected="true">
+                    <tooltip><Tooltip text="Real-time Monitoring"/></tooltip>
+                </ToggleButton>
+            </HBox>
+        </HBox>
+    </top>
+
+    <!-- CENTER: System Metrics Dashboard -->
+    <center>
+        <ScrollPane styleClass="monitor-scroll-pane" fitToWidth="true" fitToHeight="true">
+            <VBox spacing="25" styleClass="monitor-dashboard">
+                <padding>
+                    <Insets top="25" right="30" bottom="25" left="30"/>
+                </padding>
+                
+                <!-- Primary System Metrics Grid -->
+                <GridPane styleClass="primary-metrics-grid" hgap="25" vgap="20">
+                    
+                    <!-- CPU Usage Metric -->
+                    <VBox spacing="12" styleClass="metric-card cpu-metric" GridPane.columnIndex="0" GridPane.rowIndex="0">
+                        <padding>
+                            <Insets all="20"/>
+                        </padding>
+                        <HBox spacing="12" alignment="CENTER_LEFT">
+                            <FontAwesomeIcon glyphName="MICROCHIP" size="20" styleClass="metric-icon cpu-icon"/>
+                            <Text text="CPU Usage" styleClass="metric-title">
+                                <font>
+                                    <Font name="Inter SemiBold" size="16"/>
+                                </font>
+                            </Text>
+                        </HBox>
+                        <Text fx:id="cpuPercentageText" text="32%" styleClass="metric-value cpu-value">
+                            <font>
+                                <Font name="Inter Bold" size="32"/>
+                            </font>
+                        </Text>
+                        <ProgressBar fx:id="cpuProgressBar" progress="0.32" styleClass="metric-progress cpu-progress"/>
+                        <HBox spacing="15" alignment="CENTER_LEFT">
+                            <Text text="███░░" styleClass="metric-bar cpu-bar"/>
+                            <Text fx:id="cpuDetailsText" text="4 cores active" styleClass="metric-detail"/>
+                        </HBox>
+                    </VBox>
+                    
+                    <!-- GPU Usage Metric -->
+                    <VBox spacing="12" styleClass="metric-card gpu-metric" GridPane.columnIndex="1" GridPane.rowIndex="0">
+                        <padding>
+                            <Insets all="20"/>
+                        </padding>
+                        <HBox spacing="12" alignment="CENTER_LEFT">
+                            <FontAwesomeIcon glyphName="DESKTOP" size="20" styleClass="metric-icon gpu-icon"/>
+                            <Text text="GPU Usage" styleClass="metric-title">
+                                <font>
+                                    <Font name="Inter SemiBold" size="16"/>
+                                </font>
+                            </Text>
+                        </HBox>
+                        <Text fx:id="gpuPercentageText" text="20%" styleClass="metric-value gpu-value">
+                            <font>
+                                <Font name="Inter Bold" size="32"/>
+                            </font>
+                        </Text>
+                        <ProgressBar fx:id="gpuProgressBar" progress="0.20" styleClass="metric-progress gpu-progress"/>
+                        <HBox spacing="15" alignment="CENTER_LEFT">
+                            <Text text="██░░░" styleClass="metric-bar gpu-bar"/>
+                            <Text fx:id="gpuDetailsText" text="Memory: 2.1/8 GB" styleClass="metric-detail"/>
+                        </HBox>
+                    </VBox>
+                    
+                    <!-- RAM Usage Metric -->
+                    <VBox spacing="12" styleClass="metric-card ram-metric" GridPane.columnIndex="2" GridPane.rowIndex="0">
+                        <padding>
+                            <Insets all="20"/>
+                        </padding>
+                        <HBox spacing="12" alignment="CENTER_LEFT">
+                            <FontAwesomeIcon glyphName="MEMORY" size="20" styleClass="metric-icon ram-icon"/>
+                            <Text text="RAM Usage" styleClass="metric-title">
+                                <font>
+                                    <Font name="Inter SemiBold" size="16"/>
+                                </font>
+                            </Text>
+                        </HBox>
+                        <Text fx:id="ramPercentageText" text="42%" styleClass="metric-value ram-value">
+                            <font>
+                                <Font name="Inter Bold" size="32"/>
+                            </font>
+                        </Text>
+                        <ProgressBar fx:id="ramProgressBar" progress="0.42" styleClass="metric-progress ram-progress"/>
+                        <HBox spacing="15" alignment="CENTER_LEFT">
+                            <Text text="████░" styleClass="metric-bar ram-bar"/>
+                            <Text fx:id="ramDetailsText" text="6.7/16 GB used" styleClass="metric-detail"/>
+                        </HBox>
+                    </VBox>
+                </GridPane>
+                
+                <!-- Network and System Stats -->
+                <HBox spacing="25" styleClass="secondary-metrics-row">
+                    
+                    <!-- Network Activity -->
+                    <VBox spacing="15" styleClass="metric-card network-metric" HBox.hgrow="ALWAYS">
+                        <padding>
+                            <Insets all="20"/>
+                        </padding>
+                        <HBox spacing="12" alignment="CENTER_LEFT">
+                            <FontAwesomeIcon glyphName="WIFI" size="18" styleClass="metric-icon network-icon"/>
+                            <Text text="Network Activity" styleClass="metric-title">
+                                <font>
+                                    <Font name="Inter SemiBold" size="14"/>
+                                </font>
+                            </Text>
+                        </HBox>
+                        <HBox spacing="20" alignment="CENTER_LEFT">
+                            <VBox spacing="5" alignment="CENTER">
+                                <Text text="↑ 12 MB/s" styleClass="network-upload">
+                                    <font>
+                                        <Font name="Inter Bold" size="16"/>
+                                    </font>
+                                </Text>
+                                <Text text="Upload" styleClass="network-label"/>
+                            </VBox>
+                            <VBox spacing="5" alignment="CENTER">
+                                <Text text="↓ 8 MB/s" styleClass="network-download">
+                                    <font>
+                                        <Font name="Inter Bold" size="16"/>
+                                    </font>
+                                </Text>
+                                <Text text="Download" styleClass="network-label"/>
+                            </VBox>
+                        </HBox>
+                    </VBox>
+                    
+                    <!-- Temperature Monitor -->
+                    <VBox spacing="15" styleClass="metric-card temp-metric" HBox.hgrow="ALWAYS">
+                        <padding>
+                            <Insets all="20"/>
+                        </padding>
+                        <HBox spacing="12" alignment="CENTER_LEFT">
+                            <FontAwesomeIcon glyphName="THERMOMETER_HALF" size="18" styleClass="metric-icon temp-icon"/>
+                            <Text text="Temperature" styleClass="metric-title">
+                                <font>
+                                    <Font name="Inter SemiBold" size="14"/>
+                                </font>
+                            </Text>
+                        </HBox>
+                        <Text fx:id="temperatureText" text="45°C" styleClass="temp-value">
+                            <font>
+                                <Font name="Inter Bold" size="18"/>
+                            </font>
+                        </Text>
+                        <Text text="Normal Range" styleClass="temp-status normal"/>
+                    </VBox>
+                    
+                    <!-- System Load -->
+                    <VBox spacing="15" styleClass="metric-card load-metric" HBox.hgrow="ALWAYS">
+                        <padding>
+                            <Insets all="20"/>
+                        </padding>
+                        <HBox spacing="12" alignment="CENTER_LEFT">
+                            <FontAwesomeIcon glyphName="CHART_LINE" size="18" styleClass="metric-icon load-icon"/>
+                            <Text text="System Load" styleClass="metric-title">
+                                <font>
+                                    <Font name="Inter SemiBold" size="14"/>
+                                </font>
+                            </Text>
+                        </HBox>
+                        <Text fx:id="systemLoadText" text="Low" styleClass="load-value low">
+                            <font>
+                                <Font name="Inter Bold" size="18"/>
+                            </font>
+                        </Text>
+                        <Text text="Optimal Performance" styleClass="load-status"/>
+                    </VBox>
+                </HBox>
+                
+                <!-- AI Smart Insights Section -->
+                <VBox spacing="20" styleClass="smart-insights-container">
+                    <HBox spacing="15" alignment="CENTER_LEFT">
+                        <FontAwesomeIcon glyphName="BRAIN" size="22" styleClass="insights-icon"/>
+                        <Text text="🧠 AI SMART INSIGHTS" styleClass="insights-title">
+                            <font>
+                                <Font name="Inter Bold" size="18"/>
+                            </font>
+                        </Text>
+                    </HBox>
+                    
+                    <!-- Current Insight -->
+                    <VBox spacing="15" styleClass="current-insight-card">
+                        <padding>
+                            <Insets all="25"/>
+                        </padding>
+                        <HBox spacing="15" alignment="CENTER_LEFT">
+                            <FontAwesomeIcon glyphName="LIGHTBULB" size="20" styleClass="insight-indicator"/>
+                            <VBox spacing="8" HBox.hgrow="ALWAYS">
+                                <Text fx:id="currentInsightText" text="🧠 Insight: &quot;Security processes running optimally. No anomaly.&quot;" styleClass="insight-text">
+                                    <font>
+                                        <Font name="Inter Medium" size="16"/>
+                                    </font>
+                                </Text>
+                                <Text text="Confidence: 96.8% | Based on 247 data points" styleClass="insight-confidence"/>
+                            </VBox>
+                        </HBox>
+                    </VBox>
+                    
+                    <!-- Predictive Insights -->
+                    <VBox spacing="15" styleClass="predictive-insights-card">
+                        <padding>
+                            <Insets all="25"/>
+                        </padding>
+                        <HBox spacing="15" alignment="CENTER_LEFT">
+                            <FontAwesomeIcon glyphName="CRYSTAL_BALL" size="20" styleClass="prediction-indicator"/>
+                            <VBox spacing="8" HBox.hgrow="ALWAYS">
+                                <Text fx:id="predictiveInsightText" text="🔮 Predictive Note: &quot;Backup load will increase ≈ 8% in next 2 h.&quot;" styleClass="prediction-text">
+                                    <font>
+                                        <Font name="Inter Medium" size="16"/>
+                                    </font>
+                                </Text>
+                                <Text text="Probability: 84% | Recommended action: Schedule maintenance window" styleClass="prediction-confidence"/>
+                            </VBox>
+                        </HBox>
+                    </VBox>
+                    
+                    <!-- Performance Recommendations -->
+                    <VBox spacing="12" styleClass="recommendations-card">
+                        <padding>
+                            <Insets all="20"/>
+                        </padding>
+                        <Text text="📈 PERFORMANCE RECOMMENDATIONS" styleClass="recommendations-title">
+                            <font>
+                                <Font name="Inter SemiBold" size="14"/>
+                            </font>
+                        </Text>
+                        
+                        <VBox fx:id="recommendationsList" spacing="10">
+                            <HBox spacing="12" alignment="CENTER_LEFT" styleClass="recommendation-item">
+                                <FontAwesomeIcon glyphName="CHECK_CIRCLE" size="14" styleClass="recommendation-icon success"/>
+                                <Text text="CPU utilization is optimal for current workload" styleClass="recommendation-text"/>
+                            </HBox>
+                            
+                            <HBox spacing="12" alignment="CENTER_LEFT" styleClass="recommendation-item">
+                                <FontAwesomeIcon glyphName="INFO_CIRCLE" size="14" styleClass="recommendation-icon info"/>
+                                <Text text="Consider enabling GPU acceleration for AI tasks" styleClass="recommendation-text"/>
+                            </HBox>
+                            
+                            <HBox spacing="12" alignment="CENTER_LEFT" styleClass="recommendation-item">
+                                <FontAwesomeIcon glyphName="EXCLAMATION_TRIANGLE" size="14" styleClass="recommendation-icon warning"/>
+                                <Text text="Network usage spike detected - monitor for anomalies" styleClass="recommendation-text"/>
+                            </HBox>
+                        </VBox>
+                    </VBox>
+                </VBox>
+                
+                <!-- Real-time Activity Feed -->
+                <VBox spacing="15" styleClass="activity-feed-container">
+                    <Text text="📊 REAL-TIME SYSTEM ACTIVITY" styleClass="activity-feed-title">
+                        <font>
+                            <Font name="Inter Bold" size="16"/>
+                        </font>
+                    </Text>
+                    
+                    <ScrollPane styleClass="activity-feed-scroll" prefHeight="180" fitToWidth="true">
+                        <VBox fx:id="activityFeedList" spacing="8">
+                            
+                            <HBox styleClass="activity-item normal" spacing="15" alignment="CENTER_LEFT">
+                                <Text text="21:45:32" styleClass="activity-timestamp"/>
+                                <FontAwesomeIcon glyphName="MICROCHIP" size="12" styleClass="activity-icon cpu"/>
+                                <Text text="CPU usage normalized to 32% after training completion" styleClass="activity-message"/>
+                            </HBox>
+                            
+                            <HBox styleClass="activity-item info" spacing="15" alignment="CENTER_LEFT">
+                                <Text text="21:43:15" styleClass="activity-timestamp"/>
+                                <FontAwesomeIcon glyphName="MEMORY" size="12" styleClass="activity-icon memory"/>
+                                <Text text="Memory cleanup completed - 2.3 GB freed" styleClass="activity-message"/>
+                            </HBox>
+                            
+                            <HBox styleClass="activity-item warning" spacing="15" alignment="CENTER_LEFT">
+                                <Text text="21:41:08" styleClass="activity-timestamp"/>
+                                <FontAwesomeIcon glyphName="WIFI" size="12" styleClass="activity-icon network"/>
+                                <Text text="Network bandwidth usage increased to 20 MB/s" styleClass="activity-message"/>
+                            </HBox>
+                            
+                            <HBox styleClass="activity-item success" spacing="15" alignment="CENTER_LEFT">
+                                <Text text="21:38:42" styleClass="activity-timestamp"/>
+                                <FontAwesomeIcon glyphName="THERMOMETER_HALF" size="12" styleClass="activity-icon temp"/>
+                                <Text text="System temperature stable at 45°C" styleClass="activity-message"/>
+                            </HBox>
+                            
+                        </VBox>
+                    </ScrollPane>
+                </VBox>
+                
+            </VBox>
+        </ScrollPane>
+    </center>
+
+    <!-- BOTTOM: Monitor Action Bar -->
+    <bottom>
+        <HBox styleClass="monitor-action-bar" alignment="CENTER" spacing="20" prefHeight="65">
+            <padding>
+                <Insets top="15" right="30" bottom="15" left="30"/>
+            </padding>
+            
+            <!-- Monitor Actions -->
+            <Button fx:id="exportReportButton" text="📊 Export Report" styleClass="monitor-action-button info"/>
+            <Button fx:id="setAlertsButton" text="🔔 Set Alerts" styleClass="monitor-action-button secondary"/>
+            <Button fx:id="optimizeButton" text="⚡ Optimize" styleClass="monitor-action-button primary"/>
+            
+            <!-- Spacer -->
+            <Region HBox.hgrow="ALWAYS"/>
+            
+            <!-- Monitoring Controls -->
+            <Button fx:id="pauseMonitoringButton" text="⏸ Pause" styleClass="monitor-action-button warning"/>
+            <Button fx:id="resetCountersButton" text="🔄 Reset" styleClass="monitor-action-button secondary"/>
+            
+            <!-- Auto-refresh Toggle -->
+            <HBox spacing="10" alignment="CENTER">
+                <Text text="Auto-refresh:" styleClass="toggle-label"/>
+                <ToggleButton fx:id="autoRefreshToggle" text="ON" styleClass="auto-refresh-toggle" selected="true"/>
+            </HBox>
+        </HBox>
+    </bottom>
+
+</BorderPane>

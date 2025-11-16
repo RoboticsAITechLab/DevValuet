@@ -6,6 +6,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.logging.Logger;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
 
@@ -13,6 +14,7 @@ import java.util.zip.ZipOutputStream;
  * Simple encrypted backup proof-of-concept moved to common module.
  */
 public class BackupService {
+    private static final Logger JLOGGER = Logger.getLogger(BackupService.class.getName());
     private final EncryptionManager encryptionManager;
 
     public BackupService(EncryptionManager encryptionManager) {
@@ -22,7 +24,10 @@ public class BackupService {
     public void createEncryptedBackup(Path sourceDir, Path destEncryptedFile) throws Exception {
         byte[] zip = zipDirectoryToBytes(sourceDir);
         byte[] enc = encryptionManager.encrypt(zip);
+        JLOGGER.info("[BackupService] Writing encrypted backup to " + destEncryptedFile.toAbsolutePath() + " (size=" + enc.length + " bytes)");
         Files.write(destEncryptedFile, enc);
+        boolean exists = Files.exists(destEncryptedFile);
+        JLOGGER.info("[BackupService] Write complete. File exists=" + exists + " at " + destEncryptedFile.toAbsolutePath());
     }
 
     private byte[] zipDirectoryToBytes(Path sourceDir) throws IOException {

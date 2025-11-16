@@ -3,9 +3,11 @@ package com.devvault.backend.services;
 import com.devvault.backend.model.Dataset;
 import com.devvault.backend.repositories.DatasetRepository;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.Objects;
 
 @Service
 public class DatasetService {
@@ -15,11 +17,12 @@ public class DatasetService {
 
     public List<Dataset> listAll() { return repo.findAll(); }
 
-    public Optional<Dataset> findById(Long id) { return repo.findById(id); }
+    public Optional<Dataset> findById(long id) { return repo.findById(id); }
+    @Transactional
+    public Dataset create(Dataset d) { return Objects.requireNonNull(repo.save(d)); }
 
-    public Dataset create(Dataset d) { return repo.save(d); }
-
-    public Dataset update(Long id, Dataset update) {
+    @Transactional
+    public Dataset update(long id, Dataset update) {
         return repo.findById(id).map(existing -> {
             existing.setName(update.getName());
             existing.setPath(update.getPath());
@@ -29,5 +32,6 @@ public class DatasetService {
         }).orElseGet(() -> { update.setId(id); return repo.save(update); });
     }
 
-    public void delete(Long id) { repo.deleteById(id); }
+    @Transactional
+    public void delete(long id) { repo.deleteById(id); }
 }

@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Text?>
+
+<BorderPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" 
+            fx:controller="com.devvault.frontend.controllers.DatasetHubController"
+            styleClass="dataset-hub-view">
+    
+    <!-- Header -->
+    <top>
+        <HBox styleClass="dataset-header" alignment="CENTER_LEFT" spacing="20">
+            <padding>
+                <Insets topRightBottomLeft="20" />
+            </padding>
+            
+            <FontAwesomeIconView icon="DATABASE" size="24" styleClass="header-icon" />
+            <Label fx:id="titleLabel" text="Dataset Management Hub" styleClass="dataset-title" />
+            
+            <Region HBox.hgrow="ALWAYS" />
+            
+            <Button fx:id="importButton" text="Import" styleClass="header-action-button" />
+            <Button fx:id="exportButton" text="Export" styleClass="header-action-button" />
+            <Button fx:id="backButton" text="Back" styleClass="header-action-button,primary" />
+        </HBox>
+    </top>
+    
+    <!-- Main Content -->
+    <center>
+        <ScrollPane fitToWidth="true" styleClass="dataset-scroll-pane">
+            <VBox spacing="30">
+                <padding>
+                    <Insets topRightBottomLeft="30" />
+                </padding>
+                
+                <!-- Overview Cards Row -->
+                <HBox spacing="30" alignment="CENTER">
+                    <!-- Storage Overview Card -->
+                    <VBox fx:id="storageOverviewCard" styleClass="overview-card,storage-card" spacing="12" HBox.hgrow="ALWAYS">
+                        <padding>
+                            <Insets topRightBottomLeft="20" />
+                        </padding>
+                        
+                        <HBox alignment="CENTER_LEFT" spacing="10">
+                            <FontAwesomeIconView icon="HDD_ALT" size="20" styleClass="card-icon,storage-icon" />
+                            <Label text="Storage Overview" styleClass="card-title" />
+                        </HBox>
+                        
+                        <VBox spacing="8">
+                            <Text fx:id="totalStorageText" styleClass="storage-text" />
+                            <Text fx:id="usedStorageText" styleClass="storage-text" />
+                            <Text fx:id="freeStorageText" styleClass="storage-text" />
+                            <VBox spacing="5">
+                                <ProgressBar fx:id="storageProgressBar" prefWidth="200" styleClass="storage-progress" />
+                                <Text fx:id="storagePercentText" styleClass="storage-text,progress-text" />
+                            </VBox>
+                        </VBox>
+                    </VBox>
+                    
+                    <!-- Data Metrics Card -->
+                    <VBox fx:id="dataMetricsCard" styleClass="overview-card,metrics-card" spacing="12" HBox.hgrow="ALWAYS">
+                        <padding>
+                            <Insets topRightBottomLeft="20" />
+                        </padding>
+                        
+                        <HBox alignment="CENTER_LEFT" spacing="10">
+                            <FontAwesomeIconView icon="LINE_CHART" size="20" styleClass="card-icon,metrics-icon" />
+                            <Label text="Data Metrics" styleClass="card-title" />
+                        </HBox>
+                        
+                        <VBox spacing="8">
+                            <Text fx:id="recordCountText" styleClass="metrics-text" />
+                            <Text fx:id="growthRateText" styleClass="metrics-text,growth-positive" />
+                            <Text fx:id="qualityScoreText" styleClass="metrics-text,quality-good" />
+                            <Text fx:id="activeSourcesText" styleClass="metrics-text" />
+                        </VBox>
+                    </VBox>
+                    
+                    <!-- Sync Status Card -->
+                    <VBox fx:id="syncStatusCard" styleClass="overview-card,sync-card" spacing="12" HBox.hgrow="ALWAYS">
+                        <padding>
+                            <Insets topRightBottomLeft="20" />
+                        </padding>
+                        
+                        <HBox alignment="CENTER_LEFT" spacing="10">
+                            <FontAwesomeIconView icon="REFRESH" size="20" styleClass="card-icon,sync-icon" />
+                            <Label text="Sync Status" styleClass="card-title" />
+                        </HBox>
+                        
+                        <VBox spacing="8">
+                            <Text fx:id="syncStatusText" styleClass="sync-text,status-good" />
+                            <Text fx:id="lastSyncText" styleClass="sync-text" />
+                            <Text fx:id="nextSyncText" styleClass="sync-text" />
+                            <Text fx:id="conflictsText" styleClass="sync-text,conflicts-none" />
+                        </VBox>
+                    </VBox>
+                </HBox>
+                
+                <!-- Active Datasets Section -->
+                <VBox spacing="15">
+                    <HBox alignment="CENTER_LEFT" spacing="10">
+                        <FontAwesomeIconView icon="LIST" size="18" styleClass="section-icon" />
+                        <Label text="Active Datasets" styleClass="section-title" />
+                    </HBox>
+                    
+                    <ScrollPane fx:id="datasetsScrollPane" styleClass="datasets-scroll-pane" maxHeight="400" fitToWidth="true">
+                        <VBox fx:id="datasetsContainer" spacing="10">
+                            <padding>
+                                <Insets topRightBottomLeft="15" />
+                            </padding>
+                        </VBox>
+                    </ScrollPane>
+                </VBox>
+                
+                <!-- Data Operations Section -->
+                <VBox spacing="15">
+                    <HBox alignment="CENTER_LEFT" spacing="10">
+                        <FontAwesomeIconView icon="WRENCH" size="18" styleClass="section-icon" />
+                        <Label text="Data Operations" styleClass="section-title" />
+                    </HBox>
+                    
+                    <HBox spacing="15" alignment="CENTER">
+                        <Button fx:id="browseButton" text="Browse" styleClass="operation-button,browse-button" />
+                        <Button fx:id="searchButton" text="Search" styleClass="operation-button,search-button" />
+                        <Button fx:id="analyzeButton" text="Analyze" styleClass="operation-button,analyze-button" />
+                        <Button fx:id="cleanButton" text="Clean" styleClass="operation-button,clean-button" />
+                        <Button fx:id="syncButton" text="Sync" styleClass="operation-button,sync-button" />
+                        <Button fx:id="settingsButton" text="Settings" styleClass="operation-button,settings-button" />
+                    </HBox>
+                </VBox>
+            </VBox>
+        </ScrollPane>
+    </center>
+</BorderPane>

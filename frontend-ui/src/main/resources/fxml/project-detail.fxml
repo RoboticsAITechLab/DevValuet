@@ -1,0 +1,294 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<!--
+Project Detail View FXML - DevVault Pro X
+Deep dive into project with tabbed interface
+
+╔════════════════════════════════════════════════════════════════╗
+║ Project: "HydroSense AI"         [↩ Back] [⚙ Settings] [📈 Stats]    ║
+╠════════════════════════════════════════════════════════════════╣
+║ Overview │ Tasks │ Git │ Dataset │ Security │ Logs │ Extensions │ Cloud ║
+╟────────────────────────────────────────────────────────────────╢
+║ 📊 STATUS SNAPSHOT                                               
+║ ───────────────────────────────                                 
+║ 🟢 Git Sync: Up-to-date                                          
+║ 🔄 Backup: Last at 22:10 | Auto every 2 hrs                     
+║ 🔐 Security: Active | Zero interference                          
+║ 📁 Dataset: water_quality.csv (Linked)                           
+║ 📈 Progress: █████████░ 85%                                     
+╟────────────────────────────────────────────────────────────────╢
+║ [Open Folder] [Run Terminal] [Create Backup] [View Report]      ║
+╚════════════════════════════════════════════════════════════════╝
+-->
+
+<BorderPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" 
+            fx:controller="com.devvault.frontend.controllers.ProjectDetailController"
+            styleClass="project-detail-view">
+
+    <!-- TOP: Header Bar -->
+    <top>
+        <HBox styleClass="project-header" alignment="CENTER_LEFT" spacing="20">
+            <padding>
+                <Insets top="15" right="20" bottom="15" left="20"/>
+            </padding>
+            
+            <!-- Project Title -->
+            <Text fx:id="projectTitle" text="Project: &quot;HydroSense AI&quot;" styleClass="project-title"/>
+            
+            <!-- Spacer -->
+            <Region HBox.hgrow="ALWAYS"/>
+            
+            <!-- Header Buttons -->
+            <Button fx:id="backButton" text="↩ Back" styleClass="header-action-button"/>
+            <Button fx:id="settingsButton" text="⚙ Settings" styleClass="header-action-button"/>
+            <Button fx:id="statsButton" text="📈 Stats" styleClass="header-action-button primary"/>
+        </HBox>
+    </top>
+
+    <!-- CENTER: Tabbed Content -->
+    <center>
+        <TabPane fx:id="tabPane" styleClass="project-tabs" tabClosingPolicy="UNAVAILABLE">
+            
+            <!-- Overview Tab -->
+            <Tab fx:id="overviewTab" text="Overview" styleClass="project-tab">
+                <VBox styleClass="tab-content" spacing="20">
+                    <padding>
+                        <Insets top="25" right="25" bottom="25" left="25"/>
+                    </padding>
+                    
+                    <!-- Status Snapshot Section -->
+                    <VBox fx:id="statusSnapshot" styleClass="status-snapshot" spacing="15">
+                        <Text text="📊 STATUS SNAPSHOT" styleClass="section-title"/>
+                        <Separator styleClass="section-separator"/>
+                        
+                        <VBox spacing="8">
+                            <Text fx:id="gitSyncStatus" styleClass="status-item"/>
+                            <Text fx:id="backupStatus" styleClass="status-item"/>
+                            <Text fx:id="securityStatus" styleClass="status-item"/>
+                            <Text fx:id="datasetStatus" styleClass="status-item"/>
+                        </VBox>
+                        
+                        <!-- Progress Section -->
+                        <VBox spacing="8">
+                            <Text fx:id="progressText" text="📈 Progress: 85%" styleClass="progress-title"/>
+                            <ProgressBar fx:id="progressBar" progress="0.85" styleClass="project-progress" 
+                                        prefWidth="400" prefHeight="8"/>
+                        </VBox>
+                    </VBox>
+                    
+                    <!-- Additional Info Cards -->
+                    <HBox spacing="15">
+                        <!-- Quick Stats Card -->
+                        <VBox styleClass="info-card" spacing="8">
+                            <Text text="📈 Quick Stats" styleClass="card-title"/>
+                            <Text text="Files: 247" styleClass="card-info"/>
+                            <Text text="Size: 15.2 MB" styleClass="card-info"/>
+                            <Text text="Contributors: 3" styleClass="card-info"/>
+                            <Text text="Last Activity: 2h ago" styleClass="card-info"/>
+                        </VBox>
+                        
+                        <!-- Health Card -->
+                        <VBox styleClass="info-card" spacing="8">
+                            <Text text="🏥 Health Status" styleClass="card-title"/>
+                            <Text text="Build: ✅ Passing" styleClass="card-info success"/>
+                            <Text text="Tests: ✅ 98% Coverage" styleClass="card-info success"/>
+                            <Text text="Security: ✅ No Issues" styleClass="card-info success"/>
+                            <Text text="Performance: ⚡ Excellent" styleClass="card-info success"/>
+                        </VBox>
+                        
+                        <!-- Environment Card -->
+                        <VBox styleClass="info-card" spacing="8">
+                            <Text text="🌍 Environment" styleClass="card-title"/>
+                            <Text text="Java: 21.0.8 LTS" styleClass="card-info"/>
+                            <Text text="Spring Boot: 3.5.0" styleClass="card-info"/>
+                            <Text text="Database: PostgreSQL" styleClass="card-info"/>
+                            <Text text="Cloud: AWS" styleClass="card-info"/>
+                        </VBox>
+                    </HBox>
+                </VBox>
+            </Tab>
+            
+            <!-- Tasks Tab -->
+            <Tab fx:id="tasksTab" text="Tasks" styleClass="project-tab">
+                <VBox styleClass="tab-content" spacing="15">
+                    <padding>
+                        <Insets top="25" right="25" bottom="25" left="25"/>
+                    </padding>
+                    
+                    <Text text="📋 Project Tasks" styleClass="section-title"/>
+                    <Separator styleClass="section-separator"/>
+                    
+                    <!-- Task List -->
+                    <ScrollPane styleClass="task-scroll-pane" fitToWidth="true">
+                        <VBox spacing="10">
+                            <!-- Sample Tasks -->
+                            <HBox styleClass="task-item" spacing="10" alignment="CENTER_LEFT">
+                                <CheckBox selected="true" styleClass="task-checkbox"/>
+                                <Text text="Set up database schema" styleClass="task-text completed"/>
+                                <Region HBox.hgrow="ALWAYS"/>
+                                <Text text="High" styleClass="priority-high"/>
+                            </HBox>
+                            
+                            <HBox styleClass="task-item" spacing="10" alignment="CENTER_LEFT">
+                                <CheckBox selected="false" styleClass="task-checkbox"/>
+                                <Text text="Implement water quality algorithms" styleClass="task-text"/>
+                                <Region HBox.hgrow="ALWAYS"/>
+                                <Text text="Medium" styleClass="priority-medium"/>
+                            </HBox>
+                            
+                            <HBox styleClass="task-item" spacing="10" alignment="CENTER_LEFT">
+                                <CheckBox selected="false" styleClass="task-checkbox"/>
+                                <Text text="Create dashboard UI" styleClass="task-text"/>
+                                <Region HBox.hgrow="ALWAYS"/>
+                                <Text text="Low" styleClass="priority-low"/>
+                            </HBox>
+                        </VBox>
+                    </ScrollPane>
+                </VBox>
+            </Tab>
+            
+            <!-- Git Tab -->
+            <Tab fx:id="gitTab" text="Git" styleClass="project-tab">
+                <VBox styleClass="tab-content" spacing="15">
+                    <padding>
+                        <Insets top="25" right="25" bottom="25" left="25"/>
+                    </padding>
+                    
+                    <Text text="🔀 Git Repository Status" styleClass="section-title"/>
+                    <Separator styleClass="section-separator"/>
+                    
+                    <VBox spacing="10">
+                        <Text text="Branch: main" styleClass="git-info"/>
+                        <Text text="Last Commit: Fix water sensor calibration" styleClass="git-info"/>
+                        <Text text="Author: John Developer" styleClass="git-info"/>
+                        <Text text="Commit Hash: a3b2c1d" styleClass="git-info"/>
+                        <Text text="Status: ✅ Up to date" styleClass="git-info success"/>
+                    </VBox>
+                </VBox>
+            </Tab>
+            
+            <!-- Dataset Tab -->
+            <Tab fx:id="datasetTab" text="Dataset" styleClass="project-tab">
+                <VBox styleClass="tab-content" spacing="15">
+                    <padding>
+                        <Insets top="25" right="25" bottom="25" left="25"/>
+                    </padding>
+                    
+                    <Text text="📊 Linked Datasets" styleClass="section-title"/>
+                    <Separator styleClass="section-separator"/>
+                    
+                    <VBox spacing="10">
+                        <Text text="📁 water_quality.csv (15.2 MB)" styleClass="dataset-item"/>
+                        <Text text="📁 sensor_readings.json (8.7 MB)" styleClass="dataset-item"/>
+                        <Text text="📁 historical_data.db (45.1 MB)" styleClass="dataset-item"/>
+                    </VBox>
+                </VBox>
+            </Tab>
+            
+            <!-- Security Tab -->
+            <Tab fx:id="securityTab" text="Security" styleClass="project-tab">
+                <VBox styleClass="tab-content" spacing="15">
+                    <padding>
+                        <Insets top="25" right="25" bottom="25" left="25"/>
+                    </padding>
+                    
+                    <Text text="🔐 Security Status" styleClass="section-title"/>
+                    <Separator styleClass="section-separator"/>
+                    
+                    <VBox spacing="10">
+                        <Text text="🟢 Encryption: AES-256 Active" styleClass="security-info success"/>
+                        <Text text="🟢 Access Control: Enabled" styleClass="security-info success"/>
+                        <Text text="🟢 Audit Logging: Active" styleClass="security-info success"/>
+                        <Text text="🟢 Vulnerability Scan: Clean" styleClass="security-info success"/>
+                    </VBox>
+                </VBox>
+            </Tab>
+            
+            <!-- Logs Tab -->
+            <Tab fx:id="logsTab" text="Logs" styleClass="project-tab">
+                <VBox styleClass="tab-content" spacing="15">
+                    <padding>
+                        <Insets top="25" right="25" bottom="25" left="25"/>
+                    </padding>
+                    
+                    <Text text="📄 Activity Logs" styleClass="section-title"/>
+                    <Separator styleClass="section-separator"/>
+                    
+                    <ScrollPane styleClass="log-scroll-pane" fitToWidth="true">
+                        <VBox spacing="5">
+                            <Text text="2025-11-13 19:25:00 INFO  - Project opened" styleClass="log-entry"/>
+                            <Text text="2025-11-13 19:20:15 INFO  - Backup created successfully" styleClass="log-entry"/>
+                            <Text text="2025-11-13 19:15:30 WARN  - Low disk space warning" styleClass="log-entry warning"/>
+                            <Text text="2025-11-13 19:10:45 INFO  - Dataset synchronized" styleClass="log-entry"/>
+                        </VBox>
+                    </ScrollPane>
+                </VBox>
+            </Tab>
+            
+            <!-- Extensions Tab -->
+            <Tab fx:id="extensionsTab" text="Extensions" styleClass="project-tab">
+                <VBox styleClass="tab-content" spacing="15">
+                    <padding>
+                        <Insets top="25" right="25" bottom="25" left="25"/>
+                    </padding>
+                    
+                    <Text text="🧩 Active Extensions" styleClass="section-title"/>
+                    <Separator styleClass="section-separator"/>
+                    
+                    <VBox spacing="10">
+                        <Text text="✅ AI Data Analyzer v2.1" styleClass="extension-item active"/>
+                        <Text text="✅ Chart Generator v1.5" styleClass="extension-item active"/>
+                        <Text text="⚪ PDF Exporter v1.0" styleClass="extension-item inactive"/>
+                    </VBox>
+                </VBox>
+            </Tab>
+            
+            <!-- Cloud Tab -->
+            <Tab fx:id="cloudTab" text="Cloud" styleClass="project-tab">
+                <VBox styleClass="tab-content" spacing="15">
+                    <padding>
+                        <Insets top="25" right="25" bottom="25" left="25"/>
+                    </padding>
+                    
+                    <Text text="☁ Cloud Integration" styleClass="section-title"/>
+                    <Separator styleClass="section-separator"/>
+                    
+                    <VBox spacing="10">
+                        <Text text="🟢 AWS S3: Connected" styleClass="cloud-info success"/>
+                        <Text text="🟢 Database: PostgreSQL RDS" styleClass="cloud-info success"/>
+                        <Text text="🔴 Auto-scaling: Disabled" styleClass="cloud-info disabled"/>
+                        <Text text="🟡 CDN: Configuring..." styleClass="cloud-info warning"/>
+                    </VBox>
+                </VBox>
+            </Tab>
+            
+        </TabPane>
+    </center>
+
+    <!-- BOTTOM: Action Buttons -->
+    <bottom>
+        <HBox fx:id="actionButtons" styleClass="action-bar" alignment="CENTER_LEFT" spacing="15">
+            <padding>
+                <Insets top="15" right="20" bottom="15" left="20"/>
+            </padding>
+            
+            <Button fx:id="openFolderButton" text="📁 Open Folder" styleClass="action-button primary"/>
+            <Button fx:id="openIDEButton" text="💻 Open in IDE" styleClass="action-button primary" onAction="#openInIDE"/>
+            <Button fx:id="runTerminalButton" text="⚡ Run Terminal" styleClass="action-button secondary"/>
+            <Button fx:id="createBackupButton" text="💾 Create Backup" styleClass="action-button secondary"/>
+            <Button fx:id="viewReportButton" text="📊 View Report" styleClass="action-button secondary"/>
+            
+            <!-- Spacer -->
+            <Region HBox.hgrow="ALWAYS"/>
+            
+            <!-- Status Indicator -->
+            <Text text="Project Status: 🟢 Active" styleClass="status-indicator"/>
+        </HBox>
+    </bottom>
+
+</BorderPane>

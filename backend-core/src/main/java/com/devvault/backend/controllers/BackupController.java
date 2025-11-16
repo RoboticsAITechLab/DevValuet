@@ -8,6 +8,8 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -17,7 +19,9 @@ import java.nio.file.Paths;
 public class BackupController {
     private final BackupManagerService backupManagerService;
 
-    @Value("${devvault.backup.token}")
+    private static final Logger logger = LoggerFactory.getLogger(BackupController.class);
+
+    @Value("${devvault.backup.token:}")
     private String configuredToken;
 
     @Autowired
@@ -33,41 +37,61 @@ public class BackupController {
     }
 
     @PostMapping("/api/backup/create")
-    public ResponseEntity<String> createBackup(@RequestHeader(value = "Authorization", required = false) String auth,
-                                               @RequestParam(required = false) String source,
-                                               @RequestParam(required = false) String dest) {
+    public ResponseEntity<java.util.Map<String,Object>> createBackup(@RequestHeader(value = "Authorization", required = false) String auth,
+                                               @RequestParam(name = "source", required = false) String source,
+                                               @RequestParam(name = "dest", required = false) String dest) {
         try {
             // auth
-            if (!authorized(auth)) return ResponseEntity.status(401).body("Unauthorized");
+            if (!authorized(auth)) return ResponseEntity.status(401).body(java.util.Collections.singletonMap("message", "Unauthorized"));
 
             Path sourceDir = (source == null || source.isBlank()) ? Paths.get(System.getProperty("user.dir")) : Paths.get(source);
 
             // normalize and ensure it exists
             sourceDir = sourceDir.toAbsolutePath().normalize();
             if (!Files.exists(sourceDir) || !Files.isDirectory(sourceDir)) {
-                return ResponseEntity.badRequest().body("Source directory does not exist: " + sourceDir);
+                return ResponseEntity.badRequest().body(java.util.Collections.singletonMap("message", "Source directory does not exist: " + sourceDir));
             }
 
+            // log raw dest param for debugging integration-test path issues
+            logger.debug("Received dest param (raw): {}", dest);
             Path destPath = (dest == null || dest.isBlank()) ? null : Paths.get(dest);
 
             Path created = backupManagerService.createEncryptedBackup(sourceDir, destPath);
-            return ResponseEntity.ok("Backup created: " + created.toAbsolutePath());
+            logger.info("Backup created at {}", created.toAbsolutePath());
+
+            // build a small JSON-friendly response with diagnostics so integration tests can inspect exact values
+            try {
+                java.util.Map<String, Object> m = new java.util.HashMap<>();
+                m.put("message", "Backup created");
+                m.put("created", created.toAbsolutePath().toString());
+                m.put("rawDest", dest);
+                m.put("exists", Files.exists(created));
+                java.util.List<String> listing = new java.util.ArrayList<>();
+                try (java.util.stream.Stream<java.nio.file.Path> s = java.nio.file.Files.list(backupManagerService.getAllowedBase())) {
+                    s.forEach(p -> listing.add(p.toAbsolutePath().toString()));
+                }
+                m.put("listing", listing);
+                return ResponseEntity.ok(m);
+            } catch (Exception e) {
+                logger.warn("Failed to build diagnostic response", e);
+                return ResponseEntity.ok(java.util.Collections.singletonMap("message", "Backup created"));
+            }
         } catch (IllegalArgumentException ia) {
-            return ResponseEntity.badRequest().body("Invalid request: " + ia.getMessage());
+            return ResponseEntity.badRequest().body(java.util.Collections.singletonMap("message", "Invalid request: " + ia.getMessage()));
         } catch (Exception e) {
-            return ResponseEntity.status(500).body("Backup failed: " + e.getMessage());
+            return ResponseEntity.status(500).body(java.util.Collections.singletonMap("message", "Backup failed: " + e.getMessage()));
         }
     }
 
     @GetMapping("/api/backup/download")
     public ResponseEntity<?> downloadBackup(@RequestHeader(value = "Authorization", required = false) String auth,
-                                            @RequestParam String file) {
+                                            @RequestParam(name = "file") String file) {
         try {
-            if (!authorized(auth)) return ResponseEntity.status(401).body("Unauthorized");
+            if (!authorized(auth)) return ResponseEntity.status(401).body(java.util.Collections.singletonMap("message", "Unauthorized"));
 
             Path allowedBase = backupManagerService.getAllowedBase();
             Path filePath = allowedBase.resolve(file).toAbsolutePath().normalize();
-            if (!filePath.startsWith(allowedBase)) return ResponseEntity.status(403).body("Access to file not allowed");
+            if (!filePath.startsWith(allowedBase)) return ResponseEntity.status(403).body(java.util.Collections.singletonMap("message", "Access to file not allowed"));
             if (!Files.exists(filePath) || !Files.isRegularFile(filePath)) return ResponseEntity.notFound().build();
 
             byte[] data = Files.readAllBytes(filePath);
@@ -76,7 +100,8 @@ public class BackupController {
                     .contentType(MediaType.APPLICATION_OCTET_STREAM)
                     .body(data);
         } catch (Exception e) {
-            return ResponseEntity.status(500).body("Download failed: " + e.getMessage());
+            return ResponseEntity.status(500).body(java.util.Collections.singletonMap("message", "Download failed: " + e.getMessage()));
         }
     }
 }
+

@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
+
+<!--
+AI Security & Backup Control Room
+Advanced security monitoring with AI firewall defense layer
+-->
+
+<BorderPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" 
+            fx:controller="com.devvault.frontend.controllers.SecurityCenterController"
+            styleClass="security-center-view">
+
+    <!-- TOP: Security Header -->
+    <top>
+        <HBox styleClass="security-header-bar" alignment="CENTER_LEFT" spacing="25" prefHeight="90">
+            <padding>
+                <Insets top="20" right="30" bottom="20" left="30"/>
+            </padding>
+            
+            <!-- Security Center Title -->
+            <HBox spacing="15" alignment="CENTER_LEFT">
+                <FontAwesomeIcon glyphName="SHIELD" size="32" styleClass="security-center-icon"/>
+                <VBox spacing="5">
+                    <Text text="🔐 AI SECURITY CENTER" styleClass="security-center-title">
+                        <font>
+                            <Font name="Inter Bold" size="26"/>
+                        </font>
+                    </Text>
+                    <Text fx:id="securityModeText" text="MODE: Passive Defense" styleClass="security-mode-text"/>
+                </VBox>
+            </HBox>
+            
+            <!-- Spacer -->
+            <Region HBox.hgrow="ALWAYS"/>
+            
+            <!-- Security Controls -->
+            <HBox spacing="20" alignment="CENTER">
+                <Button fx:id="configureButton" text="⚙ Configure" styleClass="security-control-button"/>
+                <Button fx:id="behaviorModelButton" text="🧠 Behavior Model" styleClass="security-control-button primary"/>
+                <ToggleButton fx:id="emergencyShutdownButton" text="⚡ EMERGENCY" styleClass="emergency-button"/>
+            </HBox>
+        </HBox>
+    </top>
+
+    <!-- CENTER: Security Dashboard -->
+    <center>
+        <VBox spacing="30" styleClass="security-dashboard">
+            <padding>
+                <Insets top="30" right="30" bottom="30" left="30"/>
+            </padding>
+            
+            <!-- Security Status Banner -->
+            <HBox styleClass="security-status-banner" alignment="CENTER_LEFT" spacing="20" prefHeight="80">
+                <padding>
+                    <Insets all="20"/>
+                </padding>
+                
+                <FontAwesomeIcon fx:id="securityStatusIcon" glyphName="SHIELD" size="24" styleClass="security-status-icon active"/>
+                <VBox spacing="5" HBox.hgrow="ALWAYS">
+                    <Text fx:id="securityStatusText" text="STATUS: 🟢 ACTIVE" styleClass="security-status-main">
+                        <font>
+                            <Font name="Inter Bold" size="18"/>
+                        </font>
+                    </Text>
+                    <Text fx:id="lastScanText" text="Last Scan: 23:10 | Next Scheduled: 01:10" styleClass="security-status-detail"/>
+                </VBox>
+                
+                <!-- Real-time Threat Counter -->
+                <VBox alignment="CENTER" spacing="5" styleClass="threat-counter">
+                    <Text fx:id="threatsBlockedText" text="1,247" styleClass="threat-count-number">
+                        <font>
+                            <Font name="Inter Bold" size="20"/>
+                        </font>
+                    </Text>
+                    <Text text="Threats Blocked Today" styleClass="threat-count-label"/>
+                </VBox>
+            </HBox>
+            
+            <!-- Security Modules Grid -->
+            <GridPane styleClass="security-modules-grid" hgap="25" vgap="25">
+                
+                <!-- Integrity Check Module -->
+                <VBox spacing="15" styleClass="security-module integrity-module" GridPane.columnIndex="0" GridPane.rowIndex="0">
+                    <padding>
+                        <Insets all="20"/>
+                    </padding>
+                    <HBox spacing="12" alignment="CENTER_LEFT">
+                        <FontAwesomeIcon glyphName="CHECK_CIRCLE" size="20" styleClass="module-icon integrity-icon"/>
+                        <Text text="📁 Integrity Check" styleClass="module-title">
+                            <font>
+                                <Font name="Inter SemiBold" size="16"/>
+                            </font>
+                        </Text>
+                    </HBox>
+                    <Text text="✓ Passed (System files)" styleClass="module-status passed"/>
+                    <Text text="15,847 files verified" styleClass="module-detail"/>
+                    <ProgressBar progress="1.0" styleClass="module-progress integrity-progress"/>
+                    <HBox spacing="10">
+                        <Button text="Run Check" styleClass="module-button secondary"/>
+                        <Button text="Details" styleClass="module-button info"/>
+                    </HBox>
+                </VBox>
+                
+                <!-- Behavioral Model Module -->
+                <VBox spacing="15" styleClass="security-module behavior-module" GridPane.columnIndex="1" GridPane.rowIndex="0">
+                    <padding>
+                        <Insets all="20"/>
+                    </padding>
+                    <HBox spacing="12" alignment="CENTER_LEFT">
+                        <FontAwesomeIcon glyphName="BRAIN" size="20" styleClass="module-icon behavior-icon"/>
+                        <Text text="🔍 Behavioral Model" styleClass="module-title">
+                            <font>
+                                <Font name="Inter SemiBold" size="16"/>
+                            </font>
+                        </Text>
+                    </HBox>
+                    <Text text="Stable (No anomalies)" styleClass="module-status stable"/>
+                    <Text text="AI confidence: 98.7%" styleClass="module-detail"/>
+                    <ProgressBar progress="0.987" styleClass="module-progress behavior-progress"/>
+                    <HBox spacing="10">
+                        <Button text="Train Model" styleClass="module-button primary"/>
+                        <Button text="Analytics" styleClass="module-button info"/>
+                    </HBox>
+                </VBox>
+                
+                <!-- Process Guard Module -->
+                <VBox spacing="15" styleClass="security-module process-module" GridPane.columnIndex="0" GridPane.rowIndex="1">
+                    <padding>
+                        <Insets all="20"/>
+                    </padding>
+                    <HBox spacing="12" alignment="CENTER_LEFT">
+                        <FontAwesomeIcon glyphName="COG" size="20" styleClass="module-icon process-icon"/>
+                        <Text text="🧩 Process Guard" styleClass="module-title">
+                            <font>
+                                <Font name="Inter SemiBold" size="16"/>
+                            </font>
+                        </Text>
+                    </HBox>
+                    <Text text="All modules verified" styleClass="module-status verified"/>
+                    <Text text="247 processes monitored" styleClass="module-detail"/>
+                    <ProgressBar progress="1.0" styleClass="module-progress process-progress"/>
+                    <HBox spacing="10">
+                        <Button text="Monitor" styleClass="module-button secondary"/>
+                        <Button text="Whitelist" styleClass="module-button info"/>
+                    </HBox>
+                </VBox>
+                
+                <!-- Encryption Layer Module -->
+                <VBox spacing="15" styleClass="security-module encryption-module" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                    <padding>
+                        <Insets all="20"/>
+                    </padding>
+                    <HBox spacing="12" alignment="CENTER_LEFT">
+                        <FontAwesomeIcon glyphName="KEY" size="20" styleClass="module-icon encryption-icon"/>
+                        <Text text="⚙ Encryption Layer" styleClass="module-title">
+                            <font>
+                                <Font name="Inter SemiBold" size="16"/>
+                            </font>
+                        </Text>
+                    </HBox>
+                    <Text text="AES-256 / RSA Active" styleClass="module-status active"/>
+                    <Text text="Key rotation: 18 hrs remaining" styleClass="module-detail"/>
+                    <ProgressBar progress="0.25" styleClass="module-progress encryption-progress"/>
+                    <HBox spacing="10">
+                        <Button text="Rotate Now" styleClass="module-button warning"/>
+                        <Button text="Settings" styleClass="module-button info"/>
+                    </HBox>
+                </VBox>
+            </GridPane>
+            
+            <!-- Real-time Security Feed -->
+            <VBox spacing="15" styleClass="security-feed-container">
+                <Text text="🔍 REAL-TIME SECURITY FEED" styleClass="feed-title">
+                    <font>
+                        <Font name="Inter Bold" size="16"/>
+                    </font>
+                </Text>
+                
+                <ScrollPane styleClass="security-feed-scroll" prefHeight="200" fitToWidth="true">
+                    <VBox fx:id="securityFeedList" spacing="8" styleClass="security-feed-list">
+                        
+                        <HBox styleClass="feed-item blocked" spacing="15" alignment="CENTER_LEFT">
+                            <FontAwesomeIcon glyphName="EXCLAMATION_TRIANGLE" size="14" styleClass="feed-icon threat"/>
+                            <VBox spacing="3" HBox.hgrow="ALWAYS">
+                                <Text text="[23:15:42] Suspicious network activity blocked" styleClass="feed-message"/>
+                                <Text text="Source: 192.168.1.47 | Type: Port scan attempt" styleClass="feed-detail"/>
+                            </VBox>
+                            <Text text="BLOCKED" styleClass="feed-status blocked"/>
+                        </HBox>
+                        
+                        <HBox styleClass="feed-item normal" spacing="15" alignment="CENTER_LEFT">
+                            <FontAwesomeIcon glyphName="INFO_CIRCLE" size="14" styleClass="feed-icon info"/>
+                            <VBox spacing="3" HBox.hgrow="ALWAYS">
+                                <Text text="[23:12:18] System integrity verification completed" styleClass="feed-message"/>
+                                <Text text="Result: All files verified successfully" styleClass="feed-detail"/>
+                            </VBox>
+                            <Text text="OK" styleClass="feed-status normal"/>
+                        </HBox>
+                        
+                        <HBox styleClass="feed-item warning" spacing="15" alignment="CENTER_LEFT">
+                            <FontAwesomeIcon glyphName="EXCLAMATION_CIRCLE" size="14" styleClass="feed-icon warning"/>
+                            <VBox spacing="3" HBox.hgrow="ALWAYS">
+                                <Text text="[23:08:55] Unusual CPU usage pattern detected" styleClass="feed-message"/>
+                                <Text text="Process: python.exe | Usage: 89% for 5 minutes" styleClass="feed-detail"/>
+                            </VBox>
+                            <Text text="MONITORING" styleClass="feed-status warning"/>
+                        </HBox>
+                        
+                        <HBox styleClass="feed-item blocked" spacing="15" alignment="CENTER_LEFT">
+                            <FontAwesomeIcon glyphName="BAN" size="14" styleClass="feed-icon threat"/>
+                            <VBox spacing="3" HBox.hgrow="ALWAYS">
+                                <Text text="[23:05:31] Malicious file access attempt prevented" styleClass="feed-message"/>
+                                <Text text="File: system32\\config\\sam | Action: Unauthorized read" styleClass="feed-detail"/>
+                            </VBox>
+                            <Text text="BLOCKED" styleClass="feed-status blocked"/>
+                        </HBox>
+                        
+                    </VBox>
+                </ScrollPane>
+            </VBox>
+            
+        </VBox>
+    </center>
+
+    <!-- BOTTOM: Security Action Bar -->
+    <bottom>
+        <HBox styleClass="security-action-bar" alignment="CENTER" spacing="20" prefHeight="70">
+            <padding>
+                <Insets top="15" right="30" bottom="15" left="30"/>
+            </padding>
+            
+            <Button fx:id="viewLogsButton" text="📜 View Logs" styleClass="security-action-button secondary"/>
+            <Button fx:id="fullScanButton" text="🔍 Run Full Scan" styleClass="security-action-button primary"/>
+            <Button fx:id="exportReportButton" text="📊 Export Report" styleClass="security-action-button info"/>
+            
+            <!-- Spacer -->
+            <Region HBox.hgrow="ALWAYS"/>
+            
+            <!-- Critical Security Toggle -->
+            <Button fx:id="disableSecurityButton" text="⚡ DISABLE ALL SECURITY" styleClass="security-action-button danger-button"/>
+        </HBox>
+    </bottom>
+
+</BorderPane>

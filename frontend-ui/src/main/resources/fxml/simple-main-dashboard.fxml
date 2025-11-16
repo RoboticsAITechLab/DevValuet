@@ -1,0 +1,317 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" 
+            fx:controller="com.devvault.frontend.controllers.EnhancedMainDashboardController"
+            styleClass="enhanced-main-dashboard">
+
+    <!-- Top Header Bar -->
+    <top>
+        <HBox styleClass="neo-header-bar" alignment="CENTER_LEFT" spacing="20" prefHeight="70">
+            <padding>
+                <Insets left="25" right="25" top="10" bottom="10"/>
+            </padding>
+            
+            <!-- App Title with Icon -->
+            <HBox alignment="CENTER_LEFT" spacing="15">
+                <Label text="⚡" style="-fx-font-size: 24px;"/>
+                <Text fx:id="appTitle" text="DevVault Pro X" styleClass="neo-app-title"/>
+                <Label text="- Command Cockpit" style="-fx-font-size: 14px; -fx-text-fill: #B4BCC8;"/>
+            </HBox>
+            
+            <!-- Spacer -->
+            <Region HBox.hgrow="ALWAYS"/>
+            
+            <!-- Advanced AI Search Container -->
+            <HBox styleClass="neo-search-container" alignment="CENTER" spacing="12">
+                <Label text="🔍" style="-fx-font-size: 16px;"/>
+                <TextField fx:id="aiSearchField" styleClass="neo-search-field" 
+                          promptText="Search projects, datasets, insights..." prefWidth="320"/>
+                <Button fx:id="aiSearchButton" text="✨ AI" styleClass="ai-search-button"/>
+            </HBox>
+            
+            <!-- Control Panel Actions -->
+            <HBox spacing="15" alignment="CENTER">
+                <Button fx:id="settingsButton" text="⚙" styleClass="neo-control-button">
+                    <tooltip><Tooltip text="System Settings"/></tooltip>
+                </Button>
+                <Button fx:id="notificationsButton" text="🔔" styleClass="neo-control-button">
+                    <tooltip><Tooltip text="Notifications"/></tooltip>
+                </Button>
+                <Button fx:id="securityButton" text="🛡️" styleClass="neo-control-button,security-active">
+                    <tooltip><Tooltip text="Security Active"/></tooltip>
+                </Button>
+            </HBox>
+        </HBox>
+    </top>
+
+    <!-- Main Content Area -->
+    <center>
+        <HBox styleClass="main-content-container">
+            
+            <!-- Navigation Panel -->
+            <VBox styleClass="neo-navigation-panel" prefWidth="280" spacing="10">
+                <padding>
+                    <Insets left="20" right="20" top="25" bottom="25"/>
+                </padding>
+                
+                <!-- System Status -->
+                <VBox styleClass="neo-status-panel" spacing="12">
+                    <Text text="🎯 Live Status" styleClass="status-section-title"/>
+                    
+                    <HBox alignment="CENTER_LEFT" spacing="10">
+                        <Label text="🟢" style="-fx-font-size: 14px;"/>
+                        <Text text="System Online" styleClass="status-text-primary"/>
+                    </HBox>
+                    
+                    <HBox alignment="CENTER_LEFT" spacing="10">
+                        <Label text="🔐" style="-fx-font-size: 14px;"/>
+                        <Text text="Security Active" styleClass="status-text-primary"/>
+                    </HBox>
+                    
+                    <HBox alignment="CENTER_LEFT" spacing="10">
+                        <Label text="☁️" style="-fx-font-size: 14px;"/>
+                        <Text text="AI Bridge Connected" styleClass="status-text-primary"/>
+                    </HBox>
+                    
+                    <Separator/>
+                    
+                    <!-- Real-time Metrics -->
+                    <Text text="📊 Metrics" styleClass="metrics-title"/>
+                    
+                    <VBox spacing="8">
+                        <HBox alignment="CENTER_LEFT" spacing="8">
+                            <Label text="CPU:" styleClass="metric-label" prefWidth="35"/>
+                            <ProgressBar fx:id="cpuProgress" styleClass="metric-progress" prefWidth="80" progress="0.45"/>
+                            <Label fx:id="cpuPercentage" text="45%" styleClass="metric-value"/>
+                        </HBox>
+                        
+                        <HBox alignment="CENTER_LEFT" spacing="8">
+                            <Label text="RAM:" styleClass="metric-label" prefWidth="35"/>
+                            <ProgressBar fx:id="ramProgress" styleClass="metric-progress" prefWidth="80" progress="0.67"/>
+                            <Label fx:id="ramPercentage" text="67%" styleClass="metric-value"/>
+                        </HBox>
+                        
+                        <HBox alignment="CENTER_LEFT" spacing="8">
+                            <Label text="NET:" styleClass="metric-label" prefWidth="35"/>
+                            <ProgressBar fx:id="netProgress" styleClass="metric-progress" prefWidth="80" progress="0.23"/>
+                            <Label fx:id="netActivity" text="23%" styleClass="metric-value"/>
+                        </HBox>
+                    </VBox>
+                </VBox>
+                
+                <!-- Navigation Sections -->
+                <VBox spacing="8" VBox.vgrow="ALWAYS">
+                    <Text text="🎮 Navigation" styleClass="nav-section-title"/>
+                    
+                    <Button fx:id="overviewButton" text="🏠 Overview" styleClass="neo-nav-button,nav-active" 
+                            alignment="CENTER_LEFT" maxWidth="Infinity"/>
+                    <Button fx:id="projectsButton" text="📁 Projects" styleClass="neo-nav-button" 
+                            alignment="CENTER_LEFT" maxWidth="Infinity"/>
+                    <Button fx:id="securityCenterButton" text="🔒 Security" styleClass="neo-nav-button" 
+                            alignment="CENTER_LEFT" maxWidth="Infinity"/>
+                    <Button fx:id="datasetHubButton" text="📊 Datasets" styleClass="neo-nav-button" 
+                            alignment="CENTER_LEFT" maxWidth="Infinity"/>
+                    <Button fx:id="systemMonitorButton" text="📈 Monitor" styleClass="neo-nav-button" 
+                            alignment="CENTER_LEFT" maxWidth="Infinity"/>
+                    <Button fx:id="pluginsButton" text="🔌 Plugins" styleClass="neo-nav-button" 
+                            alignment="CENTER_LEFT" maxWidth="Infinity"/>
+                    <Button fx:id="smartInsightsButton" text="🧠 AI Insights" styleClass="neo-nav-button" 
+                            alignment="CENTER_LEFT" maxWidth="Infinity"/>
+                    <Button fx:id="settingsNavButton" text="⚙️ Settings" styleClass="neo-nav-button" 
+                            alignment="CENTER_LEFT" maxWidth="Infinity"/>
+                </VBox>
+                
+                <!-- Quick Actions -->
+                <VBox spacing="10">
+                    <Separator/>
+                    <Text text="⚡ Quick Actions" styleClass="nav-section-title"/>
+                    <HBox spacing="10" alignment="CENTER">
+                        <Button fx:id="newProjectButton" text="+" styleClass="hub-action-button" prefWidth="45">
+                            <tooltip><Tooltip text="New Project"/></tooltip>
+                        </Button>
+                        <Button fx:id="scanSystemButton" text="🔍" styleClass="hub-action-button" prefWidth="45">
+                            <tooltip><Tooltip text="System Scan"/></tooltip>
+                        </Button>
+                        <Button fx:id="backupNowButton" text="💾" styleClass="hub-action-button" prefWidth="45">
+                            <tooltip><Tooltip text="Backup Now"/></tooltip>
+                        </Button>
+                    </HBox>
+                </VBox>
+            </VBox>
+            
+            <!-- Project Hub Panel -->
+            <VBox styleClass="project-hub-panel" spacing="20" HBox.hgrow="ALWAYS">
+                <padding>
+                    <Insets left="30" right="30" top="25" bottom="25"/>
+                </padding>
+                
+                <!-- Header Section -->
+                <HBox alignment="CENTER_LEFT" spacing="20">
+                    <Text text="🚀 Project Hub" styleClass="hub-section-title"/>
+                    
+                    <Region HBox.hgrow="ALWAYS"/>
+                    
+                    <!-- Action Buttons -->
+                    <HBox spacing="12" alignment="CENTER">
+                        <Button fx:id="aiAnalyticsButton" text="🤖 AI Analytics" styleClass="hub-action-button,ai-button"/>
+                        <Button fx:id="syncAllButton" text="🔄 Sync All" styleClass="hub-action-button,sync-button"/>
+                        <Button fx:id="healthCheckButton" text="❤️ Health Check" styleClass="hub-action-button,analytics-button"/>
+                    </HBox>
+                </HBox>
+                
+                <!-- Project Cards Container -->
+                <ScrollPane styleClass="project-cards-scroll" fitToWidth="true" VBox.vgrow="ALWAYS">
+                    <VBox fx:id="projectCardsContainer" spacing="20">
+                        
+                        <!-- Project Card 1: CyberGuard AI -->
+                        <VBox styleClass="project-card,active-project" spacing="15">
+                            <HBox alignment="CENTER_LEFT" spacing="15">
+                                <Label text="🛡️" style="-fx-font-size: 28px;"/>
+                                <VBox spacing="5">
+                                    <Text text="CyberGuard AI" styleClass="project-title"/>
+                                    <HBox spacing="15">
+                                        <HBox spacing="5">
+                                            <Text text="Type:" styleClass="project-meta-label"/>
+                                            <Text text="Security" styleClass="project-meta-value"/>
+                                        </HBox>
+                                        <HBox spacing="5">
+                                            <Text text="Status:" styleClass="project-meta-label"/>
+                                            <Text text="Online" styleClass="project-status-online"/>
+                                        </HBox>
+                                        <HBox spacing="5">
+                                            <Text text="Last Active:" styleClass="project-meta-label"/>
+                                            <Text text="2 mins ago" styleClass="project-meta-value"/>
+                                        </HBox>
+                                    </HBox>
+                                </VBox>
+                                <Region HBox.hgrow="ALWAYS"/>
+                                <VBox alignment="CENTER_RIGHT" spacing="5">
+                                    <Text text="Progress" styleClass="project-detail-text"/>
+                                    <ProgressBar styleClass="project-progress,security-progress" progress="0.92" prefWidth="120"/>
+                                    <Text text="92%" styleClass="project-detail-text"/>
+                                </VBox>
+                            </HBox>
+                            
+                            <HBox spacing="10" alignment="CENTER_LEFT">
+                                <Button text="🔍 Details" styleClass="project-action-button,primary-action"/>
+                                <Button text="📊 Monitor" styleClass="project-action-button,secondary-action"/>
+                                <Button text="⚙️ Config" styleClass="project-action-button,secondary-action"/>
+                            </HBox>
+                        </VBox>
+                        
+                        <!-- Project Card 2: IoT Data Pipeline -->
+                        <VBox styleClass="project-card,training-project" spacing="15">
+                            <HBox alignment="CENTER_LEFT" spacing="15">
+                                <Label text="⚙️" style="-fx-font-size: 28px;"/>
+                                <VBox spacing="5">
+                                    <Text text="IoT Data Pipeline" styleClass="project-title"/>
+                                    <HBox spacing="15">
+                                        <HBox spacing="5">
+                                            <Text text="Type:" styleClass="project-meta-label"/>
+                                            <Text text="IoT Processing" styleClass="project-meta-value"/>
+                                        </HBox>
+                                        <HBox spacing="5">
+                                            <Text text="Status:" styleClass="project-meta-label"/>
+                                            <Text text="Training" styleClass="project-status-training"/>
+                                        </HBox>
+                                        <HBox spacing="5">
+                                            <Text text="ETA:" styleClass="project-meta-label"/>
+                                            <Text text="45 mins" styleClass="project-meta-value"/>
+                                        </HBox>
+                                    </HBox>
+                                </VBox>
+                                <Region HBox.hgrow="ALWAYS"/>
+                                <VBox alignment="CENTER_RIGHT" spacing="5">
+                                    <Text text="Training" styleClass="project-detail-text"/>
+                                    <ProgressBar styleClass="project-progress,training-progress" progress="0.67" prefWidth="120"/>
+                                    <Text text="67%" styleClass="project-detail-text"/>
+                                </VBox>
+                            </HBox>
+                            
+                            <HBox spacing="10" alignment="CENTER_LEFT">
+                                <Button text="📈 Progress" styleClass="project-action-button,warning-action"/>
+                                <Button text="⏸️ Pause" styleClass="project-action-button,secondary-action"/>
+                                <Button text="📋 Logs" styleClass="project-action-button,secondary-action"/>
+                            </HBox>
+                        </VBox>
+                        
+                        <!-- Project Card 3: HydroSense AI -->
+                        <VBox styleClass="project-card,offline-project" spacing="15">
+                            <HBox alignment="CENTER_LEFT" spacing="15">
+                                <Label text="💧" style="-fx-font-size: 28px;"/>
+                                <VBox spacing="5">
+                                    <Text text="HydroSense AI" styleClass="project-title"/>
+                                    <HBox spacing="15">
+                                        <HBox spacing="5">
+                                            <Text text="Type:" styleClass="project-meta-label"/>
+                                            <Text text="Environmental" styleClass="project-meta-value"/>
+                                        </HBox>
+                                        <HBox spacing="5">
+                                            <Text text="Status:" styleClass="project-meta-label"/>
+                                            <Text text="Offline" styleClass="project-status-offline"/>
+                                        </HBox>
+                                        <HBox spacing="5">
+                                            <Text text="Last Seen:" styleClass="project-meta-label"/>
+                                            <Text text="2 hours ago" styleClass="project-meta-value"/>
+                                        </HBox>
+                                    </HBox>
+                                </VBox>
+                                <Region HBox.hgrow="ALWAYS"/>
+                                <VBox alignment="CENTER_RIGHT" spacing="5">
+                                    <Text text="Suspended" styleClass="project-detail-text"/>
+                                    <ProgressBar styleClass="project-progress,offline-progress" progress="0.43" prefWidth="120"/>
+                                    <Text text="43%" styleClass="project-detail-text"/>
+                                </VBox>
+                            </HBox>
+                            
+                            <HBox spacing="10" alignment="CENTER_LEFT">
+                                <Button text="▶️ Resume" styleClass="project-action-button,primary-action"/>
+                                <Button text="🔧 Diagnose" styleClass="project-action-button,info-action"/>
+                                <Button text="📊 Report" styleClass="project-action-button,secondary-action"/>
+                            </HBox>
+                        </VBox>
+                        
+                    </VBox>
+                </ScrollPane>
+            </VBox>
+            
+        </HBox>
+    </center>
+
+    <!-- Bottom Status Bar -->
+    <bottom>
+        <HBox styleClass="status-bar" alignment="CENTER_LEFT" spacing="20" prefHeight="35">
+            <padding>
+                <Insets left="25" right="25" top="5" bottom="5"/>
+            </padding>
+            
+            <HBox spacing="10" alignment="CENTER_LEFT">
+                <Text text="⏰" style="-fx-font-size: 14px;"/>
+                <Text fx:id="systemClock" text="21:45:32" style="-fx-font-size: 12px; -fx-fill: #B4BCC8;"/>
+            </HBox>
+            
+            <Separator orientation="VERTICAL"/>
+            
+            <HBox spacing="10" alignment="CENTER_LEFT">
+                <Label text="🛡️" style="-fx-font-size: 14px;"/>
+                <Text text="Security: Active" style="-fx-font-size: 12px; -fx-fill: #00FF88;"/>
+            </HBox>
+            
+            <Region HBox.hgrow="ALWAYS"/>
+            
+            <HBox spacing="15" alignment="CENTER_RIGHT">
+                <Text text="Projects: 3 Active" style="-fx-font-size: 12px; -fx-fill: #B4BCC8;"/>
+                <Separator orientation="VERTICAL"/>
+                <Text text="AI Bridge: Connected" style="-fx-font-size: 12px; -fx-fill: #00D4FF;"/>
+                <Separator orientation="VERTICAL"/>
+                <Text text="Memory: 67%" style="-fx-font-size: 12px; -fx-fill: #B4BCC8;"/>
+            </HBox>
+        </HBox>
+    </bottom>
+
+</BorderPane>
