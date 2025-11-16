@@ -7,7 +7,63 @@
 ## 🎯 **SOFTWARE PURPOSE & VISION**
 
 ### **What is DevVault Pro X?**
-DevVault Pro X is a comprehensive **Enterprise Data Management and Analytics Platform** designed to revolutionize how developers and organizations handle, analyze, and secure their critical data. Built with cutting-edge technologies including **JavaFX 21**, **Spring Boot 3**, and **Python FastAPI**, it provides a unified solution for data management challenges in modern software development.
+DevVault Pro X is a comprehensive **Enterprise Data Management & Analytics Platform** designed to revolutionize how developers and organizations handle, analyze, and secure their critical data. Built with cutting-edge technologies including **JavaFX 21**, **Spring Boot 3**, and **Python FastAPI**, it provides a unified solution for data management challenges in modern software development.
+
+**🖥️ Desktop Application Focus**: DevVault Pro X operates as a **desktop application only**, maintaining strict app-sandbox boundaries with standard file I/O and network APIs - never attempting to modify operating system components.
+
+### **📦 Three-Tier Software Model:**
+
+#### **🆓 Standard Version (Free & Open Source):**
+**Target Audience**: Individual developers, students, small teams
+**Philosophy**: Powerful enough to be genuinely useful, not just a demo
+
+**Core Features Include:**
+- ✅ **Multi-Project Dashboard** with real-time Git sync status
+- ✅ **Basic AI Security Engine** (passive defense mode)
+- ✅ **Standard Dataset Management** (up to 5 datasets)
+- ✅ **Integrated Terminal** with Git integration
+- ✅ **Basic Analytics & Insights** with standard charts
+- ✅ **Core Backup Engine** (manual backups)
+- ✅ **Community Support** through forums
+- ✅ **Basic Plugin Framework** (up to 3 plugins)
+- ✅ **Light/Dark Themes** with standard customization
+- ✅ **Resource Monitor** (CPU, RAM, basic metrics)
+
+#### **💎 Premium Version (Paid Professional):**
+**Target Audience**: Professional developers, development teams, startups
+**Price Range**: ₹2,999 - ₹9,999 annually
+
+**Premium Features Include:**
+- 🚀 **Everything from Standard Version**
+- ✅ **Advanced AI Security** with behavior learning and anomaly detection
+- ✅ **Unlimited Datasets** with advanced management
+- ✅ **Team Collaboration Tools** with shared workspaces
+- ✅ **Advanced Analytics** with predictive modeling and ML insights
+- ✅ **Automated Backup Engine** with incremental backups and scheduling
+- ✅ **Priority Support** (24/7 technical assistance)
+- ✅ **Extended Plugin Framework** (unlimited plugins)
+- ✅ **Custom Themes** with Neo Dark, Cyber Glass, and premium designs
+- ✅ **Advanced Resource Monitor** with performance optimization suggestions
+- ✅ **Task & Sprint Tracker** with project management tools
+- ✅ **Cloud Sync Preparation** for future cloud integration
+
+#### **👑 Founder Edition (Enterprise/Exclusive):**
+**Target Audience**: Large enterprises, organizations, serious commercial users
+**Price Range**: ₹25,000 - ₹99,999 annually
+
+**Founder Edition Features Include:**
+- 💫 **Everything from Premium Version**
+- ✅ **Enterprise AI Security Suite** with full threat analysis and real-time protection
+- ✅ **Unlimited Everything** (projects, datasets, users, plugins)
+- ✅ **White-label Customization** with company branding
+- ✅ **Dedicated Support Team** with custom implementation assistance
+- ✅ **Enterprise Plugin Development** with custom modules
+- ✅ **Advanced Compliance Tools** (GDPR, HIPAA, SOX, ISO 27001)
+- ✅ **Custom Analytics & Reporting** with executive dashboards
+- ✅ **Enterprise Backup & Recovery** with disaster recovery planning
+- ✅ **API Access & Integration** with existing enterprise systems
+- ✅ **On-premise Deployment Options** with custom installations
+- ✅ **Founder Recognition** with exclusive credits and partnership opportunities
 
 ### **Core Vision:**
 - **Democratize Enterprise Data Management** - Make powerful data tools accessible to all developers
@@ -46,7 +102,30 @@ DevVault Pro X is a comprehensive **Enterprise Data Management and Analytics Pla
 
 ## ⚙️ **HOW DevVault Pro X WORKS**
 
-### **System Architecture:**
+### **🧩 Advanced Technology Stack:**
+
+#### **Core Platform (Java):**
+| Component | Technology | Role |
+|-----------|------------|------|
+| **UI Framework** | JavaFX 21 + CSS + FXML | Futuristic glass dashboard interface |
+| **Core Logic** | Java 21 + Spring Boot 3 | Business rules and service layer |
+| **Database** | PostgreSQL + SQLite (fallback) | Embedded and enterprise database support |
+| **ORM** | Hibernate 6 | Persistence and mapping |
+| **Security** | AES-256 / RSA + JWT (Offline) | Local encryption and authentication |
+| **Build System** | Maven / Gradle | Dependency automation |
+| **Logging** | Logback + Custom Analyzer | Event and error tracking |
+
+#### **AI Security Layer (Python Subsystem):**
+| Module | Library | Function |
+|--------|---------|----------|
+| **Bridge API** | Flask / FastAPI | Java ↔ Python communication |
+| **System Monitor** | watchdog / psutil | Runtime monitoring |
+| **Encryption** | PyCryptodome | AES/RSA operations |
+| **AI Learning** | scikit-learn / PyTorch | Lightweight anomaly detection |
+| **Integrity** | hashlib (SHA-256) | File integrity verification |
+| **Integration** | HTTP Client → Flask API | Secure link between stacks |
+
+### **System Architecture Diagram:**
 
 ```
 ┌─────────────────────────────────────────────────────────────────┐
@@ -69,34 +148,55 @@ DevVault Pro X is a comprehensive **Enterprise Data Management and Analytics Pla
 │  │                                                         │   │
 │  │  ┌─────────────┐ ┌─────────────┐ ┌─────────────────┐   │   │
 │  │  │  Database   │ │   Cache     │ │   File Storage  │   │   │
-│  │  │  (H2/MySQL) │ │   (Redis)   │ │   (Local/Cloud) │   │   │
+│  │  │PostgreSQL/  │ │   (Redis)   │ │   (Local/Cloud) │   │   │
+│  │  │   SQLite    │ │             │ │                 │   │   │
 │  │  └─────────────┘ └─────────────┘ └─────────────────┘   │   │
 │  └─────────────────────────────────────────────────────────┘   │
 └─────────────────────────────────────────────────────────────────┘
 ```
 
-### **Core Components:**
+### **🎨 Theme & Visual Design System:**
+
+#### **Available Themes:**
+| Mode | Palette | Accent | Description |
+|------|---------|--------|-------------|
+| **Neo Dark** | #0E1013 → #151A23 | Cyan/Purple | Futuristic lab aesthetic |
+| **Light Quartz** | #FAFAFB → #E6E9EF | Teal/Graphite | Minimal corporate design |
+| **Cyber Glass** | Semi-transparent | Aqua/Neon Blue | Premium holographic UI |
+
+#### **Motion & Interaction Design:**
+- **Transitions**: JavaFX Timeline + Gaussian Blur effects
+- **3D Depth**: Drop shadows + parallax scrolling
+- **Interactive Elements**: Hover → soft pulse glow, Click → magnetic ripple
+- **Adaptive Themes**: Automatically adapts to CPU/GPU load or time-of-day
+- **Charts & Graphs**: ChartFX with real-time data binding
+- **Icons**: Lucide or Fluent SVG icon set for consistency
+
+### **Core Components in Detail:**
 
 #### **🖥️ Frontend Layer (JavaFX 21):**
-- **Modern Desktop UI** with responsive design
-- **Real-time Dashboards** showing live system metrics
-- **Interactive Analytics** with drag-drop chart builders
+- **Modern Desktop UI** with responsive glassmorphism design
+- **Real-time Dashboards** showing live system metrics and project status
+- **Interactive Analytics** with drag-drop chart builders and data visualization
 - **Secure User Management** with role-based access control
 - **Cross-platform Compatibility** (Windows, Linux, macOS)
+- **Neo-glass Interface** with reactive layouts and smooth animations
 
 #### **🔧 Backend Layer (Spring Boot 3):**
-- **RESTful API Architecture** for scalable operations
-- **Microservices Ready** with modular component design
-- **Enterprise Security** with JWT authentication and encryption
-- **Database Abstraction** supporting multiple database systems
-- **Real-time WebSocket** connections for live updates
+- **RESTful API Architecture** for scalable microservice operations
+- **Microservices Ready** with modular component design for future expansion
+- **Enterprise Security** with JWT authentication and AES-256 encryption
+- **Database Abstraction** supporting PostgreSQL, SQLite, and future NoSQL options
+- **Real-time WebSocket** connections for live updates between UI and services
+- **Local API Gateway** for secure internal module communication
 
 #### **🤖 AI/Analytics Layer (Python FastAPI):**
-- **Machine Learning Models** for predictive analytics
-- **Data Processing Pipelines** for automated insights
-- **Natural Language Processing** for smart search and queries
-- **Automated Report Generation** with customizable templates
-- **Performance Optimization** suggestions based on usage patterns
+- **Machine Learning Models** for predictive analytics and anomaly detection
+- **Data Processing Pipelines** for automated insights and pattern recognition
+- **Behavior Analysis Engine** learning user patterns for security monitoring
+- **Automated Report Generation** with customizable templates and scheduling
+- **Performance Optimization** suggestions based on usage patterns and system metrics
+- **Zero-Interference Security** - AI never accesses workspace without explicit permission
 
 ---
 
@@ -178,31 +278,158 @@ public class DataManager {
 
 ---
 
-## 🌟 **KEY FEATURES & CAPABILITIES**
+## 🌟 **COMPREHENSIVE FEATURE CATALOG**
 
-### **🔍 Smart Data Discovery:**
-- **Intelligent Schema Detection** automatically identifies data structures
-- **Data Quality Assessment** highlights inconsistencies and errors
-- **Relationship Mapping** visualizes connections between data entities
-- **Source Integration** connects to 50+ data sources (APIs, databases, files)
+### **🖥️ CORE WORKSPACE MODULES**
 
-### **📊 Advanced Analytics:**
-- **Predictive Modeling** using machine learning algorithms
-- **Real-time Streaming Analytics** for live data processing
-- **Custom Dashboard Builder** with 100+ chart types
-- **Automated Report Scheduling** with email/slack integration
+#### **📊 Main Dashboard / Home Hub:**
+```
+╔════════════════════════════════════════════════════════════════════════╗
+║ ⚡ DevVault Pro X                               [🔍 Search | ⚙ Settings]  ║
+╠════════════════════════════════════════════════════════════════════════╣
+║ 🧭 Navigation Bar              |  📁 Project Hub                         │
+║───────────────────────────────┼─────────────────────────────────────────║
+║ 🏠 Dashboard                   |  ┌──────────────────────────────────┐   │
+║ 📂 Projects                    |  │ 🔵 AI Security Engine           │   │
+║ 💾 Backup Center               |  │ Status: 🟢 Online  Updated: 01 Nov │   │
+║ 🔐 Security Center             |  └──────────────────────────────────┘   │
+║ 📊 Datasets                    |  ┌──────────────────────────────────┐   │
+║ 🧩 Plugins                     |  │ 🟣 IoT Control Node             │   │
+║ ⚙ System Monitor               |  │ Status: 🔴 Offline             │   │
+║ 🧠 Smart Insights              |  └──────────────────────────────────┘   │
+╚════════════════════════════════════════════════════════════════════════╝
+```
 
-### **🔒 Enterprise Security:**
-- **Multi-factor Authentication** with biometric support
-- **Data Encryption** using AES-256 standards
-- **Network Security** with VPN and firewall integration
-- **Compliance Monitoring** for regulatory requirements
+#### **🔧 Core System Features:**
+- **Offline-First Engine** - Full local execution, zero cloud dependency
+- **Smart Workspace Provisioning** - Controlled project import and structure manager
+- **Project Categories** - AI / IoT / Web / Other tags for organization
+- **Multi-Project Dashboard** - Unified project overview + Git sync state
+- **Integrated Project Viewer** (Read-Only with full code inspection)
+- **CRUD Management System** - Full entity lifecycle for projects & datasets
+- **Integrated Terminal** - Embedded CLI with full command support
+- **Microservice Architecture** - Offline-ready modular design
+- **Local API Gateway** - Internal secure module messaging
+- **Offline Version Tracker** - Local Git-style rollback & snapshots
 
-### **🚀 Performance Optimization:**
-- **Query Optimization** automatically improves database performance
-- **Caching Strategies** reduce response times by 80%
-- **Load Balancing** distributes traffic for scalability
-- **Resource Monitoring** prevents system overloads
+#### **📂 Project Management Suite:**
+```
+╔════════════════════════════════════════════════════════════════╗
+║ Project: "HydroSense AI"         [↩ Back] [⚙ Settings] [📈 Stats]    ║
+╠════════════════════════════════════════════════════════════════╣
+║ Overview │ Tasks │ Git │ Dataset │ Security │ Logs │ Extensions │ Cloud ║
+╟────────────────────────────────────────────────────────────────╢
+║ 📊 STATUS SNAPSHOT                                               
+║ 🟢 Git Sync: Up-to-date                                          
+║ 🔄 Backup: Last at 22:10 | Auto every 2 hrs                     
+║ 🔐 Security: Active | Zero interference                          
+║ 📁 Dataset: water_quality.csv (Linked)                           
+║ 📈 Progress: █████████░ 85%                                     
+╚════════════════════════════════════════════════════════════════╝
+```
+
+### **🔐 AI SECURITY SYSTEM (PASSIVE DEFENSE)**
+
+#### **Advanced Security Architecture:**
+```
+╔════════════════════════════════════════════════════════════════════════╗
+║ 🔐 AI SECURITY CENTER              [⚙ Configure] [🧠 Behavior Model]      ║
+╠════════════════════════════════════════════════════════════════════════╣
+║ STATUS: 🟢 ACTIVE | MODE: Passive Defense | Last Scan: 23:10             ║
+║ 📁 Integrity Check: ✓ Passed (System files)                              ║
+║ 🔍 Behavioral Model: Stable (No anomalies)                               ║
+║ 🧩 Process Guard: All modules verified                                   ║
+║ ⚙ Encryption Layer: AES-256 / RSA | Rotates every 24 h                  ║
+╚════════════════════════════════════════════════════════════════════════╝
+```
+
+**Security Components:**
+- **AI Security Engine (Python)** - Protects runtime + integrity
+- **File Integrity Monitor** - SHA-256 hash validation for all critical files
+- **Process & API Guard** - Blocks unauthorized access/injection attempts
+- **Encryption Manager** - AES-256/RSA key rotation every 24 hours
+- **Behavior Model** - Learns user/system patterns; flags anomalies
+- **Alert & Log Center** - Local classification of security events
+- **Security Kill-Switch** - One-click AI off with auto-timeout banner
+- **Zero-Interference Policy** - AI never reads workspace or datasets without permission
+
+### **📊 DATASET MANAGEMENT HUB**
+
+```
+╔════════════════════════════════════════════════════════════════╗
+║ 📊 DATASET MANAGEMENT HUB                                      ║
+║ Dataset Name      | Linked Project     | Size | Updated | Status │
+║───────────────────┼────────────────────┼──────┼─────────┼────────║
+║ air_quality.csv   | PollutionMonitorAI | 32MB | 30-Oct  | Linked │
+║ city_water.db     | HydroCheck         | 15MB | 29-Oct  | Linked │
+║ sensors.json      | PowerSaverBot      | 5MB  | 28-Oct  | Free   │
+╚════════════════════════════════════════════════════════════════╝
+```
+
+**Dataset Features:**
+- **Intelligent Schema Detection** - Automatically identifies data structures
+- **Data Quality Assessment** - Highlights inconsistencies and errors
+- **Relationship Mapping** - Visualizes connections between data entities
+- **Source Integration** - Connects to 50+ data sources (APIs, databases, files)
+- **Version Control** - Track dataset changes and rollback capabilities
+- **Format Support** - CSV, JSON, XML, Parquet, Avro, Excel, and more
+
+### **🧩 PLUGIN & EXTENSIONS FRAMEWORK**
+
+```
+╔════════════════════════════════════════════════════════════════╗
+║ 🧩 PLUGIN CENTER                                              ║
+║ Plugin Name            | Type          | Status | Actions         │
+║────────────────────────┼───────────────┼────────┼─────────────────║
+║ AI Log Visualizer      | Analytics     | ✅ Active | ⚙ Manage      │
+║ Dataset Previewer      | Tools         | ⬇ Install | —            │
+║ Cloud Sync Connector   | Integration   | 🟡 Coming | —            │
+╚════════════════════════════════════════════════════════════════╝
+```
+
+### **⚙️ SYSTEM MONITOR + SMART INSIGHTS**
+
+```
+╔══════════════════════════════════════════════════════════════╗
+║ ⚙ SYSTEM MONITOR / SMART INSIGHTS                           ║
+║ CPU Usage: ███░░ 32% │ GPU: ██░░░ 20% │ RAM: ███░░ 42%        │
+║ Network: ↑ 12 MB/s ↓ 8 MB/s │ Temp: 45°C │ Load: Low        │
+║ 🧠 Insight: "Security processes running optimally."          ║
+║ 🔮 Predictive: "Backup load will increase ≈ 8% in 2 hours." ║
+╚══════════════════════════════════════════════════════════════╝
+```
+
+**Monitoring Features:**
+- **Real-time Resource Monitor** - CPU/RAM/GPU/Network/Temperature tracking
+- **Performance Optimization** - Automated suggestions for better performance
+- **Predictive Analytics** - AI-powered predictions for system load and usage
+- **Error & Log Analyzer** - Auto detect and classify runtime/Git errors
+- **Notification Center** - Backup/Git/AI security alerts
+- **Custom Alerts** - User-configurable thresholds and notifications
+
+### **🔄 GIT INTEGRATION SUITE**
+- **Complete Git Workflow** - Clone, push, pull, commit, branch, merge, history
+- **Visual Git Interface** - Graphical branch visualization and conflict resolution
+- **Multi-Repository Management** - Handle multiple Git repositories simultaneously
+- **Automated Sync** - Background Git operations with conflict detection
+- **Branch Strategy Support** - GitFlow, GitHub Flow, and custom workflows
+- **Commit Analytics** - Code contribution tracking and statistics
+
+### **💾 ADVANCED BACKUP ENGINE**
+- **Incremental Backups** - Only changed files backed up for efficiency
+- **Automated Scheduling** - Configurable backup intervals and retention policies
+- **Encrypted Storage** - All backups encrypted with AES-256
+- **Cross-Platform Restore** - Restore backups on any supported platform
+- **Disaster Recovery** - Complete system recovery capabilities
+- **Cloud Integration Ready** - Future AWS/Azure backup support
+
+### **📈 TASK & SPRINT TRACKER**
+- **Agile Project Management** - Scrum and Kanban board support
+- **Sprint Planning** - Story points, velocity tracking, and burndown charts
+- **Team Collaboration** - Shared tasks and real-time updates
+- **Progress Analytics** - Detailed project progress and team performance metrics
+- **Integration** - Links with Git commits and code changes
+- **Custom Workflows** - Configurable task states and approval processes
 
 ---
 
@@ -408,4 +635,4 @@ public class DataManager {
 
 ---
 
-*© 2024 RoboticsAITechLab. Built with ❤️ for the global developer community.*
+*© 2025 RoboticsAITechLab. Built with ❤️ for the global developer community.*
