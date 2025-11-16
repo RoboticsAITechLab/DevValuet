@@ -216,17 +216,33 @@ mvn javafx:run
      - Performance impact analysis
      - Screenshots/videos if UI related
 
-4. **💰 Get Paid**
-   - Once merged, you become eligible for **40% revenue share**
-   - Payment processed quarterly based on software earnings
-   - Long-term partnership for significant contributors
+4. **💰 Get Paid (Legal Revenue Sharing)**
+   - **Automatic enrollment** in Revenue Sharing License upon first merged PR
+   - **Legal obligation** for commercial users to pay revenue sharing fees
+   - **Quarterly payments** calculated by transparent point system
+   - **Perpetual earnings** from past contributions
+   - **Legal protection** under Revenue Sharing License terms
 
-### **📋 Contribution Guidelines**
+### **📋 Contribution Guidelines & Legal Requirements**
+
+#### **🔧 Technical Standards:**
 - **Code Quality**: Follow Java/Python best practices
 - **Testing**: Minimum 80% test coverage for new code
 - **Documentation**: Update README & code comments
 - **Performance**: No performance regressions
 - **Security**: Follow secure coding practices
+
+#### **⚖️ Legal Requirements:**
+- **Contributor Agreement**: Automatic acceptance upon first PR submission
+- **Original Work**: Confirm you own rights to contributed code
+- **License Compliance**: Contributions subject to dual license system
+- **Revenue Sharing**: Automatic enrollment in 40% contributor pool
+- **Attribution Rights**: Grant permission for public recognition and credits
+
+#### **💼 Business Benefits:**
+- **Legal Revenue Rights**: Enforceable claim to 40% revenue pool
+- **Professional Recognition**: Official credit in enterprise software
+- **Long-term Partnership**: Ongoing earnings from commercial success
 
 ---
 
@@ -257,16 +273,31 @@ mvn javafx:run
 
 ## 🏆 **Recognition & Credits**
 
-### **💰 Revenue Sharing Model**
+### **💰 Revenue Sharing Model (Legal Framework)**
+
 ```
-DevVault Pro X Earnings Distribution:
-├── 60% - Original Development Team
-└── 40% - Community Contributors
-    ├── Bug Fixes & Production Readiness
-    ├── Performance Improvements  
-    ├── Enterprise Features
-    └── Security Enhancements
+DevVault Pro X Earnings Distribution (Legally Binding):
+├── 60% - Original Development Team (RoboticsAITechLab)
+└── 40% - Community Contributors Pool
+    ├── Contribution Impact Score (50%)
+    │   ├── Critical Bug Fixes: 100 points
+    │   ├── Major Features: 80 points
+    │   ├── Security Enhancements: 90 points
+    │   └── Performance Improvements: 70 points
+    ├── Code Quality Score (25%)
+    └── Community Impact (25%)
 ```
+
+#### **📊 Individual Revenue Calculation:**
+```
+Your Quarterly Payment = (Your Points / Total Points) × 40% × Total Revenue
+```
+
+#### **💳 Payment Process:**
+- **Quarterly Distributions**: Every 3 months
+- **Minimum Payout**: $50 USD (carried forward if below)
+- **Payment Methods**: PayPal, Bank Transfer, Cryptocurrency
+- **Tax Compliance**: 1099 forms for US contributors >$600/year
 
 ### **🎖️ Hall of Fame**
 *Contributors who earned revenue share will be listed here!*
@@ -282,18 +313,62 @@ DevVault Pro X Earnings Distribution:
 - **🤝 Revenue Sharing**: Discuss partnership opportunities
 - **📈 Scaling Support**: Professional development services
 
-### **👨‍💻 Developer Support**
+### **👨‍💻 Developer Support & Legal Contact**
 - **🐛 Bug Reports**: [GitHub Issues](https://github.com/RoboticsAITechLab/DevValuet/issues)
 - **💡 Feature Requests**: [Discussions](https://github.com/RoboticsAITechLab/DevValuet/discussions)
 - **📚 Documentation**: [Wiki](https://github.com/RoboticsAITechLab/DevValuet/wiki)
+- **💰 Revenue Sharing**: revenue-share@devvault-prox.com
+- **⚖️ Legal Questions**: licensing@devvault-prox.com
+- **📝 Contributor Agreement**: contributors@devvault-prox.com
 
 ---
 
-## 📄 **License**
+## 📜 **Legal Framework & Contributor Protection**
 
-This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) file for details.
+### **🔐 Contributor Agreement**
+- **Automatic Acceptance**: Contributing code automatically enrolls you in our legal revenue sharing framework
+- **Explicit Agreement**: Optional digital signing available at [CONTRIBUTOR-AGREEMENT.md](CONTRIBUTOR-AGREEMENT.md)
+- **Rights Protection**: Legal guarantee to your share of the 40% contributor revenue pool
+- **Professional Recognition**: Contractual right to attribution and professional references
 
-**Note**: The 40% revenue sharing agreement for contributors is separate from the MIT license and applies specifically to earnings generated from commercial use of this software.
+### **📊 Revenue Transparency**
+- **Quarterly Reports**: Public revenue statements for all contributors
+- **Point System**: Transparent contribution scoring methodology
+- **Payment Tracking**: Individual earning statements provided quarterly
+- **Audit Rights**: Contributors may request revenue verification
+
+### **⚖️ Legal Enforcement**
+- **Binding Agreements**: Revenue sharing obligations legally enforceable
+- **Dispute Resolution**: Professional arbitration process for conflicts
+- **Intellectual Property**: Contributors retain copyright to individual contributions
+- **Commercial Compliance**: Legal requirements for commercial users clearly defined
+
+---
+
+## 📄 **Dual License System**
+
+DevVault Pro X operates under a **DUAL LICENSE SYSTEM** to support both open source development and fair revenue sharing:
+
+### **🆓 MIT License (Open Source)**
+- **Free usage, modification, and distribution** for personal, educational, and non-commercial purposes
+- **Standard open source rights** as defined in [LICENSE](LICENSE)
+- **No revenue sharing obligations** for non-commercial usage
+
+### **💰 Revenue Sharing License (Commercial)**
+- **Mandatory for commercial deployments** generating revenue using DevVault Pro X
+- **40% of all commercial revenue shared** among contributors
+- **Detailed terms** outlined in [LICENSE-REVENUE-SHARING](LICENSE-REVENUE-SHARING)
+- **Contributor agreement** available at [CONTRIBUTOR-AGREEMENT.md](CONTRIBUTOR-AGREEMENT.md)
+
+#### **🔄 License Selection:**
+- **Non-commercial use**: MIT License applies automatically
+- **Commercial use**: Revenue Sharing License required
+- **Contributing developers**: Automatically enrolled in Revenue Sharing License benefits
+
+#### **📋 Legal Compliance:**
+- **Commercial entities** must report revenue and pay sharing fees
+- **Contributors receive** quarterly revenue distributions
+- **Transparent accounting** with public revenue reports
 
 ---
 
@@ -301,12 +376,15 @@ This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) 
 
 ### 🚀 **Ready to Earn Money by Contributing?**
 
-**Find bugs, fix issues, get 40% of all future software earnings!**
+**Find bugs, fix issues, get legally protected 40% revenue share!**
 
-[![Start Contributing](https://img.shields.io/badge/Start_Contributing-40%25_Revenue_Share-gold?style=for-the-badge&logo=github)](https://github.com/RoboticsAITechLab/DevValuet/issues)
-[![View Issues](https://img.shields.io/badge/View_Issues-Bounty_Available-green?style=for-the-badge&logo=git)](https://github.com/RoboticsAITechLab/DevValuet/issues)
+[![Start Contributing](https://img.shields.io/badge/Start_Contributing-40%25_Legal_Revenue_Share-gold?style=for-the-badge&logo=github)](https://github.com/RoboticsAITechLab/DevValuet/issues)
+[![View Licenses](https://img.shields.io/badge/View_Licenses-Dual_License_System-blue?style=for-the-badge&logo=git)](https://github.com/RoboticsAITechLab/DevValuet/blob/main/LICENSE-REVENUE-SHARING)
+[![Contributor Agreement](https://img.shields.io/badge/Contributor_Agreement-Legal_Protection-green?style=for-the-badge&logo=shield)](https://github.com/RoboticsAITechLab/DevValuet/blob/main/CONTRIBUTOR-AGREEMENT.md)
 
-**⭐ Star this repo • 🍴 Fork it • 🐛 Fix bugs • 💰 Earn money!**
+**⭐ Star this repo • 🍴 Fork it • 🐛 Fix bugs • 💰 Earn legal revenue share!**
+
+**📜 Protected by dual license system • ⚖️ Legal revenue guarantees • 🏆 Professional recognition**
 
 </div>
 
