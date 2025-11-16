@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<!--
+Main Dashboard FXML - DevVault Pro X Neo-glass Interface
+Implements the ASCII art layout with glassmorphism effects
+
+╔════════════════════════════════════════════════════════════════════════╗
+║ ⚡ DevVault Pro X                               [🔍 Search | ⚙ Settings]  ║
+╠════════════════════════════════════════════════════════════════════════╣
+║ 🧭 Navigation Bar              |  📁 Project Hub                         │
+║───────────────────────────────┼─────────────────────────────────────────║
+║ 🏠 Dashboard                   |  ┌──────────────────────────────────┐   │
+║ 📂 Projects                    |  │ 🔵 AI Security Engine           │   │
+║ 💾 Backup Center               |  │ Status: 🟢 Online  Updated: 01 Nov │   │
+║ 🔐 Security Center             |  └──────────────────────────────────┘   │
+║ 📊 Datasets                    |  ┌──────────────────────────────────┐   │
+║ 🧩 Plugins                     |  │ 🟣 IoT Control Node             │   │
+║ ⚙ System Monitor               |  │ Status: 🔴 Offline             │   │
+║ 🧠 Smart Insights              |  └──────────────────────────────────┘   │
+║───────────────────────────────┴─────────────────────────────────────────║
+║ [➕ New Project] [🧠 AI Sort] [☁ Sync] [🔒 Security ON] [🌗 Theme Toggle] ║
+╚════════════════════════════════════════════════════════════════════════╝
+-->
+
+<BorderPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" 
+            fx:controller="com.devvault.frontend.controllers.MainDashboardController"
+            styleClass="main-dashboard">
+
+    <!-- TOP: Header Bar -->
+    <top>
+        <HBox styleClass="header-bar" alignment="CENTER_LEFT" spacing="20">
+            <padding>
+                <Insets top="15" right="20" bottom="15" left="20"/>
+            </padding>
+            
+            <!-- Application Title -->
+            <Text text="⚡ DevVault Pro X" styleClass="app-title"/>
+            
+            <!-- Spacer -->
+            <Region HBox.hgrow="ALWAYS"/>
+            
+            <!-- Search Field -->
+            <TextField fx:id="searchField" styleClass="search-field" 
+                      promptText="🔍 Search projects, datasets..." prefWidth="250"/>
+            
+            <!-- Settings Button -->
+            <Button fx:id="settingsButton" text="⚙ Settings" styleClass="header-button"/>
+        </HBox>
+    </top>
+
+    <!-- LEFT: Navigation Bar -->
+    <left>
+        <VBox fx:id="navigationBar" styleClass="navigation-bar" spacing="5" prefWidth="250">
+            <padding>
+                <Insets top="20" right="15" bottom="20" left="15"/>
+            </padding>
+            
+            <Text text="🧭 Navigation" styleClass="nav-title"/>
+            <Separator styleClass="nav-separator"/>
+            
+            <Button fx:id="dashboardButton" styleClass="nav-button" 
+                   text="🏠 Dashboard" maxWidth="Infinity"/>
+            <Button fx:id="projectsButton" styleClass="nav-button" 
+                   text="📂 Projects" maxWidth="Infinity"/>
+            <Button fx:id="backupCenterButton" styleClass="nav-button" 
+                   text="💾 Backup Center" maxWidth="Infinity"/>
+            <Button fx:id="securityCenterButton" styleClass="nav-button" 
+                   text="🔐 Security Center" maxWidth="Infinity"/>
+            <Button fx:id="datasetsButton" styleClass="nav-button" 
+                   text="📊 Datasets" maxWidth="Infinity"/>
+            <Button fx:id="pluginsButton" styleClass="nav-button" 
+                   text="🧩 Plugins" maxWidth="Infinity"/>
+            <Button fx:id="systemMonitorButton" styleClass="nav-button" 
+                   text="⚙ System Monitor" maxWidth="Infinity"/>
+            <Button fx:id="smartInsightsButton" styleClass="nav-button" 
+                   text="🧠 Smart Insights" maxWidth="Infinity"/>
+            
+            <!-- Spacer -->
+            <Region VBox.vgrow="ALWAYS"/>
+            
+            <!-- Status Section -->
+            <VBox styleClass="status-section" spacing="8">
+                <Text fx:id="systemStatusText" styleClass="status-text"/>
+                <Text fx:id="securityStatusText" styleClass="status-text"/>
+            </VBox>
+        </VBox>
+    </left>
+
+    <!-- CENTER: Project Hub -->
+    <center>
+        <VBox fx:id="projectHub" styleClass="project-hub">
+            <padding>
+                <Insets top="20" right="20" bottom="20" left="20"/>
+            </padding>
+            
+            <!-- Project Hub Header -->
+            <HBox alignment="CENTER_LEFT" spacing="15">
+                <Text text="📁 Project Hub" styleClass="hub-title"/>
+                
+                <!-- Spacer -->
+                <Region HBox.hgrow="ALWAYS"/>
+                
+                <!-- Quick Actions -->
+                <Button text="🔄 Refresh" styleClass="quick-action-button"/>
+                <Button text="📊 Analytics" styleClass="quick-action-button"/>
+            </HBox>
+            
+            <Separator styleClass="hub-separator"/>
+            
+            <!-- Project Grid -->
+            <ScrollPane fx:id="projectScrollPane" styleClass="project-scroll-pane" 
+                       fitToWidth="true" VBox.vgrow="ALWAYS">
+                <VBox fx:id="projectContainer" styleClass="project-container" spacing="15">
+                    <padding>
+                        <Insets top="10" right="10" bottom="10" left="10"/>
+                    </padding>
+                    
+                    <!-- Projects will be dynamically added here -->
+                </VBox>
+            </ScrollPane>
+        </VBox>
+    </center>
+
+    <!-- BOTTOM: Control Bar -->
+    <bottom>
+        <HBox fx:id="controlBar" styleClass="control-bar" alignment="CENTER_LEFT" spacing="15">
+            <padding>
+                <Insets top="15" right="20" bottom="15" left="20"/>
+            </padding>
+            
+            <Button fx:id="newProjectButton" text="➕ New Project" styleClass="control-button primary"/>
+            <Button fx:id="aiSortButton" text="🧠 AI Sort" styleClass="control-button secondary"/>
+            <Button fx:id="syncButton" text="☁ Sync" styleClass="control-button secondary"/>
+            
+            <!-- Spacer -->
+            <Region HBox.hgrow="ALWAYS"/>
+            
+            <!-- Status Toggles -->
+            <ToggleButton fx:id="securityToggle" text="🔒 Security" styleClass="toggle-button security-on"/>
+            <ToggleButton fx:id="themeToggle" text="🌗 Theme" styleClass="toggle-button theme-toggle"/>
+        </HBox>
+    </bottom>
+
+</BorderPane>

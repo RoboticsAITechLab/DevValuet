@@ -1,0 +1,480 @@
+/*
+ * DevVault Pro X - Professional Readability Theme
+ * WCAG AA Compliant with Modern Aesthetics
+ */
+
+/* ================================ */
+/* Professional Color System */
+/* ================================ */
+
+.root {
+    /* Base Colors - High Contrast */
+    -fx-primary-bg: #0a0d10;           /* Deep slate */
+    -fx-secondary-bg: #1a1f28;         /* Medium slate */
+    -fx-tertiary-bg: #242934;          /* Light slate */
+    -fx-surface-bg: #2a303c;           /* Card background */
+    -fx-elevated-bg: #323844;          /* Elevated elements */
+    
+    /* Text Colors - WCAG AA Compliant */
+    -fx-text-primary: #ffffff;         /* Pure white - 21:1 contrast */
+    -fx-text-secondary: #e1e5ea;       /* Light gray - 16:1 contrast */
+    -fx-text-muted: #9ca3af;           /* Medium gray - 7:1 contrast */
+    -fx-text-accent: #60a5fa;          /* Blue accent - 5.2:1 contrast */
+    
+    /* Accent System - Balanced Saturation */
+    -fx-primary-accent: #3b82f6;       /* Professional blue */
+    -fx-success-accent: #10b981;       /* Emerald green */
+    -fx-warning-accent: #f59e0b;       /* Amber orange */
+    -fx-error-accent: #ef4444;         /* Red alert */
+    -fx-info-accent: #8b5cf6;          /* Purple info */
+    
+    /* Interaction States */
+    -fx-hover-overlay: #374151;        /* Subtle hover - no transparency */
+    -fx-pressed-overlay: #4b5563;      /* Pressed state - solid */
+    -fx-focus-ring: #60a5fa;           /* Focus indicator */
+    
+    /* Border System */
+    -fx-border-subtle: #374151;        /* Visible borders */
+    -fx-border-medium: #4b5563;        /* Standard borders */
+    -fx-border-strong: #6b7280;        /* Emphasized borders */
+    
+    /* Shadows - Depth without blur */
+    -fx-shadow-light: #00000040;       /* 25% opacity max */
+    -fx-shadow-medium: #00000060;      /* 37% opacity max */
+    -fx-shadow-strong: #00000080;      /* 50% opacity max */
+    
+    /* Typography */
+    -fx-font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
+    -fx-font-size: 14px;
+    -fx-font-weight-normal: 400;
+    -fx-font-weight-medium: 500;
+    -fx-font-weight-semibold: 600;
+    -fx-font-weight-bold: 700;
+}
+
+/* ================================ */
+/* Layout Containers - Solid Backgrounds */
+/* ================================ */
+
+.main-dashboard {
+    -fx-background-color: -fx-primary-bg;
+    -fx-font-family: -fx-font-family;
+}
+
+.sidebar {
+    -fx-background-color: -fx-secondary-bg;
+    -fx-border-color: -fx-border-subtle;
+    -fx-border-width: 0 1 0 0;
+}
+
+.content-area {
+    -fx-background-color: -fx-primary-bg;
+    -fx-padding: 20;
+}
+
+/* ================================ */
+/* Navigation - Clear Visibility */
+/* ================================ */
+
+.nav-button {
+    -fx-background-color: transparent;
+    -fx-text-fill: -fx-text-secondary;
+    -fx-font-size: 14px;
+    -fx-font-weight: -fx-font-weight-medium;
+    -fx-padding: 12 20;
+    -fx-background-radius: 8;
+    -fx-border-radius: 8;
+    -fx-cursor: hand;
+}
+
+.nav-button:hover {
+    -fx-background-color: -fx-hover-overlay;
+    -fx-text-fill: -fx-text-primary;
+    -fx-border-color: -fx-primary-accent;
+    -fx-border-width: 1;
+}
+
+.nav-button:pressed {
+    -fx-background-color: -fx-pressed-overlay;
+}
+
+.nav-button.active {
+    -fx-background-color: -fx-primary-accent;
+    -fx-text-fill: #ffffff;
+    -fx-font-weight: -fx-font-weight-semibold;
+}
+
+/* ================================ */
+/* Cards - Solid Professional Design */
+/* ================================ */
+
+.glass-panel, .metric-card, .stats-card {
+    -fx-background-color: -fx-surface-bg;
+    -fx-border-color: -fx-border-subtle;
+    -fx-border-width: 1;
+    -fx-background-radius: 12;
+    -fx-border-radius: 12;
+    -fx-padding: 20;
+    -fx-effect: dropshadow(gaussian, -fx-shadow-light, 8, 0, 0, 2);
+}
+
+.glass-panel:hover, .metric-card:hover, .stats-card:hover {
+    -fx-border-color: -fx-border-medium;
+    -fx-effect: dropshadow(gaussian, -fx-shadow-medium, 12, 0, 0, 3);
+}
+
+/* Stats Card Variants */
+.projects-card {
+    -fx-border-color: -fx-primary-accent;
+}
+
+.builds-card {
+    -fx-border-color: -fx-success-accent;
+}
+
+.success-card {
+    -fx-border-color: -fx-success-accent;
+}
+
+.health-card {
+    -fx-border-color: -fx-info-accent;
+}
+
+/* ================================ */
+/* Typography - Clear Hierarchy */
+/* ================================ */
+
+.view-header, .large-text {
+    -fx-text-fill: -fx-text-primary;
+    -fx-font-size: 24px;
+    -fx-font-weight: -fx-font-weight-bold;
+}
+
+.section-title, .medium-text {
+    -fx-text-fill: -fx-text-primary;
+    -fx-font-size: 18px;
+    -fx-font-weight: -fx-font-weight-semibold;
+}
+
+.panel-title {
+    -fx-text-fill: -fx-text-primary;
+    -fx-font-size: 16px;
+    -fx-font-weight: -fx-font-weight-medium;
+}
+
+.metric-title {
+    -fx-text-fill: -fx-text-muted;
+    -fx-font-size: 12px;
+    -fx-font-weight: -fx-font-weight-medium;
+    -fx-text-transform: uppercase;
+    -fx-letter-spacing: 0.5px;
+}
+
+.metric-value {
+    -fx-text-fill: -fx-text-primary;
+    -fx-font-size: 20px;
+    -fx-font-weight: -fx-font-weight-bold;
+}
+
+.label {
+    -fx-text-fill: -fx-text-primary;
+}
+
+.label.secondary {
+    -fx-text-fill: -fx-text-secondary;
+}
+
+.label.muted {
+    -fx-text-fill: -fx-text-muted;
+}
+
+/* ================================ */
+/* Buttons - Professional States */
+/* ================================ */
+
+.button, .action-button {
+    -fx-background-color: -fx-primary-accent;
+    -fx-text-fill: #ffffff;
+    -fx-font-weight: -fx-font-weight-semibold;
+    -fx-padding: 10 20;
+    -fx-background-radius: 8;
+    -fx-border-radius: 8;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(gaussian, -fx-shadow-light, 4, 0, 0, 1);
+}
+
+.button:hover, .action-button:hover {
+    -fx-background-color: derive(-fx-primary-accent, 10%);
+    -fx-effect: dropshadow(gaussian, -fx-shadow-medium, 6, 0, 0, 2);
+}
+
+.button:pressed, .action-button:pressed {
+    -fx-background-color: derive(-fx-primary-accent, -10%);
+}
+
+/* Button Variants */
+.build-button, .success-button {
+    -fx-background-color: -fx-success-accent;
+}
+
+.build-button:hover, .success-button:hover {
+    -fx-background-color: derive(-fx-success-accent, 10%);
+}
+
+.deploy-button, .warning-button {
+    -fx-background-color: -fx-warning-accent;
+}
+
+.deploy-button:hover, .warning-button:hover {
+    -fx-background-color: derive(-fx-warning-accent, 10%);
+}
+
+.danger-button {
+    -fx-background-color: -fx-error-accent;
+}
+
+.danger-button:hover {
+    -fx-background-color: derive(-fx-error-accent, 10%);
+}
+
+/* Secondary Buttons */
+.secondary-button {
+    -fx-background-color: transparent;
+    -fx-text-fill: -fx-primary-accent;
+    -fx-border-color: -fx-primary-accent;
+    -fx-border-width: 1;
+}
+
+.secondary-button:hover {
+    -fx-background-color: -fx-primary-accent;
+    -fx-text-fill: #ffffff;
+}
+
+/* ================================ */
+/* Form Controls - Clear Inputs */
+/* ================================ */
+
+.text-field {
+    -fx-background-color: -fx-elevated-bg;
+    -fx-text-fill: -fx-text-primary;
+    -fx-prompt-text-fill: -fx-text-muted;
+    -fx-border-color: -fx-border-medium;
+    -fx-border-width: 1;
+    -fx-background-radius: 6;
+    -fx-border-radius: 6;
+    -fx-padding: 8 12;
+    -fx-font-size: 14px;
+}
+
+.text-field:focused {
+    -fx-border-color: -fx-focus-ring;
+    -fx-border-width: 2;
+}
+
+.combo-box {
+    -fx-background-color: -fx-elevated-bg;
+    -fx-border-color: -fx-border-medium;
+    -fx-border-width: 1;
+    -fx-background-radius: 6;
+    -fx-border-radius: 6;
+}
+
+.combo-box:focused {
+    -fx-border-color: -fx-focus-ring;
+}
+
+.combo-box .list-cell {
+    -fx-text-fill: -fx-text-primary;
+    -fx-background-color: -fx-elevated-bg;
+}
+
+/* ================================ */
+/* Lists and Tables - Readable Data */
+/* ================================ */
+
+.list-view {
+    -fx-background-color: -fx-surface-bg;
+    -fx-border-color: -fx-border-subtle;
+    -fx-border-width: 1;
+    -fx-background-radius: 8;
+    -fx-border-radius: 8;
+}
+
+.list-cell {
+    -fx-background-color: transparent;
+    -fx-text-fill: -fx-text-primary;
+    -fx-padding: 8 12;
+    -fx-border-color: -fx-border-subtle;
+    -fx-border-width: 0 0 1 0;
+}
+
+.list-cell:selected {
+    -fx-background-color: -fx-primary-accent;
+    -fx-text-fill: #ffffff;
+}
+
+.list-cell:hover {
+    -fx-background-color: -fx-hover-overlay;
+}
+
+/* ================================ */
+/* Charts - Clear Data Visualization */
+/* ================================ */
+
+.chart {
+    -fx-background-color: -fx-surface-bg;
+    -fx-border-color: -fx-border-subtle;
+    -fx-border-width: 1;
+    -fx-background-radius: 8;
+    -fx-border-radius: 8;
+    -fx-padding: 15;
+}
+
+.chart-title {
+    -fx-text-fill: -fx-text-primary;
+    -fx-font-size: 16px;
+    -fx-font-weight: -fx-font-weight-semibold;
+}
+
+.axis {
+    -fx-tick-label-fill: -fx-text-secondary;
+    -fx-font-size: 11px;
+}
+
+.axis-label {
+    -fx-text-fill: -fx-text-secondary;
+    -fx-font-size: 12px;
+    -fx-font-weight: -fx-font-weight-medium;
+}
+
+/* ================================ */
+/* Tab Pane - Clear Navigation */
+/* ================================ */
+
+.tab-pane {
+    -fx-background-color: transparent;
+}
+
+.tab-header-area {
+    -fx-background-color: -fx-secondary-bg;
+}
+
+.tab {
+    -fx-background-color: transparent;
+    -fx-text-fill: -fx-text-secondary;
+    -fx-background-radius: 6 6 0 0;
+    -fx-padding: 10 16;
+}
+
+.tab:selected {
+    -fx-background-color: -fx-surface-bg;
+    -fx-text-fill: -fx-text-primary;
+    -fx-border-color: -fx-primary-accent;
+    -fx-border-width: 0 0 2 0;
+}
+
+.tab:hover {
+    -fx-background-color: -fx-hover-overlay;
+    -fx-text-fill: -fx-text-primary;
+}
+
+/* ================================ */
+/* Scrollbars - Subtle but Visible */
+/* ================================ */
+
+.scroll-bar {
+    -fx-background-color: -fx-secondary-bg;
+    -fx-border-color: -fx-border-subtle;
+}
+
+.scroll-bar .thumb {
+    -fx-background-color: -fx-border-medium;
+    -fx-background-radius: 4;
+}
+
+.scroll-bar .thumb:hover {
+    -fx-background-color: -fx-border-strong;
+}
+
+.scroll-bar .track {
+    -fx-background-color: -fx-tertiary-bg;
+    -fx-background-radius: 4;
+}
+
+/* ================================ */
+/* Status Indicators - Clear States */
+/* ================================ */
+
+.status-indicator {
+    -fx-background-color: -fx-elevated-bg;
+    -fx-border-color: -fx-border-medium;
+    -fx-border-width: 1;
+    -fx-background-radius: 20;
+    -fx-border-radius: 20;
+    -fx-padding: 6 12;
+}
+
+.status-secure {
+    -fx-border-color: -fx-success-accent;
+    -fx-text-fill: -fx-success-accent;
+}
+
+.status-warning {
+    -fx-border-color: -fx-warning-accent;
+    -fx-text-fill: -fx-warning-accent;
+}
+
+.status-error {
+    -fx-border-color: -fx-error-accent;
+    -fx-text-fill: -fx-error-accent;
+}
+
+/* ================================ */
+/* Animations - Subtle Enhancements */
+/* ================================ */
+
+.nav-button, .button, .action-button, .list-cell {
+    -fx-transition: all 0.2s ease;
+}
+
+/* ================================ */
+/* Remove All Problematic Transparency */
+/* ================================ */
+
+/* Override any glassmorphism effects */
+.glassmorphism-container,
+.glassmorphism-card,
+.glassmorphism-panel {
+    -fx-background-color: -fx-surface-bg !important;
+    -fx-border-color: -fx-border-subtle !important;
+    -fx-opacity: 1.0 !important;
+}
+
+/* Ensure all text is fully opaque */
+.label, .text, .button {
+    -fx-opacity: 1.0 !important;
+}
+
+/* ================================ */
+/* Light Theme Variant */
+/* ================================ */
+
+.root.light-theme {
+    -fx-primary-bg: #ffffff;
+    -fx-secondary-bg: #f8fafc;
+    -fx-tertiary-bg: #f1f5f9;
+    -fx-surface-bg: #ffffff;
+    -fx-elevated-bg: #f8fafc;
+    
+    -fx-text-primary: #1e293b;
+    -fx-text-secondary: #475569;
+    -fx-text-muted: #64748b;
+    -fx-text-accent: #2563eb;
+    
+    -fx-border-subtle: #e2e8f0;
+    -fx-border-medium: #cbd5e1;
+    -fx-border-strong: #94a3b8;
+    
+    -fx-hover-overlay: #f1f5f9;
+    -fx-pressed-overlay: #e2e8f0;
+}

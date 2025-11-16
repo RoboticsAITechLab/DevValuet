@@ -13,10 +13,11 @@
         <module>backend-core</module>
         <module>plugins</module>
         <module>backup-engine</module>
-    <module>cockpit-core</module>
+        <module>cockpit-core</module>
         <module>cockpit-ui</module>
         <module>cockpit-ai</module>
-    <module>offline-engine</module>
+        <module>offline-engine</module>
+        <module>frontend-ui</module>
     </modules>
 
     <properties>
@@ -26,6 +27,9 @@
     <spring.boot.version>3.5.0</spring.boot.version>
     <javafx.version>21.0.2</javafx.version>
         <sqlite.version>3.45.3.0</sqlite.version>
+        <!-- Web3j and Blockchain related versions -->
+        <web3j.version>4.10.3</web3j.version>
+        <bouncy.castle.version>1.78.1</bouncy.castle.version>
         <!-- enforce UTF-8 encoding for source and resources -->
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
@@ -50,6 +54,14 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
+
+    <dependencies>
+    <dependency>
+        <groupId>org.web3j</groupId>
+        <artifactId>core</artifactId>
+        <version>4.9.4</version>
+    </dependency>
+    </dependencies>
 
     <build>
         <pluginManagement>

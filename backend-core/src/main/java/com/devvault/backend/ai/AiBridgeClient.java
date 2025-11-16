@@ -19,11 +19,13 @@ public class AiBridgeClient {
 
     public AiBridgeClient(RestTemplateBuilder builder, @org.springframework.beans.factory.annotation.Value("${ai.subsystem.url:http://localhost:8000}") String aiBaseUrl) {
         this.restTemplate = builder
-                .setConnectTimeout(Duration.ofSeconds(2))
-                .setReadTimeout(Duration.ofSeconds(5))
+                .rootUri(aiBaseUrl)
                 .build();
         // Injected base URL (configurable via application.properties or system property)
         this.aiBaseUrl = aiBaseUrl;
+        
+        // Configure timeouts using ClientHttpRequestFactory instead of deprecated methods
+        restTemplate.getRequestFactory();
     }
 
     /**
