@@ -62,6 +62,19 @@ Contributors' share of the 40% pool is calculated based on:
 - Community engagement
 - Long-term maintenance
 
+#### **🐛 ERROR FIXING DOCUMENTATION REQUIREMENT:**
+For bug fixes and error resolution to be eligible for revenue sharing:
+
+**MANDATORY DOCUMENTATION**: Contributors must create `ERROR_FIX_README_[Username]_[Date].md` containing:
+- 👤 **GitHub Username**: Clear contributor identification
+- 📋 **Complete Error List**: All bugs/errors addressed
+- 🔧 **Solution Methodology**: Detailed resolution approach
+- 💻 **Code Implementation**: Before/after snippets with explanations
+- ✅ **Testing & Validation**: How the fix was verified
+- 📊 **Impact Analysis**: System improvement achieved
+
+**Non-compliance**: Bug fixes without proper documentation are ineligible for revenue points.
+
 #### **Revenue Distribution Formula:**
 ```
 Individual Share = (Individual Points / Total All Contributors Points) × 40% × Total Revenue

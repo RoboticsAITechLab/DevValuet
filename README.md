@@ -232,6 +232,28 @@ mvn javafx:run
 - **Performance**: No performance regressions
 - **Security**: Follow secure coding practices
 
+#### **🐛 MANDATORY ERROR FIXING DOCUMENTATION:**
+**For ANY bug fix or error resolution, you MUST provide:**
+
+**Required File**: `ERROR_FIX_README_[YourGitHubUsername]_[Date].md`
+
+**Must Include:**
+- 👤 **GitHub Username**: Your exact GitHub handle (@username)  
+- 📝 **Complete Error List**: All bugs/errors fixed in this contribution
+- 🔧 **Solution Details**: Step-by-step explanation of resolution approach
+- 💻 **Code Changes**: Before/after code snippets with detailed explanations
+- ✅ **Testing Process**: How you tested and validated each fix
+- 📈 **Impact Assessment**: How your fixes improve system functionality
+- 🔄 **Reproduction Steps**: Instructions for others to verify the fix
+
+**Documentation Standards:**
+- File must be placed in `/docs/error-fixes/` directory
+- Must be included in the same PR as your code fix
+- Must follow proper markdown formatting
+- Must be comprehensive enough for other developers to understand and learn from
+
+**⚠️ WARNING**: Bug fix contributions without proper documentation are NOT eligible for revenue sharing points!
+
 #### **⚖️ Legal Requirements:**
 - **Contributor Agreement**: Automatic acceptance upon first PR submission
 - **Original Work**: Confirm you own rights to contributed code

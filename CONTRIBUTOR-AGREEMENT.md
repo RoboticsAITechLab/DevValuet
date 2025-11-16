@@ -69,6 +69,30 @@ By submitting a pull request to DevVault Pro X, you automatically accept these t
 - **Impact Scoring**: Applied based on type and quality of contributions
 - **Revenue Calculation**: Updated quarterly based on contribution points
 
+### 🐛 **MANDATORY ERROR FIXING DOCUMENTATION**
+
+#### **For ANY Bug Fix or Error Resolution Contribution:**
+**REQUIRED FILE**: `ERROR_FIX_README_[YourGitHubUsername]_[Date].md`
+
+**Must Include:**
+- 👤 **GitHub Username**: Your exact GitHub handle (@username)
+- 📝 **Error List**: Complete list of all bugs/errors fixed
+- 🔧 **Solution Details**: Step-by-step explanation of how each error was resolved
+- 💻 **Code Changes**: Before/after code snippets with explanations
+- ✅ **Testing Process**: How you tested and validated the fix
+- 📈 **Impact Assessment**: How your fix improves the system
+- 🔄 **Reproduction Steps**: Instructions to verify the fix works
+
+**Documentation Standards:**
+- File must be included in the same PR as the code fix
+- Must follow proper markdown formatting
+- Must be comprehensive enough for other developers to understand
+- Must be placed in `/docs/error-fixes/` directory
+
+**⚠️ WARNING**: Bug fix contributions without proper documentation will NOT be eligible for revenue sharing points!
+
+**Example File Name**: `ERROR_FIX_README_johnsmith_2024-11-16.md`
+
 ### **Manual Reporting:**
 For contributions outside GitHub (documentation, community support, etc.):
 - Submit monthly contribution report
