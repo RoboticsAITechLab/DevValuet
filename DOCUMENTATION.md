@@ -321,9 +321,11 @@ public class DataManager {
 ### **Revenue Sharing Model:**
 - **60%** - Original Development Team (RoboticsAITechLab)
 - **40%** - Community Contributors Pool
+- **🚨 CRITICAL CONDITION**: Revenue sharing ONLY when software generates actual revenue
 - **Manual Distribution** based on contribution quality and impact
 - **Quarterly Payments** via UPI or Bank Transfer
 - **No Minimum Threshold** - every valuable contribution gets compensated
+- **Zero Revenue = Zero Sharing**: If no actual earnings, contributors get nothing
 
 ---
 

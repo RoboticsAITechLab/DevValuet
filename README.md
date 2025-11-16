@@ -312,19 +312,23 @@ DevVault Pro X Earnings Distribution (Legally Binding):
 
 #### **📊 Revenue Distribution Guidelines:**
 ```
-Suggested Individual Payment = (Contributor Points / Total Points) × 40% × Total Revenue
+Suggested Individual Payment = (Contributor Points / Total Points) × 40% × ACTUAL QUARTERLY REVENUE
 ```
+**⚠️ IMPORTANT**: This formula ONLY applies when software generates **ACTUAL REVENUE**. If quarterly revenue = ₹0, then contributor payments = ₹0.
+
 **Note**: This formula serves as a **guideline only**. Final distribution amounts are determined manually by RoboticsAITechLab team based on:
 - Contribution quality and impact
 - Code review results
 - Community engagement
 - Long-term project value
 - Documentation quality
+- **Most importantly**: Actual revenue generation
 
 #### **💳 Payment Process:**
 - **Quarterly Reviews**: Manual evaluation every 3 months by RoboticsAITechLab team
 - **Manual Distribution**: Revenue sharing decisions made by original development team
 - **Point-Based Guidelines**: Contribution scoring used as reference for distribution decisions
+- **🚨 REVENUE DEPENDENCY**: Payments ONLY when software generates actual revenue
 - **Work-Based Payment**: Payment amount based purely on contribution value (no minimum threshold)
 - **Payment Methods**: UPI, Bank Transfer (NEFT/RTGS/IMPS)
 - **Final Authority**: RoboticsAITechLab retains final decision on all revenue distributions
