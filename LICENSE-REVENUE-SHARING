@@ -77,13 +77,27 @@ For bug fixes and error resolution to be eligible for revenue sharing:
 
 #### **Revenue Distribution Formula:**
 ```
-Individual Share = (Individual Points / Total All Contributors Points) × 40% × Total Revenue
+Suggested Distribution = (Individual Points / Total All Contributors Points) × 40% × Total Revenue
 ```
+
+**MANUAL DISTRIBUTION AUTHORITY:**
+The original development team (RoboticsAITechLab) retains **final decision authority** on all revenue distributions. The point-based formula serves as a **guideline only**. Final payments are determined through quarterly manual review considering:
+
+- **Contribution Quality**: Code quality, testing, documentation
+- **Project Impact**: How much the contribution improves the software
+- **Community Value**: Helping other contributors, issue resolution
+- **Long-term Benefit**: Ongoing value to the project ecosystem
+- **Compliance**: Following guidelines and documentation requirements
+
+**Distribution Timeline**: Quarterly manual review and payment decisions.
 
 ### **4. PAYMENT TERMS**
 
-#### **Quarterly Distributions:**
-- Revenue sharing payments made **every quarter**
+#### **Manual Quarterly Reviews:**
+- Revenue sharing payments reviewed and decided **manually every quarter**
+- **RoboticsAITechLab team** makes final distribution decisions
+- Point system used as **reference guidelines**, not automatic calculation
+- Contributors notified of payment decisions via email
 - Minimum payout threshold: **₹4,000 INR**
 - Payments below threshold carried forward to next quarter
 - Payment via **UPI** or **Bank Transfer** (NEFT/RTGS/IMPS)

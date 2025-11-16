@@ -15,7 +15,8 @@
 
 #### **💰 Revenue Sharing Participation:**
 - Participate in the 40% contributor revenue pool as outlined in LICENSE-REVENUE-SHARING
-- Accept quarterly payment distributions based on contribution impact scoring
+- Accept **manual quarterly payment decisions** made by RoboticsAITechLab team
+- Understand that point system serves as guidelines, not automatic calculation
 - Comply with revenue reporting and tax obligations
 
 #### **🏆 Attribution Rights:**
