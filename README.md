@@ -8,10 +8,17 @@
 ![JavaFX](https://img.shields.io/badge/JavaFX-21-blue?style=for-the-badge&logo=java)
 ![Python](https://img.shields.io/badge/Python-3.10+-yellow?style=for-the-badge&logo=python)
 ![Status](https://img.shields.io/badge/Status-MVP_Development-blue?style=for-the-badge)
+![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)
+![Contributors](https://img.shields.io/badge/Contributors-Welcome-brightgreen?style=for-the-badge)
+![Revenue Share](https://img.shields.io/badge/Revenue_Share-40%25-gold?style=for-the-badge)
 
 **🎯 Early Development - Started November 2025**
 
 *Enterprise Data Management • AI Analytics • Desktop Application Platform*
+
+[![GitHub stars](https://img.shields.io/github/stars/RoboticsAITechLab/DevValuet?style=social)](https://github.com/RoboticsAITechLab/DevValuet/stargazers)
+[![GitHub forks](https://img.shields.io/github/forks/RoboticsAITechLab/DevValuet?style=social)](https://github.com/RoboticsAITechLab/DevValuet/network/members)
+[![GitHub watchers](https://img.shields.io/github/watchers/RoboticsAITechLab/DevValuet?style=social)](https://github.com/RoboticsAITechLab/DevValuet/watchers)
 
 </div>
 
@@ -41,6 +48,8 @@
 - **[📝 CONTRIBUTOR AGREEMENT](CONTRIBUTOR-AGREEMENT.md)** - Legal framework for contributors with automatic enrollment
 
 ### **🛠️ Developer Resources:**
+- **[🤝 CONTRIBUTING GUIDE](CONTRIBUTING.md)** - Complete contribution guidelines and revenue sharing details
+- **[📜 CODE OF CONDUCT](CODE_OF_CONDUCT.md)** - Community guidelines and standards
 - **[🐛 Error Fix Documentation](docs/error-fixes/)** - Bug fixing documentation requirements and examples
 - **[📋 CHANGELOG](CHANGELOG.md)** - Version history and release notes
 - **[🔧 DEVELOPER SETUP GUIDE](docs/DEVELOPER_SETUP.md)** - Complete setup instructions for contributors
