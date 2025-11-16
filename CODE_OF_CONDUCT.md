@@ -62,8 +62,8 @@ This Code of Conduct applies within all community spaces, and also applies when 
 
 Instances of abusive, harassing, or otherwise unacceptable behavior may be reported to the community leaders responsible for enforcement at:
 
-**📧 Email**: [contact-email]@devvault.pro  
-**📱 GitHub**: Create a private issue or contact maintainers directly  
+**📧 Email**: devvault.community@gmail.com  
+**📱 GitHub**: Create a private issue or contact @RoboticsAITechLab directly  
 **⏰ Response Time**: We aim to respond within 24-48 hours
 
 All complaints will be reviewed and investigated promptly and fairly.
@@ -137,15 +137,15 @@ Community leaders will follow these Community Impact Guidelines in determining t
 ## 📞 **Contact Information**
 
 ### **👥 Community Leaders:**
-- **Project Founder**: [Name] - Independent Software Developer & AI Research Specialist
-- **Technical Lead**: [Name] - Java & Spring Boot Expert  
-- **Community Manager**: [Name] - Open Source Advocate
+- **Project Founder**: Ankit - Independent Software Developer & AI Research Specialist
+- **Technical Lead**: Community-driven (open for contributors)  
+- **Community Manager**: To be appointed from active contributors
 
 ### **📧 Contact Methods:**
-- **General Inquiries**: hello@devvault.pro
-- **Technical Issues**: tech@devvault.pro  
-- **Community Issues**: community@devvault.pro
-- **Business Inquiries**: business@devvault.pro
+- **General Inquiries**: devvault.project@gmail.com
+- **Technical Issues**: devvault.tech@gmail.com  
+- **Community Issues**: devvault.community@gmail.com
+- **Business Inquiries**: devvault.business@gmail.com
 
 ### **⏰ Response Times:**
 - **Code of Conduct Violations**: 24-48 hours
