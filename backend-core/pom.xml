@@ -84,7 +84,60 @@
             <artifactId>backup-engine</artifactId>
             <version>${project.version}</version>
         </dependency>
-    </dependencies>
+
+        <!-- Web3j for REAL blockchain integration -->
+        <dependency>
+            <groupId>org.web3j</groupId>
+            <artifactId>core</artifactId>
+            <version>4.10.3</version>
+        </dependency>
+        
+        <!-- Web3j crypto support -->
+        <dependency>
+            <groupId>org.web3j</groupId>
+            <artifactId>crypto</artifactId>
+            <version>4.10.3</version>
+        </dependency>
+        
+        <!-- Web3j contract support -->
+        <dependency>
+            <groupId>org.web3j</groupId>
+            <artifactId>contracts</artifactId>
+            <version>4.10.3</version>
+        </dependency>
+
+        <!-- Bouncy Castle for advanced cryptography -->
+        <dependency>
+            <groupId>org.bouncycastle</groupId>
+            <artifactId>bcprov-jdk18on</artifactId>
+            <version>1.78.1</version>
+        </dependency>
+        </dependencies>
+
+    <repositories>
+        <repository>
+            <id>central</id>
+            <name>Maven Central</name>
+            <url>https://repo.maven.apache.org/maven2</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+        <repository>
+            <id>bouncycastle</id>
+            <name>Bouncy Castle Repository</name>
+            <url>https://www.bouncycastle.org/repo/</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+    </repositories>
 
     <build>
         <plugins>
@@ -99,6 +152,8 @@
                 <version>3.0.0</version>
                 <configuration>
                     <useModulePath>false</useModulePath>
+                    <!-- Add JVM flag to allow dynamic agent loading for Mockito -->
+                    <argLine>-XX:+EnableDynamicAgentLoading</argLine>
                     <!-- Exclude long-running/integration tests from the unit test phase.
                          Integration tests follow the *IntegrationTest.java naming and will be
                          run by the Failsafe plugin during the integration-test/verify phases. -->

@@ -1,0 +1,57 @@
+{
+  "gateway_config": {
+    "name": "Aegis-2100 Advanced AI Gateway",
+    "version": "2.0.0",
+    "description": "Enterprise AI Security Bridge with Advanced Features"
+  },
+  "security": {
+    "jwt_expiry_hours": 24,
+    "api_key_default_expiry_hours": 24,
+    "max_api_keys_per_user": 5,
+    "password_min_length": 8,
+    "session_timeout_minutes": 120
+  },
+  "rate_limiting": {
+    "window_seconds": 60,
+    "max_requests_per_window": 100,
+    "burst_limit": 20,
+    "premium_multiplier": 2.0
+  },
+  "ai_subsystem": {
+    "base_url": "http://localhost:8000",
+    "timeout_seconds": 60,
+    "retry_attempts": 3,
+    "retry_delay_ms": 1000,
+    "max_concurrent_requests": 50
+  },
+  "monitoring": {
+    "health_check_interval_seconds": 30,
+    "stats_retention_hours": 168,
+    "enable_detailed_logging": true,
+    "log_level": "INFO"
+  },
+  "features": {
+    "authentication": true,
+    "rate_limiting": true,
+    "health_monitoring": true,
+    "request_analytics": true,
+    "intelligent_routing": true,
+    "priority_queuing": true,
+    "emergency_controls": true
+  },
+  "endpoints": {
+    "validate": "/validate",
+    "predict": "/predict",
+    "vision": "/vision/detect",
+    "learn": "/learn/feedback",
+    "analyze": "/analyze",
+    "train": "/train"
+  },
+  "priorities": {
+    "emergency": 10,
+    "high": 8,
+    "normal": 5,
+    "low": 3,
+    "background": 1
+  }
+}

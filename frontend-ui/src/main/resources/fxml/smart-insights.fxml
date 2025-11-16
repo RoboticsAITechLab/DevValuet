@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Text?>
+
+<BorderPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" 
+            fx:controller="com.devvault.frontend.controllers.SmartInsightsController"
+            styleClass="smart-insights-view">
+    
+    <!-- Header -->
+    <top>
+        <HBox styleClass="insights-header" alignment="CENTER_LEFT" spacing="20">
+            <padding>
+                <Insets topRightBottomLeft="20" />
+            </padding>
+            
+            <FontAwesomeIconView icon="BRAIN" size="24" styleClass="header-icon" />
+            <Label fx:id="titleLabel" text="Smart Insights Dashboard" styleClass="insights-title" />
+            
+            <Region HBox.hgrow="ALWAYS" />
+            
+            <Button fx:id="generateButton" text="Generate" styleClass="header-action-button" />
+            <Button fx:id="exportButton" text="Export" styleClass="header-action-button" />
+            <Button fx:id="backButton" text="Back" styleClass="header-action-button,primary" />
+        </HBox>
+    </top>
+    
+    <!-- Main Content -->
+    <center>
+        <ScrollPane fitToWidth="true" styleClass="insights-scroll-pane">
+            <VBox spacing="25">
+                <padding>
+                    <Insets topRightBottomLeft="25" />
+                </padding>
+                
+                <!-- Overview Cards Row -->
+                <HBox spacing="25" alignment="CENTER">
+                    <!-- Analytics Overview Card -->
+                    <VBox fx:id="analyticsOverviewCard" styleClass="insights-card,analytics-overview" spacing="10" HBox.hgrow="ALWAYS">
+                        <padding>
+                            <Insets topRightBottomLeft="18" />
+                        </padding>
+                        
+                        <HBox alignment="CENTER_LEFT" spacing="8">
+                            <FontAwesomeIconView icon="BAR_CHART" size="18" styleClass="card-icon,analytics-icon" />
+                            <Label text="Analytics Overview" styleClass="card-title" />
+                        </HBox>
+                        
+                        <VBox spacing="6">
+                            <Text fx:id="totalProjectsText" styleClass="insights-text" />
+                            <Text fx:id="activeProjectsText" styleClass="insights-text,active-count" />
+                            <Text fx:id="completedProjectsText" styleClass="insights-text,completed-count" />
+                            <Text fx:id="successRateText" styleClass="insights-text,success-rate" />
+                        </VBox>
+                    </VBox>
+                    
+                    <!-- Key Insights Card -->
+                    <VBox fx:id="keyInsightsCard" styleClass="insights-card,key-insights" spacing="10" HBox.hgrow="ALWAYS">
+                        <padding>
+                            <Insets topRightBottomLeft="18" />
+                        </padding>
+                        
+                        <HBox alignment="CENTER_LEFT" spacing="8">
+                            <FontAwesomeIconView icon="LIGHTBULB_ALT" size="18" styleClass="card-icon,insights-icon" />
+                            <Label text="Key Insights" styleClass="card-title" />
+                        </HBox>
+                        
+                        <VBox spacing="6">
+                            <Text fx:id="codeQualityText" styleClass="insights-text,quality-header" />
+                            <Text fx:id="qualityScoreText" styleClass="insights-text,quality-score" />
+                            <Text fx:id="issuesCountText" styleClass="insights-text,issues-minor" />
+                            <Text fx:id="bugsCountText" styleClass="insights-text,bugs-critical" />
+                        </VBox>
+                    </VBox>
+                    
+                    <!-- Trend Analysis Card -->
+                    <VBox fx:id="trendAnalysisCard" styleClass="insights-card,trend-analysis" spacing="10" HBox.hgrow="ALWAYS">
+                        <padding>
+                            <Insets topRightBottomLeft="18" />
+                        </padding>
+                        
+                        <HBox alignment="CENTER_LEFT" spacing="8">
+                            <FontAwesomeIconView icon="TRENDING_UP" size="18" styleClass="card-icon,trend-icon" />
+                            <Label text="Trend Analysis" styleClass="card-title" />
+                        </HBox>
+                        
+                        <VBox spacing="6">
+                            <Text fx:id="activityTrendText" styleClass="insights-text,trend-positive" />
+                            <Text fx:id="performanceTrendText" styleClass="insights-text,trend-positive" />
+                            <Text fx:id="efficiencyTrendText" styleClass="insights-text,trend-positive" />
+                            <Text fx:id="innovationTrendText" styleClass="insights-text,trend-positive" />
+                        </VBox>
+                    </VBox>
+                </HBox>
+                
+                <!-- AI Recommendations Section -->
+                <VBox spacing="12">
+                    <HBox alignment="CENTER_LEFT" spacing="8">
+                        <FontAwesomeIconView icon="MAGIC" size="16" styleClass="section-icon" />
+                        <Label text="AI Recommendations" styleClass="section-title" />
+                    </HBox>
+                    
+                    <ScrollPane fx:id="recommendationsScrollPane" styleClass="recommendations-scroll" maxHeight="250" fitToWidth="true">
+                        <VBox fx:id="recommendationsContainer" spacing="8">
+                            <padding>
+                                <Insets topRightBottomLeft="12" />
+                            </padding>
+                        </VBox>
+                    </ScrollPane>
+                </VBox>
+                
+                <!-- Recent Reports Section -->
+                <VBox spacing="12">
+                    <HBox alignment="CENTER_LEFT" spacing="8">
+                        <FontAwesomeIconView icon="FILE_TEXT_ALT" size="16" styleClass="section-icon" />
+                        <Label text="Recent Reports" styleClass="section-title" />
+                    </HBox>
+                    
+                    <ScrollPane fx:id="reportsScrollPane" styleClass="reports-scroll" maxHeight="200" fitToWidth="true">
+                        <VBox fx:id="reportsContainer" spacing="6">
+                            <padding>
+                                <Insets topRightBottomLeft="12" />
+                            </padding>
+                        </VBox>
+                    </ScrollPane>
+                </VBox>
+                
+                <!-- Insights Controls Section -->
+                <VBox spacing="12">
+                    <HBox alignment="CENTER_LEFT" spacing="8">
+                        <FontAwesomeIconView icon="SLIDERS" size="16" styleClass="section-icon" />
+                        <Label text="Insights Controls" styleClass="section-title" />
+                    </HBox>
+                    
+                    <HBox spacing="12" alignment="CENTER">
+                        <Button fx:id="generateAIReportButton" text="Generate AI Report" styleClass="insights-button,ai-report-button" />
+                        <Button fx:id="customAnalysisButton" text="Custom Analysis" styleClass="insights-button,analysis-button" />
+                        <Button fx:id="configureButton" text="Configure" styleClass="insights-button,configure-button" />
+                        <Button fx:id="refreshButton" text="Refresh" styleClass="insights-button,refresh-button" />
+                    </HBox>
+                </VBox>
+            </VBox>
+        </ScrollPane>
+    </center>
+</BorderPane>

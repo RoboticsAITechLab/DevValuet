@@ -1,0 +1,452 @@
+/* DevVault Pro X - CSS3 Animations and Transitions */
+/* Modern animations with hardware acceleration */
+
+/* ================================ */
+/* Keyframe Animations */
+/* ================================ */
+
+@keyframes neonPulse {
+    0% {
+        -fx-effect: dropshadow(gaussian, rgba(0, 212, 255, 0.4), 10, 0.3, 0, 0);
+        -fx-scale-x: 1.0;
+        -fx-scale-y: 1.0;
+    }
+    50% {
+        -fx-effect: dropshadow(gaussian, rgba(0, 212, 255, 0.8), 20, 0.6, 0, 0);
+        -fx-scale-x: 1.05;
+        -fx-scale-y: 1.05;
+    }
+    100% {
+        -fx-effect: dropshadow(gaussian, rgba(0, 212, 255, 0.4), 10, 0.3, 0, 0);
+        -fx-scale-x: 1.0;
+        -fx-scale-y: 1.0;
+    }
+}
+
+@keyframes glassShimmer {
+    0% {
+        -fx-background-color: rgba(255, 255, 255, 0.05);
+    }
+    50% {
+        -fx-background-color: rgba(255, 255, 255, 0.15);
+    }
+    100% {
+        -fx-background-color: rgba(255, 255, 255, 0.05);
+    }
+}
+
+@keyframes slideInFromLeft {
+    0% {
+        -fx-translate-x: -100px;
+        -fx-opacity: 0.0;
+    }
+    100% {
+        -fx-translate-x: 0px;
+        -fx-opacity: 1.0;
+    }
+}
+
+@keyframes slideInFromRight {
+    0% {
+        -fx-translate-x: 100px;
+        -fx-opacity: 0.0;
+    }
+    100% {
+        -fx-translate-x: 0px;
+        -fx-opacity: 1.0;
+    }
+}
+
+@keyframes fadeInUp {
+    0% {
+        -fx-translate-y: 30px;
+        -fx-opacity: 0.0;
+    }
+    100% {
+        -fx-translate-y: 0px;
+        -fx-opacity: 1.0;
+    }
+}
+
+@keyframes scaleIn {
+    0% {
+        -fx-scale-x: 0.8;
+        -fx-scale-y: 0.8;
+        -fx-opacity: 0.0;
+    }
+    100% {
+        -fx-scale-x: 1.0;
+        -fx-scale-y: 1.0;
+        -fx-opacity: 1.0;
+    }
+}
+
+@keyframes rotateGlow {
+    0% {
+        -fx-rotate: 0deg;
+        -fx-effect: dropshadow(gaussian, rgba(0, 212, 255, 0.3), 10, 0.3, 0, 0);
+    }
+    25% {
+        -fx-rotate: 90deg;
+        -fx-effect: dropshadow(gaussian, rgba(139, 95, 191, 0.5), 15, 0.4, 0, 0);
+    }
+    50% {
+        -fx-rotate: 180deg;
+        -fx-effect: dropshadow(gaussian, rgba(0, 255, 136, 0.5), 15, 0.4, 0, 0);
+    }
+    75% {
+        -fx-rotate: 270deg;
+        -fx-effect: dropshadow(gaussian, rgba(255, 184, 0, 0.5), 15, 0.4, 0, 0);
+    }
+    100% {
+        -fx-rotate: 360deg;
+        -fx-effect: dropshadow(gaussian, rgba(0, 212, 255, 0.3), 10, 0.3, 0, 0);
+    }
+}
+
+@keyframes breathingGlow {
+    0%, 100% {
+        -fx-effect: dropshadow(gaussian, rgba(0, 212, 255, 0.2), 5, 0.2, 0, 0);
+    }
+    50% {
+        -fx-effect: dropshadow(gaussian, rgba(0, 212, 255, 0.6), 15, 0.5, 0, 0);
+    }
+}
+
+/* ================================ */
+/* Animation Classes */
+/* ================================ */
+
+.animate-neon-pulse {
+    -fx-animation: neonPulse 2s ease-in-out infinite;
+}
+
+.animate-glass-shimmer {
+    -fx-animation: glassShimmer 3s ease-in-out infinite;
+}
+
+.animate-slide-in-left {
+    -fx-animation: slideInFromLeft 0.5s ease-out;
+}
+
+.animate-slide-in-right {
+    -fx-animation: slideInFromRight 0.5s ease-out;
+}
+
+.animate-fade-in-up {
+    -fx-animation: fadeInUp 0.6s ease-out;
+}
+
+.animate-scale-in {
+    -fx-animation: scaleIn 0.4s ease-out;
+}
+
+.animate-rotate-glow {
+    -fx-animation: rotateGlow 4s linear infinite;
+}
+
+.animate-breathing-glow {
+    -fx-animation: breathingGlow 2s ease-in-out infinite;
+}
+
+/* ================================ */
+/* Transition Effects */
+/* ================================ */
+
+.smooth-transition {
+    -fx-transition: all 0.3s ease-in-out;
+}
+
+.fast-transition {
+    -fx-transition: all 0.15s ease-out;
+}
+
+.slow-transition {
+    -fx-transition: all 0.6s ease-in-out;
+}
+
+.bounce-transition {
+    -fx-transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+/* ================================ */
+/* Hover Animations */
+/* ================================ */
+
+.hover-lift {
+    -fx-transition: all 0.3s ease;
+}
+
+.hover-lift:hover {
+    -fx-translate-y: -5px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 20, 0.4, 0, 5);
+}
+
+.hover-glow {
+    -fx-transition: all 0.3s ease;
+}
+
+.hover-glow:hover {
+    -fx-effect: dropshadow(gaussian, rgba(0, 212, 255, 0.6), 20, 0.5, 0, 0);
+    -fx-scale-x: 1.02;
+    -fx-scale-y: 1.02;
+}
+
+.hover-scale {
+    -fx-transition: all 0.2s ease;
+}
+
+.hover-scale:hover {
+    -fx-scale-x: 1.05;
+    -fx-scale-y: 1.05;
+}
+
+.hover-blur {
+    -fx-transition: all 0.3s ease;
+}
+
+.hover-blur:hover {
+    -fx-effect: dropshadow(gaussian, rgba(0, 212, 255, 0.4), 15, 0.8, 0, 0);
+}
+
+/* ================================ */
+/* Loading Animations */
+/* ================================ */
+
+@keyframes spinLoader {
+    0% {
+        -fx-rotate: 0deg;
+    }
+    100% {
+        -fx-rotate: 360deg;
+    }
+}
+
+@keyframes pulseLoader {
+    0%, 100% {
+        -fx-scale-x: 1.0;
+        -fx-scale-y: 1.0;
+        -fx-opacity: 1.0;
+    }
+    50% {
+        -fx-scale-x: 0.8;
+        -fx-scale-y: 0.8;
+        -fx-opacity: 0.5;
+    }
+}
+
+@keyframes dotsLoader {
+    0%, 20% {
+        -fx-scale-x: 1.0;
+        -fx-scale-y: 1.0;
+        -fx-opacity: 1.0;
+    }
+    50% {
+        -fx-scale-x: 1.5;
+        -fx-scale-y: 1.5;
+        -fx-opacity: 0.7;
+    }
+    80%, 100% {
+        -fx-scale-x: 1.0;
+        -fx-scale-y: 1.0;
+        -fx-opacity: 1.0;
+    }
+}
+
+.loading-spinner {
+    -fx-animation: spinLoader 1s linear infinite;
+}
+
+.loading-pulse {
+    -fx-animation: pulseLoader 1.5s ease-in-out infinite;
+}
+
+.loading-dots {
+    -fx-animation: dotsLoader 1.4s ease-in-out infinite;
+}
+
+/* ================================ */
+/* Navigation Animations */
+/* ================================ */
+
+.nav-fade-in {
+    -fx-animation: fadeInUp 0.8s ease-out;
+}
+
+.nav-slide-in {
+    -fx-animation: slideInFromLeft 0.6s ease-out;
+}
+
+/* Staggered animation delays for navigation items */
+.nav-item-1 { -fx-animation-delay: 0.1s; }
+.nav-item-2 { -fx-animation-delay: 0.2s; }
+.nav-item-3 { -fx-animation-delay: 0.3s; }
+.nav-item-4 { -fx-animation-delay: 0.4s; }
+.nav-item-5 { -fx-animation-delay: 0.5s; }
+.nav-item-6 { -fx-animation-delay: 0.6s; }
+.nav-item-7 { -fx-animation-delay: 0.7s; }
+
+/* ================================ */
+/* Card Animations */
+/* ================================ */
+
+@keyframes cardFlip {
+    0% {
+        -fx-scale-x: 1.0;
+        -fx-rotate-y: 0deg;
+    }
+    50% {
+        -fx-scale-x: 0.8;
+        -fx-rotate-y: 90deg;
+    }
+    100% {
+        -fx-scale-x: 1.0;
+        -fx-rotate-y: 180deg;
+    }
+}
+
+@keyframes cardSlideUp {
+    0% {
+        -fx-translate-y: 50px;
+        -fx-opacity: 0.0;
+        -fx-scale-x: 0.95;
+        -fx-scale-y: 0.95;
+    }
+    100% {
+        -fx-translate-y: 0px;
+        -fx-opacity: 1.0;
+        -fx-scale-x: 1.0;
+        -fx-scale-y: 1.0;
+    }
+}
+
+.card-flip {
+    -fx-animation: cardFlip 0.6s ease-in-out;
+}
+
+.card-slide-up {
+    -fx-animation: cardSlideUp 0.5s ease-out;
+}
+
+/* ================================ */
+/* Progress Animations */
+/* ================================ */
+
+@keyframes progressGlow {
+    0%, 100% {
+        -fx-effect: dropshadow(gaussian, rgba(0, 212, 255, 0.3), 5, 0.2, 0, 0);
+    }
+    50% {
+        -fx-effect: dropshadow(gaussian, rgba(0, 212, 255, 0.8), 12, 0.5, 0, 0);
+    }
+}
+
+@keyframes progressSlide {
+    0% {
+        -fx-background-position-x: -200px;
+    }
+    100% {
+        -fx-background-position-x: 200px;
+    }
+}
+
+.progress-glow {
+    -fx-animation: progressGlow 2s ease-in-out infinite;
+}
+
+.progress-animated {
+    -fx-animation: progressSlide 2s linear infinite;
+}
+
+/* ================================ */
+/* Chart Animations */
+/* ================================ */
+
+@keyframes chartLineGrow {
+    0% {
+        -fx-stroke-dash-array: 0 1000;
+    }
+    100% {
+        -fx-stroke-dash-array: 1000 0;
+    }
+}
+
+@keyframes chartBarGrow {
+    0% {
+        -fx-scale-y: 0.0;
+    }
+    100% {
+        -fx-scale-y: 1.0;
+    }
+}
+
+.chart-line-animated {
+    -fx-animation: chartLineGrow 2s ease-in-out;
+}
+
+.chart-bar-animated {
+    -fx-animation: chartBarGrow 1s ease-out;
+}
+
+/* ================================ */
+/* Modal and Dialog Animations */
+/* ================================ */
+
+@keyframes modalFadeIn {
+    0% {
+        -fx-opacity: 0.0;
+        -fx-scale-x: 0.9;
+        -fx-scale-y: 0.9;
+    }
+    100% {
+        -fx-opacity: 1.0;
+        -fx-scale-x: 1.0;
+        -fx-scale-y: 1.0;
+    }
+}
+
+@keyframes modalSlideDown {
+    0% {
+        -fx-translate-y: -50px;
+        -fx-opacity: 0.0;
+    }
+    100% {
+        -fx-translate-y: 0px;
+        -fx-opacity: 1.0;
+    }
+}
+
+.modal-fade-in {
+    -fx-animation: modalFadeIn 0.4s ease-out;
+}
+
+.modal-slide-down {
+    -fx-animation: modalSlideDown 0.5s ease-out;
+}
+
+/* ================================ */
+/* Performance Optimizations */
+/* ================================ */
+
+.hardware-accelerated {
+    -fx-transform-origin: center;
+    -fx-cache: true;
+    -fx-cache-hint: speed;
+}
+
+/* Reduce animations on lower-end devices */
+@media (prefers-reduced-motion: reduce) {
+    .animate-neon-pulse,
+    .animate-glass-shimmer,
+    .animate-rotate-glow,
+    .animate-breathing-glow {
+        -fx-animation: none;
+    }
+    
+    .smooth-transition,
+    .fast-transition,
+    .slow-transition,
+    .bounce-transition {
+        -fx-transition: none;
+    }
+}

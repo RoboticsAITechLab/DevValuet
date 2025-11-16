@@ -1,0 +1,181 @@
+/*
+ * DevVault Pro X - Simple JavaFX Compatible Theme
+ * Basic dark theme for JavaFX without unsupported CSS features
+ */
+
+/* Root Variables */
+.root {
+    /* Colors that work in JavaFX */
+    -fx-base: #151a23;
+    -fx-background: #0e1013;
+    -fx-control-inner-background: #1a1f2a;
+    -fx-accent: #00d4ff;
+    -fx-text-fill: white;
+}
+
+/* Main Dashboard */
+.main-dashboard {
+    -fx-background-color: linear-gradient(to bottom, #0e1013, #151a23);
+}
+
+/* Header Bar */
+.header-bar {
+    -fx-background-color: #151a23;
+    -fx-border-color: #333840;
+    -fx-border-width: 0 0 1 0;
+    -fx-padding: 10;
+}
+
+/* Navigation Panel */
+.navigation-panel {
+    -fx-background-color: #151a23;
+    -fx-border-color: #333840;
+    -fx-border-width: 0 1 0 0;
+    -fx-padding: 10;
+}
+
+/* Navigation Buttons */
+.nav-button {
+    -fx-background-color: transparent;
+    -fx-text-fill: #b4bcc8;
+    -fx-border-color: transparent;
+    -fx-padding: 12 16;
+    -fx-alignment: center-left;
+}
+
+.nav-button:hover {
+    -fx-background-color: #1a1f2a;
+    -fx-text-fill: #00d4ff;
+}
+
+.nav-button:armed {
+    -fx-background-color: #00d4ff;
+    -fx-text-fill: white;
+}
+
+/* Status Panel */
+.status-panel {
+    -fx-background-color: #1a1f2a;
+    -fx-border-color: #333840;
+    -fx-border-radius: 8;
+    -fx-background-radius: 8;
+    -fx-padding: 15;
+}
+
+/* Content Panel */
+.content-panel {
+    -fx-background-color: #0e1013;
+    -fx-border-color: #333840;
+    -fx-border-width: 0 0 0 1;
+    -fx-padding: 20;
+}
+
+/* Project Cards */
+.project-card {
+    -fx-background-color: #1a1f2a;
+    -fx-border-color: #333840;
+    -fx-border-radius: 10;
+    -fx-background-radius: 10;
+    -fx-padding: 15;
+    -fx-spacing: 10;
+}
+
+.project-card:hover {
+    -fx-background-color: #252a35;
+    -fx-border-color: #00d4ff;
+}
+
+/* Buttons */
+.button {
+    -fx-background-color: #1a1f2a;
+    -fx-text-fill: #b4bcc8;
+    -fx-border-color: #333840;
+    -fx-border-radius: 6;
+    -fx-background-radius: 6;
+    -fx-padding: 8 12;
+}
+
+.button:hover {
+    -fx-background-color: #252a35;
+    -fx-text-fill: #00d4ff;
+    -fx-border-color: #00d4ff;
+}
+
+.button:armed {
+    -fx-background-color: #00d4ff;
+    -fx-text-fill: white;
+}
+
+/* Text Fields */
+.text-field {
+    -fx-background-color: #1a1f2a;
+    -fx-text-fill: white;
+    -fx-prompt-text-fill: #6b7280;
+    -fx-border-color: #333840;
+    -fx-border-radius: 6;
+    -fx-background-radius: 6;
+    -fx-padding: 8 12;
+}
+
+.text-field:focused {
+    -fx-border-color: #00d4ff;
+    -fx-effect: dropshadow(gaussian, #00d4ff, 5, 0, 0, 0);
+}
+
+/* Progress Bars */
+.progress-bar {
+    -fx-background-color: #333840;
+    -fx-accent: #00d4ff;
+    -fx-background-radius: 10;
+}
+
+.progress-bar .bar {
+    -fx-background-color: #00d4ff;
+    -fx-background-radius: 10;
+    -fx-background-insets: 0;
+}
+
+/* Labels */
+.label {
+    -fx-text-fill: white;
+}
+
+.metric-label {
+    -fx-text-fill: #6b7280;
+    -fx-font-size: 12px;
+}
+
+.metric-value {
+    -fx-text-fill: #00d4ff;
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+}
+
+/* Status indicators */
+.status-online {
+    -fx-text-fill: #00ff88;
+}
+
+.status-offline {
+    -fx-text-fill: #ff4757;
+}
+
+.status-warning {
+    -fx-text-fill: #ffb800;
+}
+
+/* Hub action buttons */
+.hub-action-button {
+    -fx-background-color: #1a1f2a;
+    -fx-text-fill: #b4bcc8;
+    -fx-border-color: #333840;
+    -fx-border-radius: 8;
+    -fx-background-radius: 8;
+    -fx-padding: 8 12;
+    -fx-font-size: 14px;
+}
+
+.hub-action-button:hover {
+    -fx-background-color: #00d4ff;
+    -fx-text-fill: white;
+}

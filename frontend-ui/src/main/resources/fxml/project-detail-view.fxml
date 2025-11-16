@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
+
+<!--
+Project Detail View - Deep dive into project status, Git, dataset, backup, logs
+Implementation of the 8-tab interface with real-time metrics
+-->
+
+<BorderPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" 
+            fx:controller="com.devvault.frontend.controllers.ProjectDetailController"
+            styleClass="project-detail-view">
+
+    <!-- TOP: Project Header -->
+    <top>
+        <HBox styleClass="project-header-bar" alignment="CENTER_LEFT" spacing="20" prefHeight="80">
+            <padding>
+                <Insets top="20" right="25" bottom="20" left="25"/>
+            </padding>
+            
+            <!-- Back Button -->
+            <Button fx:id="backButton" text="↩ Back" styleClass="back-button" onAction="#onBackClick"/>
+            
+            <!-- Project Title -->
+            <VBox spacing="5">
+                <Text fx:id="projectTitle" text="Project: &quot;HydroSense AI&quot;" styleClass="project-detail-title">
+                    <font>
+                        <Font name="Inter Bold" size="24"/>
+                    </font>
+                </Text>
+                <Text fx:id="projectPath" text="/workspace/hydrosense-ai" styleClass="project-path-text"/>
+            </VBox>
+            
+            <!-- Spacer -->
+            <Region HBox.hgrow="ALWAYS"/>
+            
+            <!-- Header Actions -->
+            <HBox spacing="15" alignment="CENTER">
+                <Button fx:id="settingsButton" text="⚙ Settings" styleClass="project-header-button"/>
+                <Button fx:id="statsButton" text="📈 Stats" styleClass="project-header-button primary"/>
+                <Button fx:id="fullscreenButton" text="⛶" styleClass="project-header-button"/>
+            </HBox>
+        </HBox>
+    </top>
+
+    <!-- CENTER: Tab Container -->
+    <center>
+        <VBox styleClass="project-detail-container">
+            
+            <!-- Tab Bar -->
+            <HBox styleClass="project-tab-bar" spacing="0" alignment="CENTER_LEFT">
+                <Button fx:id="overviewTab" text="Overview" styleClass="project-tab active-tab" onAction="#onOverviewTab"/>
+                <Button fx:id="tasksTab" text="Tasks" styleClass="project-tab" onAction="#onTasksTab"/>
+                <Button fx:id="gitTab" text="Git" styleClass="project-tab" onAction="#onGitTab"/>
+                <Button fx:id="datasetTab" text="Dataset" styleClass="project-tab" onAction="#onDatasetTab"/>
+                <Button fx:id="securityTab" text="Security" styleClass="project-tab" onAction="#onSecurityTab"/>
+                <Button fx:id="logsTab" text="Logs" styleClass="project-tab" onAction="#onLogsTab"/>
+                <Button fx:id="extensionsTab" text="Extensions" styleClass="project-tab" onAction="#onExtensionsTab"/>
+                <Button fx:id="cloudTab" text="Cloud" styleClass="project-tab" onAction="#onCloudTab"/>
+            </HBox>
+            
+            <!-- Tab Content Area -->
+            <StackPane fx:id="tabContentArea" VBox.vgrow="ALWAYS" styleClass="tab-content-area">
+                
+                <!-- Overview Tab Content -->
+                <VBox fx:id="overviewContent" spacing="25" styleClass="tab-content overview-content">
+                    <padding>
+                        <Insets top="30" right="30" bottom="30" left="30"/>
+                    </padding>
+                    
+                    <!-- Status Snapshot Section -->
+                    <VBox spacing="20">
+                        <Text text="📊 STATUS SNAPSHOT" styleClass="section-header">
+                            <font>
+                                <Font name="Inter Bold" size="18"/>
+                            </font>
+                        </Text>
+                        
+                        <!-- Status Grid -->
+                        <GridPane styleClass="status-grid" hgap="30" vgap="15">
+                            <!-- Git Status -->
+                            <HBox spacing="12" GridPane.columnIndex="0" GridPane.rowIndex="0">
+                                <FontAwesomeIcon glyphName="CODE_FORK" size="18" styleClass="status-icon git-icon"/>
+                                <VBox spacing="3">
+                                    <Text text="🟢 Git Sync: Up-to-date" styleClass="status-primary"/>
+                                    <Text text="Last commit: 2 hours ago" styleClass="status-secondary"/>
+                                </VBox>
+                            </HBox>
+                            
+                            <!-- Backup Status -->
+                            <HBox spacing="12" GridPane.columnIndex="1" GridPane.rowIndex="0">
+                                <FontAwesomeIcon glyphName="DATABASE" size="18" styleClass="status-icon backup-icon"/>
+                                <VBox spacing="3">
+                                    <Text text="🔄 Backup: Last at 22:10" styleClass="status-primary"/>
+                                    <Text text="Auto every 2 hrs" styleClass="status-secondary"/>
+                                </VBox>
+                            </HBox>
+                            
+                            <!-- Security Status -->
+                            <HBox spacing="12" GridPane.columnIndex="0" GridPane.rowIndex="1">
+                                <FontAwesomeIcon glyphName="SHIELD_ALT" size="18" styleClass="status-icon security-icon"/>
+                                <VBox spacing="3">
+                                    <Text text="🔐 Security: Active" styleClass="status-primary"/>
+                                    <Text text="Zero interference" styleClass="status-secondary"/>
+                                </VBox>
+                            </HBox>
+                            
+                            <!-- Dataset Status -->
+                            <HBox spacing="12" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                <FontAwesomeIcon glyphName="TABLE" size="18" styleClass="status-icon dataset-icon"/>
+                                <VBox spacing="3">
+                                    <Text text="📁 Dataset: water_quality.csv" styleClass="status-primary"/>
+                                    <Text text="Linked &amp; Synchronized" styleClass="status-secondary"/>
+                                </VBox>
+                            </HBox>
+                        </GridPane>
+                        
+                        <!-- Progress Section -->
+                        <VBox spacing="10">
+                            <HBox alignment="CENTER_LEFT" spacing="15">
+                                <Text text="📈 Overall Progress:" styleClass="progress-label"/>
+                                <Text text="85%" styleClass="progress-percentage"/>
+                            </HBox>
+                            <ProgressBar fx:id="overallProgress" progress="0.85" styleClass="overview-progress-bar" prefWidth="600"/>
+                            <Text text="Training in progress - Neural network optimization phase" styleClass="progress-description"/>
+                        </VBox>
+                    </VBox>
+                    
+                    <!-- Recent Activity Section -->
+                    <VBox spacing="15">
+                        <Text text="📋 RECENT ACTIVITY" styleClass="section-header">
+                            <font>
+                                <Font name="Inter Bold" size="16"/>
+                            </font>
+                        </Text>
+                        
+                        <VBox fx:id="activityList" spacing="10" styleClass="activity-list">
+                            <!-- Activity items will be added dynamically -->
+                            <HBox spacing="15" styleClass="activity-item">
+                                <FontAwesomeIcon glyphName="CLOCK_ALT" size="14" styleClass="activity-time-icon"/>
+                                <VBox spacing="3" HBox.hgrow="ALWAYS">
+                                    <Text text="Neural network training checkpoint saved" styleClass="activity-title"/>
+                                    <Text text="2 minutes ago - Epoch 847 completed with 94.2% accuracy" styleClass="activity-description"/>
+                                </VBox>
+                            </HBox>
+                            
+                            <HBox spacing="15" styleClass="activity-item">
+                                <FontAwesomeIcon glyphName="CLOCK_ALT" size="14" styleClass="activity-time-icon"/>
+                                <VBox spacing="3" HBox.hgrow="ALWAYS">
+                                    <Text text="Dataset validation completed" styleClass="activity-title"/>
+                                    <Text text="15 minutes ago - All 15,247 records validated successfully" styleClass="activity-description"/>
+                                </VBox>
+                            </HBox>
+                            
+                            <HBox spacing="15" styleClass="activity-item">
+                                <FontAwesomeIcon glyphName="CLOCK_ALT" size="14" styleClass="activity-time-icon"/>
+                                <VBox spacing="3" HBox.hgrow="ALWAYS">
+                                    <Text text="Security scan completed" styleClass="activity-title"/>
+                                    <Text text="1 hour ago - No vulnerabilities detected" styleClass="activity-description"/>
+                                </VBox>
+                            </HBox>
+                        </VBox>
+                    </VBox>
+                    
+                    <!-- Quick Actions -->
+                    <HBox spacing="15" alignment="CENTER_LEFT">
+                        <Button fx:id="openFolderButton" text="📁 Open Folder" styleClass="quick-action-button primary"/>
+                        <Button fx:id="runTerminalButton" text="💻 Run Terminal" styleClass="quick-action-button secondary"/>
+                        <Button fx:id="createBackupButton" text="💾 Create Backup" styleClass="quick-action-button secondary"/>
+                        <Button fx:id="viewReportButton" text="📊 View Report" styleClass="quick-action-button info"/>
+                    </HBox>
+                </VBox>
+                
+                <!-- Other Tab Contents (Hidden by default) -->
+                <VBox fx:id="tasksContent" spacing="20" styleClass="tab-content tasks-content" visible="false">
+                    <padding>
+                        <Insets top="30" right="30" bottom="30" left="30"/>
+                    </padding>
+                    <Text text="📋 Task Management" styleClass="section-header"/>
+                    <Text text="Task management interface will be implemented here..." styleClass="placeholder-text"/>
+                </VBox>
+                
+                <VBox fx:id="gitContent" spacing="20" styleClass="tab-content git-content" visible="false">
+                    <padding>
+                        <Insets top="30" right="30" bottom="30" left="30"/>
+                    </padding>
+                    <Text text="🔀 Git Integration" styleClass="section-header"/>
+                    <Text text="Git repository management interface will be implemented here..." styleClass="placeholder-text"/>
+                </VBox>
+                
+                <VBox fx:id="datasetContent" spacing="20" styleClass="tab-content dataset-content" visible="false">
+                    <padding>
+                        <Insets top="30" right="30" bottom="30" left="30"/>
+                    </padding>
+                    <Text text="📊 Dataset Management" styleClass="section-header"/>
+                    <Text text="Dataset management and analysis interface will be implemented here..." styleClass="placeholder-text"/>
+                </VBox>
+                
+                <VBox fx:id="securityContent" spacing="20" styleClass="tab-content security-content" visible="false">
+                    <padding>
+                        <Insets top="30" right="30" bottom="30" left="30"/>
+                    </padding>
+                    <Text text="🔐 Security Settings" styleClass="section-header"/>
+                    <Text text="Security configuration and monitoring interface will be implemented here..." styleClass="placeholder-text"/>
+                </VBox>
+                
+                <VBox fx:id="logsContent" spacing="20" styleClass="tab-content logs-content" visible="false">
+                    <padding>
+                        <Insets top="30" right="30" bottom="30" left="30"/>
+                    </padding>
+                    <Text text="📜 System Logs" styleClass="section-header"/>
+                    <Text text="Log viewing and analysis interface will be implemented here..." styleClass="placeholder-text"/>
+                </VBox>
+                
+                <VBox fx:id="extensionsContent" spacing="20" styleClass="tab-content extensions-content" visible="false">
+                    <padding>
+                        <Insets top="30" right="30" bottom="30" left="30"/>
+                    </padding>
+                    <Text text="🧩 Extensions" styleClass="section-header"/>
+                    <Text text="Project-specific extensions and plugins interface will be implemented here..." styleClass="placeholder-text"/>
+                </VBox>
+                
+                <VBox fx:id="cloudContent" spacing="20" styleClass="tab-content cloud-content" visible="false">
+                    <padding>
+                        <Insets top="30" right="30" bottom="30" left="30"/>
+                    </padding>
+                    <Text text="☁ Cloud Integration" styleClass="section-header"/>
+                    <Text text="Cloud services and deployment interface will be implemented here..." styleClass="placeholder-text"/>
+                </VBox>
+                
+            </StackPane>
+        </VBox>
+    </center>
+
+</BorderPane>

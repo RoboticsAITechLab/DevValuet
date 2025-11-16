@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.control.cell.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
+
+<!--
+Dataset Management Hub Enhanced
+Manage datasets, linkage, and stats with glowing cyan rows and mini-chart popups
+-->
+
+<BorderPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" 
+            fx:controller="com.devvault.frontend.controllers.DatasetHubController"
+            styleClass="dataset-hub-view">
+
+    <!-- TOP: Dataset Hub Header -->
+    <top>
+        <HBox styleClass="dataset-header-bar" alignment="CENTER_LEFT" spacing="25" prefHeight="80">
+            <padding>
+                <Insets top="20" right="30" bottom="20" left="30"/>
+            </padding>
+            
+            <!-- Dataset Hub Title -->
+            <HBox spacing="15" alignment="CENTER_LEFT">
+                <FontAwesomeIcon glyphName="TABLE" size="30" styleClass="dataset-hub-icon"/>
+                <Text text="📊 DATASET MANAGEMENT HUB" styleClass="dataset-hub-title">
+                    <font>
+                        <Font name="Inter Bold" size="24"/>
+                    </font>
+                </Text>
+            </HBox>
+            
+            <!-- Spacer -->
+            <Region HBox.hgrow="ALWAYS"/>
+            
+            <!-- Dataset Controls -->
+            <HBox spacing="15" alignment="CENTER">
+                <TextField fx:id="datasetSearchField" promptText="🔍 Search datasets..." styleClass="dataset-search-field" prefWidth="200"/>
+                <Button fx:id="refreshButton" text="🔄" styleClass="dataset-control-button">
+                    <tooltip><Tooltip text="Refresh Dataset List"/></tooltip>
+                </Button>
+                <Button fx:id="importButton" text="📥 Import" styleClass="dataset-control-button primary"/>
+                <Button fx:id="analyticsButton" text="📈 Analytics" styleClass="dataset-control-button info"/>
+            </HBox>
+        </HBox>
+    </top>
+
+    <!-- CENTER: Dataset Table -->
+    <center>
+        <VBox spacing="20" styleClass="dataset-content">
+            <padding>
+                <Insets top="25" right="30" bottom="25" left="30"/>
+            </padding>
+            
+            <!-- Dataset Statistics Summary -->
+            <HBox spacing="30" styleClass="dataset-stats-bar" alignment="CENTER_LEFT">
+                <padding>
+                    <Insets all="20"/>
+                </padding>
+                
+                <VBox alignment="CENTER" spacing="5" styleClass="stat-item">
+                    <Text fx:id="totalDatasetsText" text="47" styleClass="stat-number">
+                        <font>
+                            <Font name="Inter Bold" size="20"/>
+                        </font>
+                    </Text>
+                    <Text text="Total Datasets" styleClass="stat-label"/>
+                </VBox>
+                
+                <Separator orientation="VERTICAL" styleClass="stat-separator"/>
+                
+                <VBox alignment="CENTER" spacing="5" styleClass="stat-item">
+                    <Text fx:id="linkedDatasetsText" text="23" styleClass="stat-number linked">
+                        <font>
+                            <Font name="Inter Bold" size="20"/>
+                        </font>
+                    </Text>
+                    <Text text="Linked Projects" styleClass="stat-label"/>
+                </VBox>
+                
+                <Separator orientation="VERTICAL" styleClass="stat-separator"/>
+                
+                <VBox alignment="CENTER" spacing="5" styleClass="stat-item">
+                    <Text fx:id="totalSizeText" text="2.4 GB" styleClass="stat-number">
+                        <font>
+                            <Font name="Inter Bold" size="20"/>
+                        </font>
+                    </Text>
+                    <Text text="Total Size" styleClass="stat-label"/>
+                </VBox>
+                
+                <Separator orientation="VERTICAL" styleClass="stat-separator"/>
+                
+                <VBox alignment="CENTER" spacing="5" styleClass="stat-item">
+                    <Text fx:id="lastUpdatedText" text="2 mins ago" styleClass="stat-number recent">
+                        <font>
+                            <Font name="Inter Bold" size="20"/>
+                        </font>
+                    </Text>
+                    <Text text="Last Updated" styleClass="stat-label"/>
+                </VBox>
+            </HBox>
+            
+            <!-- Enhanced Dataset Table -->
+            <TableView fx:id="datasetTable" styleClass="dataset-table" VBox.vgrow="ALWAYS">
+                <columns>
+                    <!-- Dataset Name Column -->
+                    <TableColumn fx:id="nameColumn" text="Dataset Name" prefWidth="250" styleClass="dataset-name-column">
+                        <cellValueFactory>
+                            <PropertyValueFactory property="name" />
+                        </cellValueFactory>
+                    </TableColumn>
+                    
+                    <!-- Linked Project Column -->
+                    <TableColumn fx:id="projectColumn" text="Linked Project" prefWidth="220" styleClass="linked-project-column">
+                        <cellValueFactory>
+                            <PropertyValueFactory property="linkedProject" />
+                        </cellValueFactory>
+                    </TableColumn>
+                    
+                    <!-- Size Column -->
+                    <TableColumn fx:id="sizeColumn" text="Size" prefWidth="100" styleClass="size-column">
+                        <cellValueFactory>
+                            <PropertyValueFactory property="size" />
+                        </cellValueFactory>
+                    </TableColumn>
+                    
+                    <!-- Type Column -->
+                    <TableColumn fx:id="typeColumn" text="Type" prefWidth="120" styleClass="type-column">
+                        <cellValueFactory>
+                            <PropertyValueFactory property="type" />
+                        </cellValueFactory>
+                    </TableColumn>
+                    
+                    <!-- Updated Column -->
+                    <TableColumn fx:id="updatedColumn" text="Updated" prefWidth="120" styleClass="updated-column">
+                        <cellValueFactory>
+                            <PropertyValueFactory property="updated" />
+                        </cellValueFactory>
+                    </TableColumn>
+                    
+                    <!-- Status Column -->
+                    <TableColumn fx:id="statusColumn" text="Status" prefWidth="100" styleClass="status-column">
+                        <cellValueFactory>
+                            <PropertyValueFactory property="status" />
+                        </cellValueFactory>
+                    </TableColumn>
+                    
+                    <!-- Actions Column -->
+                    <TableColumn fx:id="actionsColumn" text="Actions" prefWidth="150" styleClass="actions-column">
+                        <!-- Cell factory will be set in controller -->
+                    </TableColumn>
+                </columns>
+                
+                <!-- Placeholder for empty table -->
+                <placeholder>
+                    <VBox alignment="CENTER" spacing="15" styleClass="empty-table-placeholder">
+                        <FontAwesomeIcon glyphName="DATABASE" size="48" styleClass="empty-icon"/>
+                        <Text text="No datasets found" styleClass="empty-text">
+                            <font>
+                                <Font name="Inter Medium" size="16"/>
+                            </font>
+                        </Text>
+                        <Text text="Import your first dataset to get started" styleClass="empty-subtext"/>
+                        <Button text="📥 Import Dataset" styleClass="empty-action-button primary"/>
+                    </VBox>
+                </placeholder>
+            </TableView>
+            
+        </VBox>
+    </center>
+
+    <!-- BOTTOM: Dataset Action Bar -->
+    <bottom>
+        <HBox styleClass="dataset-action-bar" alignment="CENTER" spacing="20" prefHeight="65">
+            <padding>
+                <Insets top="15" right="30" bottom="15" left="30"/>
+            </padding>
+            
+            <!-- Primary Dataset Actions -->
+            <Button fx:id="addDatasetButton" text="➕ Add Dataset" styleClass="dataset-action-button primary" onAction="#onAddDataset"/>
+            <Button fx:id="linkDatasetButton" text="🔗 Link" styleClass="dataset-action-button secondary" onAction="#onLinkDataset"/>
+            <Button fx:id="removeDatasetButton" text="🗑 Remove" styleClass="dataset-action-button danger" onAction="#onRemoveDataset"/>
+            <Button fx:id="exportDatasetButton" text="📦 Export" styleClass="dataset-action-button info" onAction="#onExportDataset"/>
+            
+            <!-- Spacer -->
+            <Region HBox.hgrow="ALWAYS"/>
+            
+            <!-- Additional Actions -->
+            <Button fx:id="openFolderButton" text="📁 Open Folder" styleClass="dataset-action-button secondary" onAction="#onOpenFolder"/>
+            <Button fx:id="dataValidationButton" text="✓ Validate" styleClass="dataset-action-button success" onAction="#onValidateData"/>
+            
+            <!-- Dataset View Mode Toggle -->
+            <ToggleGroup fx:id="viewModeToggle"/>
+            <ToggleButton fx:id="tableViewToggle" text="📋" styleClass="view-mode-toggle" toggleGroup="$viewModeToggle" selected="true">
+                <tooltip><Tooltip text="Table View"/></tooltip>
+            </ToggleButton>
+            <ToggleButton fx:id="cardViewToggle" text="🎴" styleClass="view-mode-toggle" toggleGroup="$viewModeToggle">
+                <tooltip><Tooltip text="Card View"/></tooltip>
+            </ToggleButton>
+            <ToggleButton fx:id="chartViewToggle" text="📊" styleClass="view-mode-toggle" toggleGroup="$viewModeToggle">
+                <tooltip><Tooltip text="Analytics View"/></tooltip>
+            </ToggleButton>
+        </HBox>
+    </bottom>
+
+</BorderPane>

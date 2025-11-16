@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Text?>
+
+<BorderPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" 
+            fx:controller="com.devvault.frontend.controllers.PluginsInterfaceController"
+            styleClass="plugins-interface-view">
+    
+    <!-- Header -->
+    <top>
+        <HBox styleClass="plugins-header" alignment="CENTER_LEFT" spacing="20">
+            <padding>
+                <Insets topRightBottomLeft="20" />
+            </padding>
+            
+            <FontAwesomeIconView icon="PLUG" size="24" styleClass="header-icon" />
+            <Label fx:id="titleLabel" text="Plugins Interface" styleClass="plugins-title" />
+            
+            <Region HBox.hgrow="ALWAYS" />
+            
+            <Button fx:id="marketplaceButton" text="Marketplace" styleClass="header-action-button" />
+            <Button fx:id="installButton" text="Install" styleClass="header-action-button" />
+            <Button fx:id="backButton" text="Back" styleClass="header-action-button,primary" />
+        </HBox>
+    </top>
+    
+    <!-- Main Content -->
+    <center>
+        <ScrollPane fitToWidth="true" styleClass="plugins-scroll-pane">
+            <VBox spacing="30">
+                <padding>
+                    <Insets topRightBottomLeft="30" />
+                </padding>
+                
+                <!-- Stats Cards Row -->
+                <HBox spacing="30" alignment="CENTER">
+                    <!-- Plugin Stats Card -->
+                    <VBox fx:id="pluginStatsCard" styleClass="stats-card,plugin-stats" spacing="12" HBox.hgrow="ALWAYS">
+                        <padding>
+                            <Insets topRightBottomLeft="20" />
+                        </padding>
+                        
+                        <HBox alignment="CENTER_LEFT" spacing="10">
+                            <FontAwesomeIconView icon="BAR_CHART" size="20" styleClass="card-icon,stats-icon" />
+                            <Label text="Plugin Stats" styleClass="card-title" />
+                        </HBox>
+                        
+                        <VBox spacing="8">
+                            <Text fx:id="installedCountText" styleClass="stats-text" />
+                            <Text fx:id="activeCountText" styleClass="stats-text,active-count" />
+                            <Text fx:id="categoriesCountText" styleClass="stats-text" />
+                            <Text fx:id="storageUsageText" styleClass="stats-text" />
+                        </VBox>
+                    </VBox>
+                    
+                    <!-- Update Status Card -->
+                    <VBox fx:id="updateStatusCard" styleClass="stats-card,update-stats" spacing="12" HBox.hgrow="ALWAYS">
+                        <padding>
+                            <Insets topRightBottomLeft="20" />
+                        </padding>
+                        
+                        <HBox alignment="CENTER_LEFT" spacing="10">
+                            <FontAwesomeIconView icon="REFRESH" size="20" styleClass="card-icon,update-icon" />
+                            <Label text="Update Status" styleClass="card-title" />
+                        </HBox>
+                        
+                        <VBox spacing="8">
+                            <Text fx:id="availableUpdatesText" styleClass="stats-text,updates-available" />
+                            <Text fx:id="updatedPluginsText" styleClass="stats-text" />
+                            <Text fx:id="failedUpdatesText" styleClass="stats-text,failures-none" />
+                            <Text fx:id="lastCheckText" styleClass="stats-text" />
+                        </VBox>
+                    </VBox>
+                    
+                    <!-- Marketplace Stats Card -->
+                    <VBox fx:id="marketplaceStatsCard" styleClass="stats-card,marketplace-stats" spacing="12" HBox.hgrow="ALWAYS">
+                        <padding>
+                            <Insets topRightBottomLeft="20" />
+                        </padding>
+                        
+                        <HBox alignment="CENTER_LEFT" spacing="10">
+                            <FontAwesomeIconView icon="STORE" size="20" styleClass="card-icon,marketplace-icon" />
+                            <Label text="Marketplace" styleClass="card-title" />
+                        </HBox>
+                        
+                        <VBox spacing="8">
+                            <Text fx:id="featuredPluginsText" styleClass="stats-text" />
+                            <Text fx:id="newPluginsText" styleClass="stats-text,new-plugins" />
+                            <Text fx:id="popularPluginsText" styleClass="stats-text" />
+                            <Text fx:id="totalDownloadsText" styleClass="stats-text,download-count" />
+                        </VBox>
+                    </VBox>
+                </HBox>
+                
+                <!-- Installed Plugins Section -->
+                <VBox spacing="15">
+                    <HBox alignment="CENTER_LEFT" spacing="10">
+                        <FontAwesomeIconView icon="LIST" size="18" styleClass="section-icon" />
+                        <Label text="Installed Plugins" styleClass="section-title" />
+                    </HBox>
+                    
+                    <ScrollPane fx:id="pluginsScrollPane" styleClass="plugins-list-scroll" maxHeight="400" fitToWidth="true">
+                        <VBox fx:id="pluginsContainer" spacing="10">
+                            <padding>
+                                <Insets topRightBottomLeft="15" />
+                            </padding>
+                        </VBox>
+                    </ScrollPane>
+                </VBox>
+                
+                <!-- Plugin Operations Section -->
+                <VBox spacing="15">
+                    <HBox alignment="CENTER_LEFT" spacing="10">
+                        <FontAwesomeIconView icon="SLIDERS" size="18" styleClass="section-icon" />
+                        <Label text="Plugin Operations" styleClass="section-title" />
+                    </HBox>
+                    
+                    <HBox spacing="15" alignment="CENTER">
+                        <Button fx:id="searchButton" text="Search" styleClass="operation-button,search-button" />
+                        <Button fx:id="installNewButton" text="Install" styleClass="operation-button,install-button" />
+                        <Button fx:id="updateAllButton" text="Update All" styleClass="operation-button,update-button" />
+                        <Button fx:id="configureButton" text="Configure" styleClass="operation-button,configure-button" />
+                        <Button fx:id="marketplaceViewButton" text="Marketplace" styleClass="operation-button,marketplace-button" />
+                    </HBox>
+                </VBox>
+            </VBox>
+        </ScrollPane>
+    </center>
+</BorderPane>

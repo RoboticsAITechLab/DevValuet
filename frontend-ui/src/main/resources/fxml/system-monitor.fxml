@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Text?>
+
+<BorderPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" 
+            fx:controller="com.devvault.frontend.controllers.SystemMonitorController"
+            styleClass="system-monitor-view">
+    
+    <!-- Header -->
+    <top>
+        <HBox styleClass="monitor-header" alignment="CENTER_LEFT" spacing="20">
+            <padding>
+                <Insets topRightBottomLeft="20" />
+            </padding>
+            
+            <FontAwesomeIconView icon="AREA_CHART" size="24" styleClass="header-icon" />
+            <Label fx:id="titleLabel" text="System Monitor" styleClass="monitor-title" />
+            
+            <Region HBox.hgrow="ALWAYS" />
+            
+            <Button fx:id="refreshButton" text="Refresh" styleClass="header-action-button" />
+            <Button fx:id="alertButton" text="Alert" styleClass="header-action-button" />
+            <Button fx:id="backButton" text="Back" styleClass="header-action-button,primary" />
+        </HBox>
+    </top>
+    
+    <!-- Main Content -->
+    <center>
+        <ScrollPane fitToWidth="true" styleClass="monitor-scroll-pane">
+            <VBox spacing="25">
+                <padding>
+                    <Insets topRightBottomLeft="25" />
+                </padding>
+                
+                <!-- Resource Cards Row 1 -->
+                <HBox spacing="25" alignment="CENTER">
+                    <!-- CPU Usage Card -->
+                    <VBox fx:id="cpuUsageCard" styleClass="resource-card,cpu-card" spacing="10" HBox.hgrow="ALWAYS">
+                        <padding>
+                            <Insets topRightBottomLeft="18" />
+                        </padding>
+                        
+                        <HBox alignment="CENTER_LEFT" spacing="8">
+                            <FontAwesomeIconView icon="MICROCHIP" size="18" styleClass="card-icon,cpu-icon" />
+                            <Label text="CPU Usage" styleClass="card-title" />
+                        </HBox>
+                        
+                        <VBox spacing="6">
+                            <Text fx:id="cpuUsageText" styleClass="resource-text" />
+                            <HBox spacing="10" alignment="CENTER_LEFT">
+                                <ProgressBar fx:id="cpuProgressBar" prefWidth="120" styleClass="cpu-progress" />
+                                <Text fx:id="cpuPercentText" styleClass="resource-text,percent-text" />
+                            </HBox>
+                            <Text fx:id="cpuCoresText" styleClass="resource-text,detail-text" />
+                            <Text fx:id="cpuTempText" styleClass="resource-text,temp-text" />
+                        </VBox>
+                    </VBox>
+                    
+                    <!-- Memory Usage Card -->
+                    <VBox fx:id="memoryUsageCard" styleClass="resource-card,memory-card" spacing="10" HBox.hgrow="ALWAYS">
+                        <padding>
+                            <Insets topRightBottomLeft="18" />
+                        </padding>
+                        
+                        <HBox alignment="CENTER_LEFT" spacing="8">
+                            <FontAwesomeIconView icon="MEMORY" size="18" styleClass="card-icon,memory-icon" />
+                            <Label text="Memory Usage" styleClass="card-title" />
+                        </HBox>
+                        
+                        <VBox spacing="6">
+                            <Text fx:id="memoryUsedText" styleClass="resource-text" />
+                            <Text fx:id="memoryFreeText" styleClass="resource-text,detail-text" />
+                            <HBox spacing="10" alignment="CENTER_LEFT">
+                                <ProgressBar fx:id="memoryProgressBar" prefWidth="120" styleClass="memory-progress" />
+                                <Text fx:id="memoryPercentText" styleClass="resource-text,percent-text" />
+                            </HBox>
+                            <Text fx:id="swapUsageText" styleClass="resource-text,detail-text" />
+                        </VBox>
+                    </VBox>
+                    
+                    <!-- Disk Usage Card -->
+                    <VBox fx:id="diskUsageCard" styleClass="resource-card,disk-card" spacing="10" HBox.hgrow="ALWAYS">
+                        <padding>
+                            <Insets topRightBottomLeft="18" />
+                        </padding>
+                        
+                        <HBox alignment="CENTER_LEFT" spacing="8">
+                            <FontAwesomeIconView icon="HDD_ALT" size="18" styleClass="card-icon,disk-icon" />
+                            <Label text="Disk Usage" styleClass="card-title" />
+                        </HBox>
+                        
+                        <VBox spacing="6">
+                            <Text fx:id="diskUsedText" styleClass="resource-text" />
+                            <Text fx:id="diskFreeText" styleClass="resource-text,detail-text" />
+                            <HBox spacing="10" alignment="CENTER_LEFT">
+                                <ProgressBar fx:id="diskProgressBar" prefWidth="120" styleClass="disk-progress" />
+                                <Text fx:id="diskPercentText" styleClass="resource-text,percent-text" />
+                            </HBox>
+                            <Text fx:id="diskIOText" styleClass="resource-text,io-text" />
+                        </VBox>
+                    </VBox>
+                </HBox>
+                
+                <!-- Resource Cards Row 2 -->
+                <HBox spacing="25" alignment="CENTER">
+                    <!-- Network Card -->
+                    <VBox fx:id="networkCard" styleClass="resource-card,network-card" spacing="10" HBox.hgrow="ALWAYS">
+                        <padding>
+                            <Insets topRightBottomLeft="18" />
+                        </padding>
+                        
+                        <HBox alignment="CENTER_LEFT" spacing="8">
+                            <FontAwesomeIconView icon="WIFI" size="18" styleClass="card-icon,network-icon" />
+                            <Label text="Network" styleClass="card-title" />
+                        </HBox>
+                        
+                        <VBox spacing="6">
+                            <Text fx:id="networkDownText" styleClass="resource-text,speed-down" />
+                            <Text fx:id="networkUpText" styleClass="resource-text,speed-up" />
+                            <Text fx:id="networkLatencyText" styleClass="resource-text,detail-text" />
+                            <Text fx:id="networkStatusText" styleClass="resource-text,status-connected" />
+                        </VBox>
+                    </VBox>
+                    
+                    <!-- Performance Card -->
+                    <VBox fx:id="performanceCard" styleClass="resource-card,performance-card" spacing="10" HBox.hgrow="ALWAYS">
+                        <padding>
+                            <Insets topRightBottomLeft="18" />
+                        </padding>
+                        
+                        <HBox alignment="CENTER_LEFT" spacing="8">
+                            <FontAwesomeIconView icon="TACHOMETER" size="18" styleClass="card-icon,performance-icon" />
+                            <Label text="Performance" styleClass="card-title" />
+                        </HBox>
+                        
+                        <VBox spacing="6">
+                            <Text fx:id="bootTimeText" styleClass="resource-text" />
+                            <Text fx:id="uptimeText" styleClass="resource-text,uptime-text" />
+                            <Text fx:id="loadAvgText" styleClass="resource-text,detail-text" />
+                            <Text fx:id="processCountText" styleClass="resource-text,detail-text" />
+                        </VBox>
+                    </VBox>
+                    
+                    <!-- Services Card -->
+                    <VBox fx:id="servicesCard" styleClass="resource-card,services-card" spacing="10" HBox.hgrow="ALWAYS">
+                        <padding>
+                            <Insets topRightBottomLeft="18" />
+                        </padding>
+                        
+                        <HBox alignment="CENTER_LEFT" spacing="8">
+                            <FontAwesomeIconView icon="COG" size="18" styleClass="card-icon,services-icon" />
+                            <Label text="Services" styleClass="card-title" />
+                        </HBox>
+                        
+                        <VBox spacing="6">
+                            <Text fx:id="runningServicesText" styleClass="resource-text,services-running" />
+                            <Text fx:id="stoppedServicesText" styleClass="resource-text,detail-text" />
+                            <Text fx:id="failedServicesText" styleClass="resource-text,services-failed" />
+                            <Text fx:id="topCpuServiceText" styleClass="resource-text,detail-text" />
+                        </VBox>
+                    </VBox>
+                </HBox>
+                
+                <!-- Real-time Metrics Section -->
+                <VBox spacing="12">
+                    <HBox alignment="CENTER_LEFT" spacing="8">
+                        <FontAwesomeIconView icon="LINE_CHART" size="16" styleClass="section-icon" />
+                        <Label text="Real-time Metrics" styleClass="section-title" />
+                    </HBox>
+                    
+                    <ScrollPane fx:id="metricsScrollPane" styleClass="metrics-scroll-pane" maxHeight="180" fitToWidth="true">
+                        <VBox fx:id="metricsContainer" spacing="4">
+                            <padding>
+                                <Insets topRightBottomLeft="12" />
+                            </padding>
+                        </VBox>
+                    </ScrollPane>
+                </VBox>
+                
+                <!-- Monitor Controls Section -->
+                <VBox spacing="12">
+                    <HBox alignment="CENTER_LEFT" spacing="8">
+                        <FontAwesomeIconView icon="SLIDERS" size="16" styleClass="section-icon" />
+                        <Label text="Monitor Controls" styleClass="section-title" />
+                    </HBox>
+                    
+                    <HBox spacing="12" alignment="CENTER">
+                        <Button fx:id="viewChartsButton" text="View Charts" styleClass="monitor-button,charts-button" />
+                        <Button fx:id="setAlertsButton" text="Set Alerts" styleClass="monitor-button,alerts-button" />
+                        <Button fx:id="exportLogButton" text="Export Log" styleClass="monitor-button,export-button" />
+                        <Button fx:id="settingsButton" text="Settings" styleClass="monitor-button,settings-button" />
+                        <Button fx:id="refreshControlButton" text="Refresh" styleClass="monitor-button,refresh-button" />
+                    </HBox>
+                </VBox>
+            </VBox>
+        </ScrollPane>
+    </center>
+</BorderPane>

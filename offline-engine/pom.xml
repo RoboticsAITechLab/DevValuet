@@ -10,6 +10,7 @@
     </parent>
 
     <artifactId>offline-engine</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
 
     <dependencies>
@@ -46,6 +47,21 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <!-- Use common encryption helpers (EncryptionManager) -->
+        <dependency>
+            <groupId>com.devvault</groupId>
+            <artifactId>common</artifactId>
+            <!-- Use parent version explicitly to avoid reactor resolution issues during multi-module builds -->
+            <version>${project.parent.version}</version>
+        </dependency>
+
+        <!-- WireMock for integration tests that simulate server endpoints -->
+        <dependency>
+            <groupId>com.github.tomakehurst</groupId>
+            <artifactId>wiremock-jre8-standalone</artifactId>
+            <version>2.35.0</version>
             <scope>test</scope>
         </dependency>
     </dependencies>

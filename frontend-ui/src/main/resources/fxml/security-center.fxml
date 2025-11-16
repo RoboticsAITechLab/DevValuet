@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Text?>
+
+<BorderPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" 
+            fx:controller="com.devvault.frontend.controllers.SecurityCenterController"
+            styleClass="security-center-view">
+    
+    <!-- Header -->
+    <top>
+        <HBox styleClass="security-header" alignment="CENTER_LEFT" spacing="20">
+            <padding>
+                <Insets topRightBottomLeft="20" />
+            </padding>
+            
+            <FontAwesomeIconView icon="SHIELD_ALT" size="24" styleClass="header-icon" />
+            <Label fx:id="titleLabel" text="AI Security &amp; Backup Control Room" styleClass="security-title" />
+            
+            <Region HBox.hgrow="ALWAYS" />
+            
+            <Button fx:id="settingsButton" text="Settings" styleClass="header-action-button" />
+            <Button fx:id="backButton" text="Back" styleClass="header-action-button,primary" />
+        </HBox>
+    </top>
+    
+    <!-- Main Content -->
+    <center>
+        <ScrollPane fitToWidth="true" styleClass="security-scroll-pane">
+            <VBox spacing="30">
+                <padding>
+                    <Insets topRightBottomLeft="30" />
+                </padding>
+                
+                <!-- Status Cards Row -->
+                <HBox spacing="30" alignment="CENTER">
+                    <!-- Security Status Card -->
+                    <VBox fx:id="securityStatusCard" styleClass="status-card,security-card" spacing="12" HBox.hgrow="ALWAYS">
+                        <padding>
+                            <Insets topRightBottomLeft="20" />
+                        </padding>
+                        
+                        <HBox alignment="CENTER_LEFT" spacing="10">
+                            <FontAwesomeIconView icon="SHIELD_ALT" size="20" styleClass="card-icon,security-icon" />
+                            <Label text="Security Status" styleClass="card-title" />
+                        </HBox>
+                        
+                        <VBox spacing="8">
+                            <Text fx:id="securityStatusText" styleClass="status-text,status-good" />
+                            <Text fx:id="firewallStatusText" styleClass="status-text" />
+                            <Text fx:id="encryptionStatusText" styleClass="status-text" />
+                            <Text fx:id="vpnStatusText" styleClass="status-text" />
+                        </VBox>
+                    </VBox>
+                    
+                    <!-- Backup Status Card -->
+                    <VBox fx:id="backupStatusCard" styleClass="status-card,backup-card" spacing="12" HBox.hgrow="ALWAYS">
+                        <padding>
+                            <Insets topRightBottomLeft="20" />
+                        </padding>
+                        
+                        <HBox alignment="CENTER_LEFT" spacing="10">
+                            <FontAwesomeIconView icon="ARCHIVE" size="20" styleClass="card-icon,backup-icon" />
+                            <Label text="Backup Status" styleClass="card-title" />
+                        </HBox>
+                        
+                        <VBox spacing="8">
+                            <Text fx:id="lastBackupText" styleClass="status-text" />
+                            <Text fx:id="backupSizeText" styleClass="status-text" />
+                            <Text fx:id="backupSpeedText" styleClass="status-text" />
+                            <VBox spacing="5">
+                                <ProgressBar fx:id="backupProgressBar" prefWidth="200" styleClass="backup-progress" />
+                                <Text fx:id="backupProgressText" styleClass="status-text,progress-text" />
+                            </VBox>
+                        </VBox>
+                    </VBox>
+                    
+                    <!-- Threat Detection Card -->
+                    <VBox fx:id="threatDetectionCard" styleClass="status-card,threat-card" spacing="12" HBox.hgrow="ALWAYS">
+                        <padding>
+                            <Insets topRightBottomLeft="20" />
+                        </padding>
+                        
+                        <HBox alignment="CENTER_LEFT" spacing="10">
+                            <FontAwesomeIconView icon="EXCLAMATION_TRIANGLE" size="20" styleClass="card-icon,threat-icon" />
+                            <Label text="Threat Detection" styleClass="card-title" />
+                        </HBox>
+                        
+                        <VBox spacing="8">
+                            <Text fx:id="threatCountText" styleClass="status-text,status-warning" />
+                            <Text fx:id="scanStatusText" styleClass="status-text" />
+                            <Text fx:id="updatesStatusText" styleClass="status-text,status-good" />
+                            <Text fx:id="quarantineCountText" styleClass="status-text" />
+                        </VBox>
+                    </VBox>
+                </HBox>
+                
+                <!-- Security Events Section -->
+                <VBox spacing="15">
+                    <HBox alignment="CENTER_LEFT" spacing="10">
+                        <FontAwesomeIconView icon="LIST_ALT" size="18" styleClass="section-icon" />
+                        <Label text="Recent Security Events" styleClass="section-title" />
+                    </HBox>
+                    
+                    <ScrollPane fx:id="eventsScrollPane" styleClass="events-scroll-pane" maxHeight="300" fitToWidth="true">
+                        <VBox fx:id="eventsContainer" spacing="8">
+                            <padding>
+                                <Insets topRightBottomLeft="15" />
+                            </padding>
+                        </VBox>
+                    </ScrollPane>
+                </VBox>
+                
+                <!-- Control Panel Section -->
+                <VBox spacing="15">
+                    <HBox alignment="CENTER_LEFT" spacing="10">
+                        <FontAwesomeIconView icon="SLIDERS" size="18" styleClass="section-icon" />
+                        <Label text="Control Panel" styleClass="section-title" />
+                    </HBox>
+                    
+                    <HBox spacing="20" alignment="CENTER">
+                        <Button fx:id="securityScanButton" text="Run Security Scan" styleClass="control-button,security-button" />
+                        <Button fx:id="startBackupButton" text="Start Backup" styleClass="control-button,backup-button" />
+                        <Button fx:id="generateReportButton" text="Generate Report" styleClass="control-button,report-button" />
+                        <Button fx:id="configureButton" text="Configure" styleClass="control-button,configure-button" />
+                    </HBox>
+                </VBox>
+            </VBox>
+        </ScrollPane>
+    </center>
+</BorderPane>

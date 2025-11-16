@@ -38,6 +38,8 @@
                     <!-- Run each test class in its own forked JVM to avoid JVM-local state interference -->
                     <forkCount>1</forkCount>
                     <reuseForks>false</reuseForks>
+                    <!-- Add JVM flag to allow dynamic agent loading for Mockito -->
+                    <argLine>-XX:+EnableDynamicAgentLoading</argLine>
                     <!-- Disable encryption subsystem during tests so other features can be worked on while encryption is being fixed -->
                     <systemPropertyVariables>
                         <devvault.encryption.disabled>true</devvault.encryption.disabled>
