@@ -325,7 +325,7 @@ Suggested Individual Payment = (Contributor Points / Total Points) × 40% × Tot
 - **Quarterly Reviews**: Manual evaluation every 3 months by RoboticsAITechLab team
 - **Manual Distribution**: Revenue sharing decisions made by original development team
 - **Point-Based Guidelines**: Contribution scoring used as reference for distribution decisions
-- **Minimum Payout**: ₹4,000 INR (carried forward if below)
+- **Work-Based Payment**: Payment amount based purely on contribution value (no minimum threshold)
 - **Payment Methods**: UPI, Bank Transfer (NEFT/RTGS/IMPS)
 - **Final Authority**: RoboticsAITechLab retains final decision on all revenue distributions
 - **Tax Compliance**: As per Indian Income Tax regulations
