@@ -71,9 +71,9 @@ Individual Share = (Individual Points / Total All Contributors Points) × 40% ×
 
 #### **Quarterly Distributions:**
 - Revenue sharing payments made **every quarter**
-- Minimum payout threshold: **$50 USD**
+- Minimum payout threshold: **₹4,000 INR**
 - Payments below threshold carried forward to next quarter
-- Payment via PayPal, bank transfer, or cryptocurrency
+- Payment via **UPI** or **Bank Transfer** (NEFT/RTGS/IMPS)
 
 #### **Revenue Transparency:**
 - Quarterly revenue reports published to all contributors
@@ -136,14 +136,16 @@ Any entity generating commercial revenue using DevVault Pro X must:
 ### **9. LEGAL COMPLIANCE**
 
 #### **Tax Obligations:**
-- Contributors responsible for **own tax obligations**
-- **1099 forms** provided for US contributors earning >$600/year
-- **International tax compliance** handled per local requirements
+- Contributors responsible for **own tax obligations** as per Indian Income Tax Act
+- **TDS compliance** as per Indian tax regulations for applicable contributors
+- **PAN/Aadhaar verification** required for payments >₹50,000/year
+- **GST compliance** if contributor has GST registration
 
-#### **Anti-Money Laundering:**
-- **Identity verification** required for payments >$10,000/year
-- **Source of funds** documentation may be requested
-- **Compliance with local financial regulations**
+#### **Anti-Money Laundering & KYC:**
+- **Identity verification** required for payments >₹50,000/year
+- **Bank account verification** and UPI validation for all contributors
+- **PAN card submission** mandatory for Indian contributors
+- **Compliance with Indian financial regulations** including RBI guidelines
 
 ---
 

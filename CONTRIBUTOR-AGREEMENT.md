@@ -52,8 +52,8 @@ By submitting a pull request to DevVault Pro X, you automatically accept these t
 ### **Required Information:**
 - **Full Legal Name**: For payment and credit purposes
 - **Contact Email**: For revenue sharing communications
-- **Payment Method**: PayPal, bank transfer, or crypto wallet
-- **Tax Status**: For compliance and 1099 processing (if applicable)
+- **Payment Method**: UPI ID or Bank Account Details (IFSC/Account Number)
+- **PAN Card Number**: For Indian tax compliance and TDS purposes
 
 ### **Optional Information:**
 - **LinkedIn Profile**: For professional endorsements

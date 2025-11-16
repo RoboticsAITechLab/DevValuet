@@ -295,9 +295,9 @@ Your Quarterly Payment = (Your Points / Total Points) × 40% × Total Revenue
 
 #### **💳 Payment Process:**
 - **Quarterly Distributions**: Every 3 months
-- **Minimum Payout**: $50 USD (carried forward if below)
-- **Payment Methods**: PayPal, Bank Transfer, Cryptocurrency
-- **Tax Compliance**: 1099 forms for US contributors >$600/year
+- **Minimum Payout**: ₹4,000 INR (carried forward if below)
+- **Payment Methods**: UPI, Bank Transfer (NEFT/RTGS/IMPS)
+- **Tax Compliance**: As per Indian Income Tax regulations
 
 ### **🎖️ Hall of Fame**
 *Contributors who earned revenue share will be listed here!*
